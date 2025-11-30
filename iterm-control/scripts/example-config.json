@@ -1,0 +1,20 @@
+{
+  "terminals": [
+    {
+      "name": "Frontend",
+      "command": "cd frontend && npm run dev"
+    },
+    {
+      "name": "Backend",
+      "command": "cd backend && npm run dev"
+    },
+    {
+      "name": "Database",
+      "command": "docker-compose up postgres"
+    },
+    {
+      "name": "Logs",
+      "command": "tail -f logs/app.log"
+    }
+  ]
+}
