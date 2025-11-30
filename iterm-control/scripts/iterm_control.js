@@ -53,13 +53,16 @@ async function executeITermScript(script) {
  * Open a new iTerm terminal window/tab
  */
 async function openTerminal(message = "Terminal ready") {
+  // Escape message to prevent AppleScript syntax errors
+  const escapedMessage = message.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+
   const script = `
   tell application "iTerm"
     activate
     tell current window
       create tab with default profile
       tell current session
-        write text "echo '${message}'"
+        write text "echo \\"${escapedMessage}\\""
       end tell
     end tell
   end tell
