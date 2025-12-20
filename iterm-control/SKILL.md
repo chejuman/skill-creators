@@ -1,123 +1,162 @@
 ---
 name: iterm-control
-description: Control iTerm terminal instances via AppleScript for macOS. Use when managing multiple terminal sessions, running parallel dev servers (frontend/backend), monitoring command outputs, or automating iTerm window/tab operations. Enables opening terminals, executing commands, reading output, and coordinating multiple simultaneous processes.
+description: Advanced iTerm terminal automation for macOS. Use when managing multiple terminal sessions, running parallel dev servers, monitoring processes, auto-restarting failed services, or coordinating complex development workflows. Supports session ID tracking, state persistence, process monitoring, and comprehensive terminal control via AppleScript.
 ---
 
-# iTerm Control
+# iTerm Control v2.0
 
-Control iTerm terminal instances programmatically via AppleScript on macOS.
+Comprehensive iTerm terminal automation with session management, process monitoring, and advanced control.
 
 ## Overview
 
-This skill provides utilities to automate iTerm terminal operations through AppleScript. Use it to manage multiple terminal sessions, run commands in parallel, monitor outputs, and coordinate complex development workflows that require multiple simultaneous processes.
+This skill provides complete iTerm automation through three integrated scripts:
+- **iterm_control.js** - Core terminal operations (open, execute, split, focus)
+- **session_manager.js** - ID-based session tracking with persistence
+- **process_monitor.js** - Health monitoring and auto-restart
 
-**Platform:** macOS only (requires iTerm and AppleScript)
-
-## When to Use This Skill
-
-Trigger this skill when:
-- Running multiple development servers simultaneously (frontend + backend + database)
-- Monitoring command outputs from long-running processes
-- Automating terminal workflows that require multiple tabs or windows
-- Coordinating parallel processes in separate terminal sessions
-- Setting up development environments with predefined command sequences
+**Platform:** macOS only (requires iTerm)
 
 ## Quick Start
 
 ### Basic Terminal Control
 
-Open a terminal and execute a command:
+```bash
+# Open terminal and run command
+node scripts/iterm_control.js open "Dev Server"
+node scripts/iterm_control.js execute "npm run dev"
 
-```javascript
-import { openTerminal, executeCommand } from './scripts/iterm_control.js';
-
-// Open new terminal tab
-await openTerminal("Dev server starting");
-
-// Execute command in current session
-await executeCommand("npm run dev");
+# Split panes for multi-service setup
+node scripts/iterm_control.js split-v "npm run test:watch"
 ```
 
-### CLI Usage
-
-Use the scripts directly from command line:
+### Session Management
 
 ```bash
-# Open new terminal
-node scripts/iterm_control.js open "Ready for development"
+# Create tracked session
+node scripts/session_manager.js create "Backend" --group dev --command "npm run dev"
+node scripts/session_manager.js create "Frontend" --group dev --command "npm start"
 
-# Execute command
-node scripts/iterm_control.js execute "npm install"
-
-# Read session output
-node scripts/iterm_control.js read
-
-# Close current window
-node scripts/iterm_control.js close
+# List and manage sessions
+node scripts/session_manager.js list --group dev
+node scripts/session_manager.js execute <sessionId> "git pull"
 ```
 
-## Core Operations
+### Process Monitoring
 
-### Opening Terminals
-
-Create new terminal tabs or windows with optional initialization messages:
-
-```javascript
-await openTerminal("Backend server");
-await executeCommand("cd backend && npm run dev");
-```
-
-**CLI:**
 ```bash
-node scripts/iterm_control.js open "Starting service"
+# Check session health
+node scripts/process_monitor.js status
+
+# Watch with auto-restart
+node scripts/process_monitor.js watch <sessionId> --restart
 ```
 
-### Executing Commands
+## Core Scripts
 
-Run commands in the current iTerm session. Commands are automatically escaped for AppleScript compatibility:
+### iterm_control.js (v2.0)
 
-```javascript
-await executeCommand("npm run test");
-await executeCommand("docker-compose up -d");
-```
+Basic and advanced terminal operations.
 
-**CLI:**
+| Command | Description |
+|---------|-------------|
+| `open [message]` | Open new terminal tab |
+| `execute <command>` | Execute command in current session |
+| `read` | Read entire session output |
+| `lines [num]` | Read last N lines (default: 50) |
+| `close` | Close current window |
+| `window [title]` | Create new window |
+| `split-h [command]` | Split horizontally (left/right) |
+| `split-v [command]` | Split vertically (top/bottom) |
+| `list` | List all sessions |
+| `focus <name>` | Focus session by name |
+| `name <name>` | Set current session name |
+| `send-keys <keys>` | Send keys (ctrl+c, enter, etc.) |
+
+**Examples:**
 ```bash
-node scripts/iterm_control.js execute "git status"
+node scripts/iterm_control.js window "Development"
+node scripts/iterm_control.js execute "cd ~/project && npm run dev"
+node scripts/iterm_control.js split-v "npm run test:watch"
+node scripts/iterm_control.js send-keys ctrl+c
+node scripts/iterm_control.js focus "Backend"
 ```
 
-**Note:** Commands are automatically escaped for AppleScript compatibility, handling quotes, backslashes, dollar signs, and backticks safely.
+### session_manager.js
 
-### Reading Terminal Output
+ID-based session tracking with persistence and grouping.
 
-Read the entire session output or just the last N lines:
+| Command | Description |
+|---------|-------------|
+| `create <name> [--group <g>] [--command <c>]` | Create named session |
+| `list [--group <group>]` | List all sessions |
+| `get <sessionId>` | Get session info |
+| `execute <sessionId> <command>` | Execute in specific session |
+| `read <sessionId> [--lines <num>]` | Read session output |
+| `close <sessionId>` | Close session |
+| `save <filepath>` | Save state to file |
+| `restore <filepath>` | Restore state from file |
+| `group-start <group>` | Start all sessions in group |
+| `group-stop <group>` | Stop all sessions in group |
 
-```javascript
-// Read entire session
-const fullOutput = await getSessionText();
+**Session Registry:**
+Sessions are stored in `~/.iterm-sessions/sessions.json` with:
+- Unique session ID
+- Name and group
+- Associated command
+- Creation timestamp
+- Current status
 
-// Read last 50 lines (more efficient for long sessions)
-const recentOutput = await getLastLines(50);
-```
-
-**CLI:**
+**Examples:**
 ```bash
-# Read entire session
-node scripts/iterm_control.js read
+# Create dev environment
+node scripts/session_manager.js create "API" --group backend --command "cd api && npm run dev"
+node scripts/session_manager.js create "Web" --group frontend --command "cd web && npm start"
+node scripts/session_manager.js create "DB" --group backend --command "docker-compose up postgres"
 
-# Read last 100 lines
-node scripts/iterm_control.js lines 100
+# Manage groups
+node scripts/session_manager.js group-stop backend
+node scripts/session_manager.js group-start backend
+
+# Save/restore state
+node scripts/session_manager.js save ~/dev-state.json
+node scripts/session_manager.js restore ~/dev-state.json
 ```
 
-This is especially useful for monitoring command outputs, analyzing build results, or debugging issues.
+### process_monitor.js
 
-### Managing Multiple Terminals
+Health monitoring, failure detection, and auto-restart.
 
-Use `multi_terminal.js` to create coordinated terminal sessions:
+| Command | Description |
+|---------|-------------|
+| `status` | Show all session status |
+| `check <sessionId>` | Check specific session health |
+| `watch <sessionId> [--restart] [--interval <ms>]` | Continuous monitoring |
+| `restart <sessionId>` | Restart session command |
+| `logs <sessionId> [--lines <num>] [--output <file>]` | Collect logs |
+| `collect-all [--output <dir>]` | Collect all session logs |
 
-**From Config File:**
+**Health Detection:**
+- Detects running status (listening, ready, compiled)
+- Detects errors (ECONNREFUSED, EADDRINUSE, npm ERR!)
+- Auto-restart on failure (up to 3 attempts)
 
-Create `dev-config.json`:
+**Examples:**
+```bash
+# Check all sessions
+node scripts/process_monitor.js status
+
+# Watch with auto-restart
+node scripts/process_monitor.js watch <sessionId> --restart --interval 10000
+
+# Collect logs
+node scripts/process_monitor.js collect-all --output ~/logs/
+```
+
+### multi_terminal.js
+
+Quick multi-terminal setup from config.
+
+**Config File:**
 ```json
 {
   "terminals": [
@@ -128,184 +167,92 @@ Create `dev-config.json`:
 }
 ```
 
-Run:
+**Usage:**
 ```bash
 node scripts/multi_terminal.js start dev-config.json
+node scripts/multi_terminal.js run "npm run dev" "npm run test:watch"
 ```
-
-**Quick Commands:**
-```bash
-node scripts/multi_terminal.js run "npm run dev" "npm run test:watch" "tail -f app.log"
-```
-
-This creates a new iTerm window with multiple tabs, each running a different command.
-
-## Available Scripts
-
-### `iterm_control.js`
-Core iTerm automation utilities with improved command escaping and output reading.
-
-**Functions:**
-- `openTerminal(message)` - Open new terminal tab
-- `executeCommand(command)` - Execute command in current session (safely escaped)
-- `closeTerminal()` - Close current window
-- `getSessionText()` - Read entire session output
-- `getLastLines(numLines)` - Read last N lines of session (more efficient)
-- `executeITermScript(script)` - Execute custom AppleScript
-
-**CLI Commands:**
-- `open [message]` - Open terminal
-- `execute <command>` - Run command (with automatic escaping)
-- `read` - Get entire session text
-- `lines [num]` - Get last N lines (default: 50)
-- `close` - Close window
-
-### `multi_terminal.js`
-Manage multiple terminal sessions simultaneously.
-
-**Functions:**
-- `createMultiTerminalWindow(terminals)` - Create window with multiple tabs
-- `runCommandsInTabs(commands)` - Quick parallel command execution
-
-**CLI Commands:**
-- `start <config.json>` - Load terminals from config
-- `run <cmd1> <cmd2> ...` - Run commands in parallel tabs
-
-### `example-config.json`
-Template configuration showing multi-terminal setup structure.
 
 ## Common Workflows
 
-### Parallel Development Servers
-
-Start frontend, backend, and database simultaneously:
+### Full-Stack Development Setup
 
 ```bash
-node scripts/multi_terminal.js run \
-  "cd frontend && npm run dev" \
-  "cd backend && npm run dev" \
-  "docker-compose up postgres"
+# Create development workspace
+node scripts/iterm_control.js window "Full-Stack Dev"
+
+# Set up services with session tracking
+node scripts/session_manager.js create "API" --group fullstack --command "cd api && npm run dev"
+node scripts/session_manager.js create "Web" --group fullstack --command "cd web && npm start"
+node scripts/session_manager.js create "DB" --group fullstack --command "docker-compose up -d"
+
+# Monitor all services
+node scripts/process_monitor.js status
 ```
 
-### Development Environment Setup
+### Microservices Environment
 
-Create config for your project:
-
-```json
-{
-  "terminals": [
-    {"name": "API", "command": "cd api && npm run dev"},
-    {"name": "Web", "command": "cd web && npm start"},
-    {"name": "Tests", "command": "npm run test:watch"},
-    {"name": "Logs", "command": "tail -f logs/combined.log"}
-  ]
-}
-```
-
-Save as `dev-setup.json` and run:
 ```bash
-node scripts/multi_terminal.js start dev-setup.json
+# Start all microservices from config
+node scripts/multi_terminal.js start microservices.json
+
+# Or create individually with groups
+node scripts/session_manager.js create "Auth" --group services --command "cd auth && npm run dev"
+node scripts/session_manager.js create "Users" --group services --command "cd users && npm run dev"
+node scripts/session_manager.js create "Orders" --group services --command "cd orders && npm run dev"
+
+# Save state for later
+node scripts/session_manager.js save ~/.iterm-sessions/microservices.json
 ```
 
-### Monitoring and Automation
+### Automated Testing Workflow
 
-Programmatically control terminals for complex workflows:
+```bash
+# Set up test environment
+node scripts/iterm_control.js window "Testing"
+node scripts/session_manager.js create "Tests" --group testing --command "npm run test:watch"
+node scripts/session_manager.js create "E2E" --group testing --command "npm run e2e"
 
-```javascript
-import { openTerminal, executeCommand, getLastLines } from './scripts/iterm_control.js';
-
-// Start build process
-await openTerminal("Build monitor");
-await executeCommand("npm run build");
-
-// Wait and check output (read last 50 lines for efficiency)
-await new Promise(resolve => setTimeout(resolve, 5000));
-const output = await getLastLines(50);
-
-if (output.includes("Build successful")) {
-  console.log("✅ Build completed successfully");
-}
+# Watch for failures and auto-restart
+node scripts/process_monitor.js watch <testSessionId> --restart
 ```
 
-**Analyzing command output:**
+### Build and Deploy
 
-```javascript
-// Execute npm audit and read results
-await executeCommand("npm audit");
-await new Promise(resolve => setTimeout(resolve, 3000));
+```bash
+# Execute build in tracked session
+node scripts/session_manager.js execute <sessionId> "npm run build"
 
-const auditOutput = await getLastLines(100);
-if (auditOutput.includes("found 0 vulnerabilities")) {
-  console.log("✅ No vulnerabilities found");
-} else {
-  console.log("⚠️  Vulnerabilities detected, review output");
-}
-```
+# Wait and check output
+sleep 30
+node scripts/process_monitor.js check <sessionId>
 
-### Custom AppleScript Integration
-
-Execute custom AppleScript for advanced control:
-
-```javascript
-import { executeITermScript } from './scripts/iterm_control.js';
-
-const customScript = `
-tell application "iTerm"
-  tell current session of current window
-    set name to "Custom Session"
-    write text "echo 'Custom automation'"
-  end tell
-end tell
-`;
-
-await executeITermScript(customScript);
+# Collect build logs
+node scripts/process_monitor.js logs <sessionId> --output build.log
 ```
 
 ## Technical Notes
 
 **AppleScript Compatibility:**
-- Scripts automatically replace `iTerm2` references with `iTerm` for compatibility
-- Commands are safely escaped for AppleScript, handling:
-  - Double quotes, backslashes, dollar signs, and backticks
-  - Complex sed/awk commands with multiple quote levels
-  - Special shell characters and expansions
-- Brief delays are included for iTerm activation and command execution
+- All scripts handle iTerm/iTerm2 naming differences
+- Commands are escaped for safe AppleScript execution
+- Heredoc syntax prevents quote escaping issues
 
-**Output Reading:**
-- `getSessionText()` reads entire session using AppleScript `contents`
-- `getLastLines(N)` efficiently returns only the last N lines
-- Useful for monitoring long-running processes and analyzing command results
+**Session Persistence:**
+- Sessions stored in `~/.iterm-sessions/sessions.json`
+- Logs stored in `~/.iterm-sessions/logs/`
+- State can be saved/restored across sessions
 
-**Platform Requirements:**
-- macOS only
-- iTerm must be installed
-- AppleScript must be enabled
+**Error Detection Patterns:**
+- Running: `listening on`, `ready`, `compiled successfully`
+- Errors: `ECONNREFUSED`, `EADDRINUSE`, `npm ERR!`, `error:`
 
-**Error Handling:**
-- All operations include try-catch blocks
-- Errors are logged with descriptive messages
-- CLI commands exit with appropriate status codes
+**Keyboard Input:**
+- Supports: `ctrl+c`, `ctrl+d`, `ctrl+z`, `enter`, `escape`, `tab`
+- Custom keystrokes via AppleScript
 
-**Process Management:**
-- Each script execution is independent
-- No persistent state between CLI invocations
-- For state management, use as Node.js module
+## Sources
 
-## Extending the Skill
-
-Add custom iTerm operations by creating new scripts in `scripts/` or extending existing utilities. All functions use the base `executeITermScript()` for AppleScript execution, making it easy to add new automation capabilities.
-
-Example custom operation:
-
-```javascript
-async function splitPaneVertically() {
-  const script = `
-  tell application "iTerm"
-    tell current session of current window
-      split vertically with default profile
-    end tell
-  end tell
-  `;
-  await executeITermScript(script);
-}
-```
+- [iTerm2 Scripting Documentation](https://iterm2.com/documentation-scripting.html)
+- [iTerm2 Python API](https://iterm2.com/python-api/)
+- [PM2 Process Manager](https://pm2.keymetrics.io/)
