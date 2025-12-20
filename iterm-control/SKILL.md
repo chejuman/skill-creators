@@ -86,6 +86,31 @@ await executeCommand("docker-compose up -d");
 node scripts/iterm_control.js execute "git status"
 ```
 
+**Note:** Commands are automatically escaped for AppleScript compatibility, handling quotes, backslashes, dollar signs, and backticks safely.
+
+### Reading Terminal Output
+
+Read the entire session output or just the last N lines:
+
+```javascript
+// Read entire session
+const fullOutput = await getSessionText();
+
+// Read last 50 lines (more efficient for long sessions)
+const recentOutput = await getLastLines(50);
+```
+
+**CLI:**
+```bash
+# Read entire session
+node scripts/iterm_control.js read
+
+# Read last 100 lines
+node scripts/iterm_control.js lines 100
+```
+
+This is especially useful for monitoring command outputs, analyzing build results, or debugging issues.
+
 ### Managing Multiple Terminals
 
 Use `multi_terminal.js` to create coordinated terminal sessions:
@@ -115,36 +140,24 @@ node scripts/multi_terminal.js run "npm run dev" "npm run test:watch" "tail -f a
 
 This creates a new iTerm window with multiple tabs, each running a different command.
 
-### Reading Session Output
-
-Retrieve text from the current terminal session:
-
-```javascript
-const output = await getSessionText();
-console.log(output);
-```
-
-**CLI:**
-```bash
-node scripts/iterm_control.js read
-```
-
 ## Available Scripts
 
 ### `iterm_control.js`
-Core iTerm automation utilities.
+Core iTerm automation utilities with improved command escaping and output reading.
 
 **Functions:**
 - `openTerminal(message)` - Open new terminal tab
-- `executeCommand(command)` - Execute command in current session
+- `executeCommand(command)` - Execute command in current session (safely escaped)
 - `closeTerminal()` - Close current window
-- `getSessionText()` - Read session output
+- `getSessionText()` - Read entire session output
+- `getLastLines(numLines)` - Read last N lines of session (more efficient)
 - `executeITermScript(script)` - Execute custom AppleScript
 
 **CLI Commands:**
 - `open [message]` - Open terminal
-- `execute <command>` - Run command
-- `read` - Get session text
+- `execute <command>` - Run command (with automatic escaping)
+- `read` - Get entire session text
+- `lines [num]` - Get last N lines (default: 50)
 - `close` - Close window
 
 ### `multi_terminal.js`
@@ -199,18 +212,33 @@ node scripts/multi_terminal.js start dev-setup.json
 Programmatically control terminals for complex workflows:
 
 ```javascript
-import { openTerminal, executeCommand, getSessionText } from './scripts/iterm_control.js';
+import { openTerminal, executeCommand, getLastLines } from './scripts/iterm_control.js';
 
 // Start build process
 await openTerminal("Build monitor");
 await executeCommand("npm run build");
 
-// Wait and check output
+// Wait and check output (read last 50 lines for efficiency)
 await new Promise(resolve => setTimeout(resolve, 5000));
-const output = await getSessionText();
+const output = await getLastLines(50);
 
 if (output.includes("Build successful")) {
   console.log("✅ Build completed successfully");
+}
+```
+
+**Analyzing command output:**
+
+```javascript
+// Execute npm audit and read results
+await executeCommand("npm audit");
+await new Promise(resolve => setTimeout(resolve, 3000));
+
+const auditOutput = await getLastLines(100);
+if (auditOutput.includes("found 0 vulnerabilities")) {
+  console.log("✅ No vulnerabilities found");
+} else {
+  console.log("⚠️  Vulnerabilities detected, review output");
 }
 ```
 
@@ -237,8 +265,16 @@ await executeITermScript(customScript);
 
 **AppleScript Compatibility:**
 - Scripts automatically replace `iTerm2` references with `iTerm` for compatibility
-- Commands are escaped to handle quotes and special characters
+- Commands are safely escaped for AppleScript, handling:
+  - Double quotes, backslashes, dollar signs, and backticks
+  - Complex sed/awk commands with multiple quote levels
+  - Special shell characters and expansions
 - Brief delays are included for iTerm activation and command execution
+
+**Output Reading:**
+- `getSessionText()` reads entire session using AppleScript `contents`
+- `getLastLines(N)` efficiently returns only the last N lines
+- Useful for monitoring long-running processes and analyzing command results
 
 **Platform Requirements:**
 - macOS only

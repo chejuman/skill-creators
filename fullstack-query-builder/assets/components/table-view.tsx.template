@@ -1,0 +1,50 @@
+import { useState } from 'react';
+import type { {{DataType}} } from '../types/{{DataType}}';
+
+interface {{ComponentName}}Props {
+  data?: {{DataType}}[];
+}
+
+export function {{ComponentName}}({ data = [] }: {{ComponentName}}Props) {
+  const [sortColumn, setSortColumn] = useState<string | null>(null);
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
+
+  const handleSort = (column: string) => {
+    if (sortColumn === column) {
+      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortColumn(column);
+      setSortDirection('asc');
+    }
+  };
+
+  return (
+    <div className="rounded-md border">
+      <table className="w-full">
+        <thead>
+          <tr className="border-b">
+            {{#columns}}
+            <th className="p-2 text-left">
+              <button
+                onClick={() => handleSort('{{name}}')}
+                className="hover:underline"
+              >
+                {{label}}
+              </button>
+            </th>
+            {{/columns}}
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((row, idx) => (
+            <tr key={idx} className="border-b">
+              {{#columns}}
+              <td className="p-2">{String(row.{{name}})}</td>
+              {{/columns}}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}

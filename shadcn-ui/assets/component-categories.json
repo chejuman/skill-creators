@@ -1,0 +1,147 @@
+{
+  "accordion": {
+    "category": "data",
+    "keywords": ["collapse", "expand", "faq", "sections"],
+    "useCases": ["FAQs", "Content sections", "Expandable lists"]
+  },
+  "alert": {
+    "category": "feedback",
+    "keywords": ["notification", "message", "warning", "error", "success"],
+    "useCases": ["Status messages", "Warnings", "Errors"]
+  },
+  "alert-dialog": {
+    "category": "overlay",
+    "keywords": ["confirm", "modal", "warning", "destructive"],
+    "useCases": ["Confirmations", "Destructive actions", "Important warnings"]
+  },
+  "avatar": {
+    "category": "data",
+    "keywords": ["profile", "user", "image", "photo"],
+    "useCases": ["User profiles", "Comments", "Team members"]
+  },
+  "badge": {
+    "category": "data",
+    "keywords": ["tag", "label", "status", "indicator"],
+    "useCases": ["Status indicators", "Tags", "Labels"]
+  },
+  "button": {
+    "category": "interactive",
+    "keywords": ["click", "action", "submit", "cta"],
+    "useCases": ["Forms", "Actions", "Navigation", "CTAs"]
+  },
+  "calendar": {
+    "category": "form",
+    "keywords": ["date", "picker", "schedule", "time"],
+    "useCases": ["Date selection", "Scheduling", "Event planning"]
+  },
+  "card": {
+    "category": "layout",
+    "keywords": ["container", "box", "panel", "content"],
+    "useCases": ["Content containers", "Product cards", "Feature sections"]
+  },
+  "checkbox": {
+    "category": "form",
+    "keywords": ["input", "selection", "multiple", "toggle"],
+    "useCases": ["Forms", "Multi-select", "Settings"]
+  },
+  "combobox": {
+    "category": "form",
+    "keywords": ["select", "autocomplete", "search", "dropdown"],
+    "useCases": ["Searchable dropdowns", "Autocomplete", "Tag selection"]
+  },
+  "command": {
+    "category": "navigation",
+    "keywords": ["search", "palette", "actions", "keyboard"],
+    "useCases": ["Command palette", "Search", "Quick actions"]
+  },
+  "dialog": {
+    "category": "overlay",
+    "keywords": ["modal", "popup", "overlay", "form"],
+    "useCases": ["Forms", "Details", "Confirmations"]
+  },
+  "dropdown-menu": {
+    "category": "navigation",
+    "keywords": ["menu", "actions", "context", "options"],
+    "useCases": ["Action menus", "Context menus", "User menus"]
+  },
+  "form": {
+    "category": "form",
+    "keywords": ["input", "validation", "submit", "field"],
+    "useCases": ["Data entry", "User input", "Registration"]
+  },
+  "input": {
+    "category": "form",
+    "keywords": ["text", "field", "entry", "type"],
+    "useCases": ["Text input", "Forms", "Search"]
+  },
+  "label": {
+    "category": "form",
+    "keywords": ["text", "form", "field", "description"],
+    "useCases": ["Form labels", "Input descriptions"]
+  },
+  "popover": {
+    "category": "overlay",
+    "keywords": ["tooltip", "popup", "info", "details"],
+    "useCases": ["Additional info", "Tooltips", "Menus"]
+  },
+  "radio-group": {
+    "category": "form",
+    "keywords": ["selection", "option", "choice", "single"],
+    "useCases": ["Single selection", "Options", "Settings"]
+  },
+  "select": {
+    "category": "form",
+    "keywords": ["dropdown", "choice", "option", "picker"],
+    "useCases": ["Dropdowns", "Options", "Filters"]
+  },
+  "separator": {
+    "category": "layout",
+    "keywords": ["divider", "line", "break", "section"],
+    "useCases": ["Visual separation", "Section dividers"]
+  },
+  "sheet": {
+    "category": "overlay",
+    "keywords": ["drawer", "sidebar", "slide", "panel"],
+    "useCases": ["Side panels", "Drawers", "Mobile menus"]
+  },
+  "slider": {
+    "category": "form",
+    "keywords": ["range", "value", "adjust", "control"],
+    "useCases": ["Range selection", "Volume controls", "Filters"]
+  },
+  "switch": {
+    "category": "form",
+    "keywords": ["toggle", "boolean", "on/off", "enable"],
+    "useCases": ["Settings", "Feature toggles", "Preferences"]
+  },
+  "table": {
+    "category": "data",
+    "keywords": ["data", "grid", "rows", "columns", "list"],
+    "useCases": ["Data display", "Lists", "Reports"]
+  },
+  "tabs": {
+    "category": "navigation",
+    "keywords": ["navigation", "sections", "panels", "views"],
+    "useCases": ["Section navigation", "Content organization"]
+  },
+  "textarea": {
+    "category": "form",
+    "keywords": ["text", "multiline", "input", "description"],
+    "useCases": ["Long text input", "Comments", "Descriptions"]
+  },
+  "toast": {
+    "category": "feedback",
+    "keywords": ["notification", "message", "alert", "temporary"],
+    "useCases": ["Success messages", "Notifications", "Alerts"]
+  },
+  "toggle": {
+    "category": "interactive",
+    "keywords": ["switch", "button", "state", "on/off"],
+    "useCases": ["State toggles", "Formatting", "Options"]
+  },
+  "tooltip": {
+    "category": "overlay",
+    "keywords": ["hint", "info", "help", "hover"],
+    "useCases": ["Hints", "Help text", "Additional info"]
+  }
+}

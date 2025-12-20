@@ -1,0 +1,19 @@
+{
+  "name": "langfuse-prompts-scripts",
+  "version": "1.0.0",
+  "description": "Scripts for managing Langfuse prompts in Claude Code",
+  "type": "module",
+  "scripts": {
+    "cache:refresh": "tsx cli.ts cache-refresh",
+    "cache:info": "tsx cli.ts cache-info"
+  },
+  "dependencies": {
+    "langfuse": "^3.0.0",
+    "dotenv": "^16.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "tsx": "^4.0.0"
+  }
+}

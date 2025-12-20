@@ -1,0 +1,67 @@
+# OS-specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+*~
+
+# Editor/IDE configurations
+.cursor/
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+
+# Packaged skill artifacts (build outputs)
+*.zip
+
+# Dependencies
+node_modules/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+pip-log.txt
+
+# Environment & Secrets
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+credentials.json
+secrets.json
+
+# Logs & Temporary files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.tmp
+.cache/
+
+# Build outputs
+dist/
+build/
+out/
+
+# Workspace-specific
+workdir/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# macOS network storage
+.AppleDouble
+.LSOverride

@@ -1,0 +1,24 @@
+{
+  "name": "fullstack-query-builder-scripts",
+  "version": "1.0.0",
+  "description": "Scripts for fullstack-query-builder Claude Code skill",
+  "type": "module",
+  "scripts": {
+    "start": "tsx cli.ts start",
+    "continue": "tsx cli.ts continue",
+    "status": "tsx cli.ts status",
+    "reset": "tsx cli.ts reset"
+  },
+  "dependencies": {
+    "pg": "^8.11.3",
+    "dotenv": "^16.4.5",
+    "mustache": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "@types/pg": "^8.11.2",
+    "@types/mustache": "^4.2.5",
+    "typescript": "^5.3.3",
+    "tsx": "^4.7.1"
+  }
+}

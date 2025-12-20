@@ -1,0 +1,25 @@
+import type { {{DataType}} } from '../types/{{DataType}}';
+
+interface {{ComponentName}}Props {
+  item: {{DataType}};
+}
+
+export function {{ComponentName}}({ item }: {{ComponentName}}Props) {
+  return (
+    <div className="rounded-lg border p-6">
+      <h2 className="text-2xl font-bold mb-4">Details</h2>
+      <div className="space-y-4">
+        {{#columns}}
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            {{label}}
+          </label>
+          <div className="mt-1 text-lg">
+            {String(item.{{name}})}
+          </div>
+        </div>
+        {{/columns}}
+      </div>
+    </div>
+  );
+}

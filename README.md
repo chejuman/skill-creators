@@ -5,12 +5,12 @@ A Claude Code skill for controlling iTerm terminal instances via AppleScript on 
 ## Features
 
 - 🖥️ **Terminal Control** - Open, close, and manage iTerm windows/tabs
-- ⚡ **Command Execution** - Run commands in specific terminal sessions
-- 📊 **Output Monitoring** - Read and analyze terminal output
-- 📁 **Efficient File Writing** - Create files with iTerm feedback (no escaping issues)
+- ⚡ **Command Execution** - Run commands with robust escaping (handles complex sed/awk)
+- 📊 **Output Monitoring** - Read entire sessions or last N lines efficiently
 - 🔄 **Multi-Terminal Management** - Coordinate multiple terminals simultaneously
 - 🎯 **Parallel Workflows** - Run frontend, backend, database, and logs in parallel
 - 📝 **Configuration-Based** - Define terminal setups with JSON configs
+- 🛡️ **Safe Escaping** - Automatically handles quotes, backslashes, and special characters
 
 ## Installation
 
@@ -63,40 +63,29 @@ node iterm_control.js open "Dev server ready"
 # Execute command
 node iterm_control.js execute "npm run dev"
 
-# Read terminal output
+# Read entire terminal output
 node iterm_control.js read
+
+# Read last 100 lines (more efficient for long sessions)
+node iterm_control.js lines 100
 
 # Close terminal
 node iterm_control.js close
 ```
 
-#### Efficient File Writing
-
-Write files with automatic iTerm feedback (much faster than heredoc):
+**Output Monitoring Examples:**
 
 ```bash
-# Simple content
-node iterm_control.js write memo.txt "Quick note here"
+# Monitor build output
+node iterm_control.js execute "npm run build"
+sleep 5
+node iterm_control.js lines 50 | grep -i "error"
 
-# Large content via stdin (recommended for big files)
-cat << 'EOF' | node iterm_control.js write report.txt --stdin
-# System Analysis Report
-
-Generated: 2025-11-30
-
-... large content with special characters ...
-no escaping issues!
-EOF
-
-# Pipe command output to file
-fastfetch | node iterm_control.js write system-info.txt --stdin
+# Check npm audit results
+node iterm_control.js execute "npm audit"
+sleep 3
+node iterm_control.js lines 30
 ```
-
-**Benefits:**
-- ⚡ Much faster than heredoc/echo methods
-- ✅ No shell escaping issues
-- ✅ Works with any file size
-- ✅ iTerm shows file creation notification and preview
 
 #### Multi-Terminal Management
 
@@ -187,21 +176,27 @@ node multi_terminal.js run \
 
 ### `iterm_control.js`
 
-Core iTerm automation utilities.
+Core iTerm automation utilities with improved command escaping and output reading.
 
 **Commands:**
 - `open [message]` - Open new terminal tab with optional message
-- `execute <command>` - Execute command in current session
-- `read` - Read current terminal output
+- `execute <command>` - Execute command in current session (with safe escaping)
+- `read` - Read entire terminal output
+- `lines [num]` - Read last N lines (default: 50, more efficient)
 - `close` - Close current terminal window
 
 **Programmatic Usage:**
 ```javascript
-import { openTerminal, executeCommand, getSessionText } from './iterm_control.js';
+import { openTerminal, executeCommand, getSessionText, getLastLines } from './iterm_control.js';
 
 await openTerminal("Starting build");
 await executeCommand("npm run build");
-const output = await getSessionText();
+
+// Read entire output
+const fullOutput = await getSessionText();
+
+// Or read just last 50 lines (more efficient)
+const recentOutput = await getLastLines(50);
 ```
 
 ### `multi_terminal.js`
@@ -230,7 +225,13 @@ await createMultiTerminalWindow(terminals);
 
 The skill uses AppleScript to control iTerm:
 - Automatically handles `iTerm` vs `iTerm2` naming
-- Escapes commands for shell safety
+- **Robust command escaping** handles:
+  - Double quotes, backslashes, dollar signs, backticks
+  - Complex sed/awk commands with multiple quote levels
+  - Special shell characters and expansions
+- **Efficient output reading:**
+  - `getSessionText()` reads entire session
+  - `getLastLines(N)` efficiently returns last N lines only
 - Includes timing delays for reliability
 - Comprehensive error handling
 

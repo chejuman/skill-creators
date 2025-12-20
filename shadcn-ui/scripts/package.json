@@ -1,0 +1,19 @@
+{
+  "name": "shadcn-ui-skill",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "CLI tool for managing shadcn/ui components",
+  "main": "cli.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node cli.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0"
+  },
+  "devDependencies": {
+    "tsx": "latest",
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  }
+}

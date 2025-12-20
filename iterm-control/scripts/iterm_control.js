@@ -24,6 +24,7 @@ const execPromise = promisify(exec);
 
 /**
  * Execute AppleScript to control iTerm
+ * Uses heredoc to avoid escaping issues with quotes and special characters
  */
 async function executeITermScript(script) {
   const launchScript = `
@@ -33,15 +34,15 @@ async function executeITermScript(script) {
   `;
 
   try {
-    // Launch/activate iTerm
-    await execPromise(`osascript -e '${launchScript}'`);
+    // Launch/activate iTerm using heredoc to avoid escaping issues
+    await execPromise(`osascript <<'APPLESCRIPT_EOF'\n${launchScript}\nAPPLESCRIPT_EOF`);
 
     // Wait briefly for iTerm to be ready
     await new Promise((resolve) => setTimeout(resolve, 500));
 
-    // Execute the actual script
+    // Execute the actual script using heredoc
     const modifiedScript = script.replace(/iTerm2/g, "iTerm");
-    const { stdout } = await execPromise(`osascript -e '${modifiedScript}'`);
+    const { stdout } = await execPromise(`osascript <<'APPLESCRIPT_EOF'\n${modifiedScript}\nAPPLESCRIPT_EOF`);
     return stdout.trim();
   } catch (error) {
     console.error("iTerm AppleScript error:", error.message);
@@ -79,10 +80,24 @@ async function openTerminal(message = "Terminal ready") {
 }
 
 /**
+ * Escape command for safe AppleScript execution
+ * AppleScript has specific escaping rules: backslashes and double quotes within strings
+ */
+function escapeForAppleScript(text) {
+  // In AppleScript strings, backslashes and double quotes need special handling
+  // Backslash is used for escaping, double quotes are escaped with \"
+  return text
+    .replace(/\\/g, '\\\\')    // Escape backslashes first (\ becomes \\)
+    .replace(/"/g, '\\"');      // Escape double quotes (" becomes \")
+}
+
+/**
  * Execute a command in the current iTerm session
+ * Supports complex commands with proper escaping
  */
 async function executeCommand(command) {
-  const escapedCommand = command.replace(/"/g, '\\"').replace(/'/g, "'\\''");
+  // Escape the command for AppleScript
+  const escapedCommand = escapeForAppleScript(command);
 
   const script = `
   tell application "iTerm"
@@ -129,7 +144,7 @@ async function getSessionText() {
   const script = `
   tell application "iTerm"
     tell current session of current window
-      get text
+      contents
     end tell
   end tell
   `;
@@ -139,6 +154,32 @@ async function getSessionText() {
     return output;
   } catch (error) {
     console.error("❌ Failed to get session text:", error.message);
+    return null;
+  }
+}
+
+/**
+ * Get the last N lines of iTerm session text
+ */
+async function getLastLines(numLines = 50) {
+  const script = `
+  tell application "iTerm"
+    tell current session of current window
+      set allText to contents
+      return allText
+    end tell
+  end tell
+  `;
+
+  try {
+    const output = await executeITermScript(script);
+    if (!output) return null;
+
+    const lines = output.split('\n');
+    const lastLines = lines.slice(-numLines).join('\n');
+    return lastLines;
+  } catch (error) {
+    console.error("❌ Failed to get last lines:", error.message);
     return null;
   }
 }
@@ -177,6 +218,16 @@ async function main() {
       }
       break;
 
+    case "lines":
+    case "tail":
+      const numLines = parseInt(args[1]) || 50;
+      const lastLines = await getLastLines(numLines);
+      if (lastLines) {
+        console.log(`📄 Last ${numLines} lines:`);
+        console.log(lastLines);
+      }
+      break;
+
     default:
       console.log(`
 iTerm Control Script
@@ -185,12 +236,14 @@ Usage:
   node iterm_control.js open [message]          - Open new terminal with optional message
   node iterm_control.js execute <command>       - Execute command in current session
   node iterm_control.js read                    - Read current session text
+  node iterm_control.js lines [num]             - Read last N lines (default: 50)
   node iterm_control.js close                   - Close current terminal window
 
 Examples:
   node iterm_control.js open "Dev environment ready"
   node iterm_control.js execute "npm run dev"
   node iterm_control.js read
+  node iterm_control.js lines 100
   node iterm_control.js close
       `);
       break;
@@ -198,7 +251,7 @@ Examples:
 }
 
 // Export functions for use as a module
-export { openTerminal, executeCommand, closeTerminal, getSessionText, executeITermScript };
+export { openTerminal, executeCommand, closeTerminal, getSessionText, getLastLines, executeITermScript };
 
 // Run CLI if called directly
 if (import.meta.url === `file://${process.argv[1]}`) {
