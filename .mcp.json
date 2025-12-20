@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "gitmvp": {
+      "type": "stdio",
+      "command": "mise",
+      "args": [
+        "exec",
+        "node@23",
+        "--",
+        "npx",
+        "-y",
+        "mcp-remote",
+        "https://gitmvp.com/mcp"
+      ],
+      "headers": {},
+      "env": {}
+    }
+  }
+}
