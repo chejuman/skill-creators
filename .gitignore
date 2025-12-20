@@ -65,3 +65,6 @@ htmlcov/
 # macOS network storage
 .AppleDouble
 .LSOverride
+
+# MCP debug tools (local development only)
+.mcp-debug-tools/
