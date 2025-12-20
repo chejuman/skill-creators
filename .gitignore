@@ -68,3 +68,7 @@ htmlcov/
 
 # MCP debug tools (local development only)
 .mcp-debug-tools/
+
+# Final reports
+final-reports/
+security-reports/
