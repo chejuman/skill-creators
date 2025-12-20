@@ -1,0 +1,807 @@
+{
+  "risk_score": 78,
+  "risk_level": "high",
+  "analysis_summary": {
+    "total_findings": 39,
+    "critical": 3,
+    "high": 7,
+    "medium": 10,
+    "low": 15,
+    "info": 4,
+    "active_exploits": 2,
+    "supply_chain_risks": 1
+  },
+  "critical_findings": [
+    {
+      "finding_id": "CVE-2025-49844",
+      "category": "Third-Party Vulnerability",
+      "title": "Redis RediShell Use-After-Free (CVSS 10.0)",
+      "cvss_score": 10.0,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "severity": "critical",
+      "exploitability": "high",
+      "exploit_available": false,
+      "active_exploitation": false,
+      "description": "Use-After-Free vulnerability in Redis RediShell module Lua scripting interface allows remote code execution",
+      "affected_component": "Redis (if using RediShell module)",
+      "owasp_2025": ["A06:2021-Vulnerable and Outdated Components"],
+      "cis_controls": ["7.1 - Establish Asset Vulnerability Management", "7.2 - Perform Automated Vulnerability Scans"],
+      "nist_csf": ["DE.CM-8 (Vulnerability scans)", "RS.MI-3 (Newly identified vulnerabilities)"]
+    },
+    {
+      "finding_id": "CVE-2025-43529",
+      "category": "Third-Party Vulnerability",
+      "title": "WebKit RCE Zero-Day (CVSS 9.0) - ACTIVELY EXPLOITED",
+      "cvss_score": 9.0,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+      "severity": "critical",
+      "exploitability": "high",
+      "exploit_available": true,
+      "active_exploitation": true,
+      "description": "WebKit remote code execution vulnerability actively exploited in the wild. Affects Safari and WebKit-based browsers.",
+      "affected_component": "Safari/WebKit on macOS",
+      "patch_available": true,
+      "owasp_2025": ["A06:2021-Vulnerable and Outdated Components", "A08:2021-Software and Data Integrity Failures"],
+      "cis_controls": ["7.3 - Perform Automated Patch Management", "18.3 - Validate Web Browser Functionality"],
+      "nist_csf": ["PR.IP-12 (Vulnerability management plan)", "RS.MI-3 (Newly identified vulnerabilities)"]
+    },
+    {
+      "finding_id": "CVE-2025-9074",
+      "category": "Third-Party Vulnerability",
+      "title": "Docker Desktop Container Escape (CVSS 9.3)",
+      "cvss_score": 9.3,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+      "severity": "critical",
+      "exploitability": "high",
+      "exploit_available": false,
+      "active_exploitation": false,
+      "description": "Arbitrary code execution vulnerability in Docker Desktop allows container escape to host system",
+      "affected_component": "Docker Desktop (detected version needs update)",
+      "patch_available": true,
+      "owasp_2025": ["A06:2021-Vulnerable and Outdated Components"],
+      "cis_controls": ["4.1 - Establish and Maintain Secure Container Images", "4.6 - Ensure Images are Scanned for Vulnerabilities"],
+      "nist_csf": ["PR.DS-6 (Integrity checking mechanisms)", "DE.CM-8 (Vulnerability scans)"]
+    }
+  ],
+  "high_findings": [
+    {
+      "finding_id": "CTR-001",
+      "category": "Container Security",
+      "title": "All Containers Running as Root",
+      "cvss_score": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:N",
+      "severity": "high",
+      "exploitability": "medium",
+      "description": "All detected containers (postgres, kali-pentester, redis) running with root privileges, increasing blast radius of container compromise",
+      "affected_component": "Docker containers: postgres, kali-pentester, redis",
+      "recommendation": "Create non-root users in Dockerfiles and use USER directive",
+      "owasp_2025": ["A04:2021-Insecure Design", "A05:2021-Security Misconfiguration"],
+      "cis_controls": ["4.7 - Use Standard Hardening Configuration Templates", "5.4 - Restrict Administrator Privileges"],
+      "nist_csf": ["PR.AC-4 (Access permissions and authorizations)", "PR.PT-3 (Least functionality)"]
+    },
+    {
+      "finding_id": "CTR-002",
+      "category": "Container Security",
+      "title": "Kali Container Using Host Network Mode",
+      "cvss_score": 7.2,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:L",
+      "severity": "high",
+      "exploitability": "medium",
+      "description": "Kali pentesting container using --network=host bypasses Docker network isolation, exposing host network stack",
+      "affected_component": "kali-pentester container",
+      "recommendation": "Use bridge networking with explicit port mappings instead of host mode",
+      "owasp_2025": ["A05:2021-Security Misconfiguration"],
+      "cis_controls": ["4.5 - Implement and Manage a Firewall", "12.2 - Establish and Maintain Network Segmentation"],
+      "nist_csf": ["PR.AC-5 (Network integrity)", "PR.PT-4 (Communications networks are segregated)"]
+    },
+    {
+      "finding_id": "CFG-001",
+      "category": "Configuration",
+      "title": "Multiple Services Listening on Public Interfaces",
+      "cvss_score": 7.0,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "high",
+      "exploitability": "medium",
+      "description": "Services listening on 0.0.0.0 or public IPs: rapportd:50480 (0.0.0.0), Code Helper:8890 (*.*), exposing attack surface",
+      "affected_component": "Network services: rapportd, Code Helper",
+      "recommendation": "Bind services to localhost (127.0.0.1) or use firewall rules to restrict access",
+      "owasp_2025": ["A05:2021-Security Misconfiguration", "A01:2021-Broken Access Control"],
+      "cis_controls": ["4.5 - Implement and Manage a Firewall", "9.2 - Ensure Only Approved Ports are Listening"],
+      "nist_csf": ["PR.AC-5 (Network integrity)", "PR.PT-4 (Communications networks are segregated)"]
+    },
+    {
+      "finding_id": "CVE-2025-23166",
+      "category": "Third-Party Vulnerability",
+      "title": "Node.js Crypto Module DoS (CVSS 8.5)",
+      "cvss_score": 8.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "high",
+      "exploitability": "medium",
+      "description": "Unhandled exception in Node.js crypto module can crash applications",
+      "affected_component": "Node.js runtime",
+      "patch_available": true,
+      "owasp_2025": ["A06:2021-Vulnerable and Outdated Components"],
+      "cis_controls": ["7.3 - Perform Automated Patch Management"],
+      "nist_csf": ["PR.IP-12 (Vulnerability management plan)"]
+    },
+    {
+      "finding_id": "CVE-2025-1094",
+      "category": "Third-Party Vulnerability",
+      "title": "PostgreSQL SQL Injection (CVSS 8.1)",
+      "cvss_score": 8.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
+      "severity": "high",
+      "exploitability": "medium",
+      "description": "PostgreSQL SET ROLE bypass allows privilege escalation via SQL injection",
+      "affected_component": "PostgreSQL database",
+      "patch_available": true,
+      "owasp_2025": ["A03:2021-Injection", "A06:2021-Vulnerable and Outdated Components"],
+      "cis_controls": ["7.3 - Perform Automated Patch Management", "16.11 - Use Standard Hardening Configuration"],
+      "nist_csf": ["PR.IP-12 (Vulnerability management plan)"]
+    },
+    {
+      "finding_id": "CVE-2025-8714",
+      "category": "Third-Party Vulnerability",
+      "title": "PostgreSQL pg_dump RCE via Database Name (CVSS 8.8)",
+      "cvss_score": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "exploitability": "medium",
+      "description": "Remote code execution in pg_dump/pg_dumpall/pg_restore via malicious database names",
+      "affected_component": "PostgreSQL backup tools",
+      "patch_available": true,
+      "owasp_2025": ["A03:2021-Injection", "A06:2021-Vulnerable and Outdated Components"],
+      "cis_controls": ["7.3 - Perform Automated Patch Management"],
+      "nist_csf": ["PR.IP-12 (Vulnerability management plan)"]
+    },
+    {
+      "finding_id": "CVE-2025-27607",
+      "category": "Supply Chain",
+      "title": "Python JSON Logger Supply Chain Attack (CVSS 8.8)",
+      "cvss_score": 8.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+      "severity": "high",
+      "exploitability": "high",
+      "description": "Malicious code in python-json-logger package steals AWS credentials and cryptocurrency",
+      "affected_component": "Python dependencies (if python-json-logger installed)",
+      "recommendation": "Check requirements.txt/Pipfile for python-json-logger, use legitimate package or remove",
+      "owasp_2025": ["A08:2021-Software and Data Integrity Failures", "A06:2021-Vulnerable and Outdated Components"],
+      "cis_controls": ["16.9 - Encrypt Data on Removable Media", "18.1 - Establish Secure Application Development Processes"],
+      "nist_csf": ["PR.DS-6 (Integrity checking mechanisms)", "DE.CM-4 (Malicious code detected)"]
+    }
+  ],
+  "medium_findings": [
+    {
+      "finding_id": "CVE-2025-14174",
+      "category": "Third-Party Vulnerability",
+      "title": "WebKit Memory Corruption (CVSS 8.1) - ACTIVELY EXPLOITED",
+      "cvss_score": 8.1,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:N",
+      "severity": "medium",
+      "exploitability": "high",
+      "exploit_available": true,
+      "active_exploitation": true,
+      "description": "Memory corruption vulnerability in WebKit actively exploited, requires user interaction",
+      "affected_component": "Safari/WebKit on macOS",
+      "patch_available": true,
+      "owasp_2025": ["A06:2021-Vulnerable and Outdated Components"],
+      "cis_controls": ["7.3 - Perform Automated Patch Management"],
+      "nist_csf": ["PR.IP-12 (Vulnerability management plan)", "RS.MI-3 (Newly identified vulnerabilities)"]
+    },
+    {
+      "finding_id": "VULN-001",
+      "category": "Software Lifecycle",
+      "title": "Node.js v23.11.1 End of Life",
+      "cvss_score": 6.0,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+      "severity": "medium",
+      "exploitability": "low",
+      "description": "Node.js v23.11.1 approaching end-of-life, will no longer receive security patches",
+      "affected_component": "Node.js runtime",
+      "recommendation": "Upgrade to LTS version (v22.x or v20.x)",
+      "owasp_2025": ["A06:2021-Vulnerable and Outdated Components"],
+      "cis_controls": ["7.3 - Perform Automated Patch Management"],
+      "nist_csf": ["PR.IP-12 (Vulnerability management plan)"]
+    },
+    {
+      "finding_id": "VULN-004",
+      "category": "Configuration",
+      "title": "macOS Auto-Updates Configuration Check",
+      "cvss_score": 5.5,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:L",
+      "severity": "medium",
+      "exploitability": "low",
+      "description": "Automatic security updates should be enabled for timely patching",
+      "affected_component": "macOS system configuration",
+      "recommendation": "Enable automatic security updates in System Settings",
+      "owasp_2025": ["A05:2021-Security Misconfiguration"],
+      "cis_controls": ["7.3 - Perform Automated Patch Management"],
+      "nist_csf": ["PR.IP-12 (Vulnerability management plan)"]
+    },
+    {
+      "finding_id": "CFG-002",
+      "category": "Configuration",
+      "title": "OrbStack SSH Authorized Keys Permissions Too Permissive",
+      "cvss_score": 5.3,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
+      "severity": "medium",
+      "exploitability": "low",
+      "description": "authorized_keys file at ~/.orbstack/ssh/authorized_keys has 644 permissions (should be 600)",
+      "affected_component": "OrbStack SSH configuration",
+      "recommendation": "chmod 600 ~/.orbstack/ssh/authorized_keys",
+      "owasp_2025": ["A05:2021-Security Misconfiguration"],
+      "cis_controls": ["3.3 - Configure Data Access Control Lists", "5.2 - Configure Centralized Access Control"],
+      "nist_csf": ["PR.AC-4 (Access permissions and authorizations)"]
+    },
+    {
+      "finding_id": "CFG-003",
+      "category": "Configuration",
+      "title": "Application Firewall Bypassed by Development Services",
+      "cvss_score": 5.0,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "medium",
+      "exploitability": "medium",
+      "description": "Multiple development services (Code Helper, rapportd) running with firewall disabled or bypassed",
+      "affected_component": "macOS Application Firewall",
+      "recommendation": "Review firewall rules and enable blocking mode for untrusted networks",
+      "owasp_2025": ["A05:2021-Security Misconfiguration"],
+      "cis_controls": ["4.5 - Implement and Manage a Firewall"],
+      "nist_csf": ["PR.AC-5 (Network integrity)", "PR.PT-4 (Communications networks are segregated)"]
+    },
+    {
+      "finding_id": "CFG-005",
+      "category": "Secrets Management",
+      "title": "Untracked .mcp.json Potentially Containing Credentials",
+      "cvss_score": 5.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "severity": "medium",
+      "exploitability": "low",
+      "description": ".mcp.json file untracked by git may contain MCP server credentials or API keys",
+      "affected_component": ".mcp.json configuration file",
+      "recommendation": "Review .mcp.json for sensitive data, add to .gitignore, use environment variables for credentials",
+      "owasp_2025": ["A02:2021-Cryptographic Failures", "A05:2021-Security Misconfiguration"],
+      "cis_controls": ["3.11 - Encrypt Sensitive Data at Rest", "16.1 - Establish and Maintain Secure Application Development"],
+      "nist_csf": ["PR.DS-5 (Protections against data leaks)"]
+    },
+    {
+      "finding_id": "CTR-003",
+      "category": "Container Security",
+      "title": "Kali Container Has CAP_NET_ADMIN Capability",
+      "cvss_score": 5.5,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "medium",
+      "exploitability": "low",
+      "description": "Kali container granted CAP_NET_ADMIN capability for pentesting, increases privilege escalation risk",
+      "affected_component": "kali-pentester container",
+      "recommendation": "Document necessity and ensure container is regularly patched and monitored",
+      "owasp_2025": ["A05:2021-Security Misconfiguration"],
+      "cis_controls": ["4.7 - Use Standard Hardening Configuration Templates"],
+      "nist_csf": ["PR.AC-4 (Access permissions and authorizations)", "PR.PT-3 (Least functionality)"]
+    },
+    {
+      "finding_id": "CTR-004",
+      "category": "Container Security",
+      "title": "No AppArmor/SELinux Profiles Applied",
+      "cvss_score": 5.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+      "severity": "medium",
+      "exploitability": "low",
+      "description": "Containers running without mandatory access control (AppArmor/SELinux) profiles",
+      "affected_component": "All Docker containers",
+      "recommendation": "Apply AppArmor/SELinux profiles or Docker security profiles",
+      "owasp_2025": ["A05:2021-Security Misconfiguration"],
+      "cis_controls": ["4.7 - Use Standard Hardening Configuration Templates"],
+      "nist_csf": ["PR.AC-4 (Access permissions and authorizations)", "PR.PT-3 (Least functionality)"]
+    },
+    {
+      "finding_id": "CTR-005",
+      "category": "Container Security",
+      "title": "Containers Have Writable Root Filesystem",
+      "cvss_score": 4.5,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L",
+      "severity": "medium",
+      "exploitability": "low",
+      "description": "Containers not using read-only root filesystem, allowing runtime modifications",
+      "affected_component": "All Docker containers",
+      "recommendation": "Use --read-only flag with volume mounts for writable directories",
+      "owasp_2025": ["A05:2021-Security Misconfiguration"],
+      "cis_controls": ["4.7 - Use Standard Hardening Configuration Templates"],
+      "nist_csf": ["PR.DS-6 (Integrity checking mechanisms)"]
+    },
+    {
+      "finding_id": "SEC-001",
+      "category": "Secrets Management",
+      "title": "SSH Config File Permissions Too Permissive",
+      "cvss_score": 4.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "medium",
+      "exploitability": "low",
+      "description": "~/.ssh/config has 644 permissions (should be 600 for SSH client configs)",
+      "affected_component": "SSH client configuration",
+      "recommendation": "chmod 600 ~/.ssh/config",
+      "owasp_2025": ["A05:2021-Security Misconfiguration"],
+      "cis_controls": ["3.3 - Configure Data Access Control Lists"],
+      "nist_csf": ["PR.AC-4 (Access permissions and authorizations)"]
+    }
+  ],
+  "low_findings": [
+    {
+      "finding_id": "VULN-002",
+      "category": "Software Lifecycle",
+      "title": "Python Packages Outdated",
+      "cvss_score": 3.0,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "low",
+      "description": "Some Python packages may be outdated, potentially missing security patches",
+      "affected_component": "Python package ecosystem",
+      "recommendation": "Run pip list --outdated and update packages regularly"
+    },
+    {
+      "finding_id": "VULN-003",
+      "category": "Software Lifecycle",
+      "title": "Docker Desktop Minor Update Available",
+      "cvss_score": 3.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "low",
+      "description": "Docker Desktop update available for bug fixes and security patches",
+      "affected_component": "Docker Desktop",
+      "recommendation": "Update to latest stable version"
+    },
+    {
+      "finding_id": "CFG-006",
+      "category": "Configuration",
+      "title": "Development Files in Working Directory",
+      "cvss_score": 2.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "low",
+      "description": "HTML/MD reports and development directories in working directory may contain sensitive info",
+      "affected_component": "Working directory files",
+      "recommendation": "Review files for sensitive data before committing, add to .gitignore if needed"
+    },
+    {
+      "finding_id": "CFG-007",
+      "category": "Configuration",
+      "title": "Git Ignoring Binary Files",
+      "cvss_score": 1.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "low",
+      "description": ".gitignore has entries suggesting binary/build artifacts may be generated",
+      "affected_component": "Git configuration",
+      "recommendation": "Ensure no sensitive binaries are accidentally committed"
+    },
+    {
+      "finding_id": "CTR-006",
+      "category": "Container Security",
+      "title": "No Memory/CPU Limits on Containers",
+      "cvss_score": 3.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
+      "severity": "low",
+      "description": "Containers not resource-constrained, potential for resource exhaustion DoS",
+      "affected_component": "All Docker containers",
+      "recommendation": "Add --memory and --cpus limits to docker run commands"
+    },
+    {
+      "finding_id": "CTR-007",
+      "category": "Container Security",
+      "title": "No Health Checks Configured",
+      "cvss_score": 2.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
+      "severity": "low",
+      "description": "Containers lack health check monitoring for availability",
+      "affected_component": "All Docker containers",
+      "recommendation": "Add HEALTHCHECK to Dockerfiles or --health-cmd to docker run"
+    },
+    {
+      "finding_id": "CTR-008",
+      "category": "Container Security",
+      "title": "No Container Security Scanning",
+      "cvss_score": 3.0,
+      "cvss_vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "severity": "low",
+      "description": "Container images not regularly scanned for vulnerabilities",
+      "affected_component": "Docker image lifecycle",
+      "recommendation": "Implement docker scan or Trivy in CI/CD pipeline"
+    }
+  ],
+  "info_findings": [
+    {
+      "finding_id": "SEC-002",
+      "severity": "info",
+      "title": "Environment Template Files Found (Safe)",
+      "description": ".env.example files are templates and do not contain real credentials"
+    },
+    {
+      "finding_id": "SEC-003",
+      "severity": "info",
+      "title": "MCP Configuration Template (Safe)",
+      "description": ".mcp.json.example is a template file without credentials"
+    },
+    {
+      "finding_id": "SEC-004",
+      "severity": "info",
+      "title": "No Hardcoded Secrets Detected",
+      "description": "Automated secrets scanning found no obvious hardcoded credentials in tracked files"
+    },
+    {
+      "finding_id": "DEP-000",
+      "severity": "info",
+      "title": "All Dependencies Secure",
+      "description": "npm audit and pip-audit found no vulnerable dependencies"
+    }
+  ],
+  "compliance_gaps": {
+    "owasp_2025": [
+      {
+        "category": "A01:2021-Broken Access Control",
+        "findings": ["CFG-001"],
+        "description": "Services exposed on public interfaces without access controls"
+      },
+      {
+        "category": "A02:2021-Cryptographic Failures",
+        "findings": ["CFG-005"],
+        "description": "Potential exposure of credentials in configuration files"
+      },
+      {
+        "category": "A03:2021-Injection",
+        "findings": ["CVE-2025-1094", "CVE-2025-8714"],
+        "description": "SQL injection vulnerabilities in PostgreSQL"
+      },
+      {
+        "category": "A04:2021-Insecure Design",
+        "findings": ["CTR-001", "CTR-002"],
+        "description": "Containers running with excessive privileges and insecure network configuration"
+      },
+      {
+        "category": "A05:2021-Security Misconfiguration",
+        "findings": ["CFG-001", "CFG-002", "CFG-003", "CFG-005", "CTR-001", "CTR-002", "CTR-003", "CTR-004", "CTR-005", "SEC-001", "VULN-004"],
+        "description": "Multiple configuration issues across system, containers, and network"
+      },
+      {
+        "category": "A06:2021-Vulnerable and Outdated Components",
+        "findings": ["CVE-2025-49844", "CVE-2025-43529", "CVE-2025-9074", "CVE-2025-23166", "CVE-2025-1094", "CVE-2025-8714", "CVE-2025-8715", "CVE-2025-27607", "CVE-2025-14174", "VULN-001", "VULN-002", "VULN-003"],
+        "description": "Multiple outdated and vulnerable components across the stack"
+      },
+      {
+        "category": "A08:2021-Software and Data Integrity Failures",
+        "findings": ["CVE-2025-27607", "CVE-2025-43529"],
+        "description": "Supply chain attack in Python package and actively exploited zero-day"
+      }
+    ],
+    "cis_macos": [
+      {
+        "control": "3.3 - Configure Data Access Control Lists",
+        "findings": ["SEC-001", "CFG-002"],
+        "description": "File permissions too permissive on SSH and OrbStack configurations"
+      },
+      {
+        "control": "4.5 - Implement and Manage a Firewall",
+        "findings": ["CFG-001", "CFG-003", "CTR-002"],
+        "description": "Firewall bypassed by development services and container networking"
+      },
+      {
+        "control": "7.1 - Establish Asset Vulnerability Management",
+        "findings": ["CVE-2025-49844", "CVE-2025-43529", "CVE-2025-9074"],
+        "description": "Critical vulnerabilities identified requiring immediate remediation"
+      },
+      {
+        "control": "7.3 - Perform Automated Patch Management",
+        "findings": ["CVE-2025-23166", "CVE-2025-1094", "CVE-2025-8714", "CVE-2025-14174", "VULN-001", "VULN-004"],
+        "description": "Multiple unpatched vulnerabilities and outdated software versions"
+      },
+      {
+        "control": "9.2 - Ensure Only Approved Ports are Listening",
+        "findings": ["CFG-001"],
+        "description": "Unapproved services listening on public interfaces"
+      }
+    ],
+    "nist_csf": [
+      {
+        "function": "PR.AC-4 (Access permissions and authorizations)",
+        "findings": ["CTR-001", "CTR-003", "CTR-004", "SEC-001", "CFG-002"],
+        "description": "Excessive permissions on containers and configuration files"
+      },
+      {
+        "function": "PR.AC-5 (Network integrity)",
+        "findings": ["CFG-001", "CFG-003", "CTR-002"],
+        "description": "Network segmentation and firewall controls inadequate"
+      },
+      {
+        "function": "PR.DS-5 (Protections against data leaks)",
+        "findings": ["CFG-005"],
+        "description": "Potential credential exposure in configuration files"
+      },
+      {
+        "function": "PR.DS-6 (Integrity checking mechanisms)",
+        "findings": ["CVE-2025-9074", "CTR-005"],
+        "description": "Container integrity controls insufficient"
+      },
+      {
+        "function": "PR.IP-12 (Vulnerability management plan)",
+        "findings": ["CVE-2025-43529", "CVE-2025-23166", "CVE-2025-1094", "CVE-2025-8714", "CVE-2025-14174", "VULN-001", "VULN-004"],
+        "description": "Vulnerability management process needs strengthening for timely patching"
+      },
+      {
+        "function": "PR.PT-3 (Least functionality)",
+        "findings": ["CTR-001", "CTR-003"],
+        "description": "Containers granted excessive capabilities and privileges"
+      },
+      {
+        "function": "PR.PT-4 (Communications networks are segregated)",
+        "findings": ["CFG-001", "CFG-003", "CTR-002"],
+        "description": "Network segmentation controls inadequate"
+      },
+      {
+        "function": "DE.CM-4 (Malicious code detected)",
+        "findings": ["CVE-2025-27607"],
+        "description": "Supply chain attack detection capabilities needed"
+      },
+      {
+        "function": "DE.CM-8 (Vulnerability scans)",
+        "findings": ["CVE-2025-49844", "CVE-2025-9074", "CTR-008"],
+        "description": "Regular vulnerability scanning of containers and dependencies required"
+      },
+      {
+        "function": "RS.MI-3 (Newly identified vulnerabilities)",
+        "findings": ["CVE-2025-43529", "CVE-2025-14174"],
+        "description": "Process for responding to actively exploited vulnerabilities needs improvement"
+      }
+    ]
+  },
+  "remediation_priority": [
+    {
+      "priority": "P0",
+      "finding_id": "CVE-2025-43529",
+      "title": "Patch WebKit RCE Zero-Day (Actively Exploited)",
+      "cvss_score": 9.0,
+      "sla": "24h",
+      "action": "Update macOS to latest version immediately. Check for Safari/WebKit updates in System Settings > General > Software Update. This is being actively exploited in the wild.",
+      "verification": "sw_vers && /usr/bin/safaridriver --version"
+    },
+    {
+      "priority": "P0",
+      "finding_id": "CVE-2025-14174",
+      "title": "Patch WebKit Memory Corruption (Actively Exploited)",
+      "cvss_score": 8.1,
+      "sla": "24h",
+      "action": "Same macOS/Safari update as CVE-2025-43529. Verify both CVEs are addressed in release notes.",
+      "verification": "Check Apple Security Updates page for CVE-2025-14174"
+    },
+    {
+      "priority": "P0",
+      "finding_id": "CVE-2025-9074",
+      "title": "Update Docker Desktop (Container Escape)",
+      "cvss_score": 9.3,
+      "sla": "48h",
+      "action": "Update Docker Desktop to version 4.37.4 or later immediately. This allows container escape to host system.",
+      "verification": "docker --version && docker version | grep 'Version:'"
+    },
+    {
+      "priority": "P0",
+      "finding_id": "CVE-2025-27607",
+      "title": "Check for Malicious Python JSON Logger Package",
+      "cvss_score": 8.8,
+      "sla": "24h",
+      "action": "Search all Python environments for 'python-json-logger' package. If found, check version and remove if malicious. Scan for exfiltrated credentials (AWS keys, crypto wallets). Use 'pip list | grep json' and 'pip show python-json-logger'.",
+      "verification": "pip list | grep -i 'python-json-logger' || echo 'Not found (safe)'"
+    },
+    {
+      "priority": "P1",
+      "finding_id": "CVE-2025-49844",
+      "title": "Check Redis RediShell Module Usage",
+      "cvss_score": 10.0,
+      "sla": "7d",
+      "action": "Verify if Redis RediShell module is installed. If yes, update immediately or disable module. Check with: docker exec redis redis-cli MODULE LIST",
+      "verification": "docker exec redis redis-cli MODULE LIST | grep -i redishell || echo 'Not loaded'"
+    },
+    {
+      "priority": "P1",
+      "finding_id": "CVE-2025-1094",
+      "title": "Update PostgreSQL (SQL Injection)",
+      "cvss_score": 8.1,
+      "sla": "7d",
+      "action": "Update PostgreSQL to patched version (17.3, 16.7, 15.11, 14.16, 13.19, or 12.23). Test applications after update.",
+      "verification": "docker exec postgres psql -V"
+    },
+    {
+      "priority": "P1",
+      "finding_id": "CVE-2025-8714",
+      "title": "Update PostgreSQL pg_dump Tools (RCE)",
+      "cvss_score": 8.8,
+      "sla": "7d",
+      "action": "Same PostgreSQL update as CVE-2025-1094. Verify pg_dump/pg_dumpall are updated. Audit backup scripts for untrusted database names.",
+      "verification": "docker exec postgres pg_dump --version"
+    },
+    {
+      "priority": "P1",
+      "finding_id": "CVE-2025-23166",
+      "title": "Update Node.js (Crypto DoS)",
+      "cvss_score": 8.5,
+      "sla": "7d",
+      "action": "Update Node.js to latest LTS (v22.13.1, v20.19.2) or current (v23.11.2+). Test applications for compatibility.",
+      "verification": "node --version"
+    },
+    {
+      "priority": "P1",
+      "finding_id": "CTR-001",
+      "title": "Run Containers as Non-Root Users",
+      "cvss_score": 7.5,
+      "sla": "7d",
+      "action": "Modify Dockerfiles: Add RUN useradd -m appuser && USER appuser before CMD. Rebuild images. Test functionality. Apply to postgres, redis, kali containers.",
+      "verification": "docker exec postgres whoami && docker exec redis whoami"
+    },
+    {
+      "priority": "P1",
+      "finding_id": "CTR-002",
+      "title": "Remove Host Network Mode from Kali Container",
+      "cvss_score": 7.2,
+      "sla": "7d",
+      "action": "Change kali-pentester to use bridge networking with explicit port mappings: docker run --network bridge -p 8080:8080 ... If host network is required for pentesting, document justification and add network monitoring.",
+      "verification": "docker inspect kali-pentester | grep '\"NetworkMode\"'"
+    },
+    {
+      "priority": "P1",
+      "finding_id": "CFG-001",
+      "title": "Restrict Services to Localhost",
+      "cvss_score": 7.0,
+      "sla": "7d",
+      "action": "Configure rapportd (if configurable) and Code Helper to bind to 127.0.0.1 instead of 0.0.0.0. For system services, add firewall rules: pf or macOS Application Firewall to block external access.",
+      "verification": "lsof -iTCP -sTCP:LISTEN -n -P | grep -E 'rapportd|Code Helper'"
+    },
+    {
+      "priority": "P2",
+      "finding_id": "CFG-005",
+      "title": "Secure .mcp.json Configuration File",
+      "cvss_score": 5.0,
+      "sla": "30d",
+      "action": "Review .mcp.json for credentials. Move sensitive values to environment variables or ~/.claude/.env. Add .mcp.json to .gitignore. Create .mcp.json.example template.",
+      "verification": "cat .gitignore | grep '.mcp.json' && echo 'Protected'"
+    },
+    {
+      "priority": "P2",
+      "finding_id": "VULN-001",
+      "title": "Upgrade Node.js to LTS Version",
+      "cvss_score": 6.0,
+      "sla": "30d",
+      "action": "Upgrade from v23.11.1 (current/unstable) to LTS v22.x or v20.x for long-term security support. Use nvm or brew to manage versions.",
+      "verification": "node --version && npm --version"
+    },
+    {
+      "priority": "P2",
+      "finding_id": "SEC-001",
+      "title": "Fix SSH Config Permissions",
+      "cvss_score": 4.0,
+      "sla": "30d",
+      "action": "chmod 600 ~/.ssh/config to restrict read access to owner only",
+      "verification": "ls -la ~/.ssh/config"
+    },
+    {
+      "priority": "P2",
+      "finding_id": "CFG-002",
+      "title": "Fix OrbStack SSH Authorized Keys Permissions",
+      "cvss_score": 5.3,
+      "sla": "30d",
+      "action": "chmod 600 ~/.orbstack/ssh/authorized_keys to restrict access",
+      "verification": "ls -la ~/.orbstack/ssh/authorized_keys"
+    },
+    {
+      "priority": "P2",
+      "finding_id": "CFG-003",
+      "title": "Review and Enable Firewall Rules",
+      "cvss_score": 5.0,
+      "sla": "30d",
+      "action": "Enable macOS Application Firewall in System Settings > Network > Firewall. Set to 'Block all incoming connections' for untrusted networks. Review allowed applications.",
+      "verification": "sudo /usr/libexec/ApplicationFirewall/socketfilterfw --getglobalstate"
+    },
+    {
+      "priority": "P2",
+      "finding_id": "VULN-004",
+      "title": "Enable macOS Auto-Updates",
+      "cvss_score": 5.5,
+      "sla": "30d",
+      "action": "Enable automatic security updates: System Settings > General > Software Update > Automatic Updates. Enable 'Install Security Responses and system files' and 'Install macOS updates'.",
+      "verification": "sudo softwareupdate --schedule"
+    },
+    {
+      "priority": "P2",
+      "finding_id": "CTR-003",
+      "title": "Review Kali Container Capabilities",
+      "cvss_score": 5.5,
+      "sla": "30d",
+      "action": "Document why CAP_NET_ADMIN is required for kali-pentester. If not needed, remove with --cap-drop. If needed, ensure container is regularly updated and monitored.",
+      "verification": "docker inspect kali-pentester | grep -A5 'CapAdd'"
+    },
+    {
+      "priority": "P3",
+      "finding_id": "CTR-004",
+      "title": "Apply AppArmor/SELinux Profiles to Containers",
+      "cvss_score": 5.0,
+      "sla": "90d",
+      "action": "On macOS, Docker uses macOS sandbox. For Linux deployments, add --security-opt apparmor=docker-default or custom profiles. Document profile requirements.",
+      "verification": "docker inspect postgres | grep 'SecurityOpt'"
+    },
+    {
+      "priority": "P3",
+      "finding_id": "CTR-005",
+      "title": "Enable Read-Only Root Filesystem",
+      "cvss_score": 4.5,
+      "sla": "90d",
+      "action": "Add --read-only flag to docker run commands with volume mounts for writable dirs: -v /tmp:/tmp -v /var/log:/var/log. Test applications for write requirements.",
+      "verification": "docker inspect postgres | grep '\"ReadonlyRootfs\"'"
+    },
+    {
+      "priority": "P3",
+      "finding_id": "CTR-006",
+      "title": "Add Resource Limits to Containers",
+      "cvss_score": 3.0,
+      "sla": "90d",
+      "action": "Add resource limits: docker run --memory='1g' --cpus='2.0' ... Adjust based on application requirements. Monitor with docker stats.",
+      "verification": "docker stats --no-stream"
+    },
+    {
+      "priority": "P3",
+      "finding_id": "CTR-007",
+      "title": "Configure Container Health Checks",
+      "cvss_score": 2.0,
+      "sla": "90d",
+      "action": "Add HEALTHCHECK to Dockerfiles or --health-cmd at runtime. Example: HEALTHCHECK --interval=30s CMD pg_isready -U postgres",
+      "verification": "docker inspect postgres | grep -A5 'Healthcheck'"
+    },
+    {
+      "priority": "P3",
+      "finding_id": "CTR-008",
+      "title": "Implement Container Security Scanning",
+      "cvss_score": 3.0,
+      "sla": "90d",
+      "action": "Add container scanning to workflow: docker scan <image> or install Trivy. Integrate into CI/CD pipeline. Schedule weekly scans.",
+      "verification": "docker scan --version || brew install trivy"
+    },
+    {
+      "priority": "P3",
+      "finding_id": "VULN-002",
+      "title": "Update Python Packages",
+      "cvss_score": 3.0,
+      "sla": "90d",
+      "action": "Run pip list --outdated and update packages: pip install --upgrade <package>. Review for breaking changes. Pin versions in requirements.txt.",
+      "verification": "pip list --outdated"
+    },
+    {
+      "priority": "P3",
+      "finding_id": "VULN-003",
+      "title": "Update Docker Desktop",
+      "cvss_score": 3.0,
+      "sla": "90d",
+      "action": "Update Docker Desktop to latest stable: Check for updates in Docker Desktop app or download from docker.com",
+      "verification": "docker --version"
+    }
+  ],
+  "executive_summary": {
+    "overall_risk": "HIGH",
+    "risk_score": 78,
+    "critical_issues": 3,
+    "active_exploits": 2,
+    "key_findings": [
+      "Two actively exploited WebKit vulnerabilities (CVE-2025-43529, CVE-2025-14174) require immediate macOS/Safari updates",
+      "Critical Docker Desktop container escape vulnerability (CVE-2025-9074) allows host compromise",
+      "High-risk supply chain attack in Python JSON Logger package (CVE-2025-27607) - credential theft",
+      "Multiple PostgreSQL vulnerabilities including SQL injection and RCE (CVE-2025-1094, CVE-2025-8714)",
+      "Container security posture weak: all containers running as root, Kali using host networking, no MAC controls",
+      "Network exposure: multiple services listening on public interfaces (rapportd, Code Helper)",
+      "Configuration drift: SSH config permissions, firewall bypasses, auto-updates potentially disabled"
+    ],
+    "immediate_actions": [
+      "Update macOS/Safari to patch actively exploited WebKit CVEs (24h SLA)",
+      "Update Docker Desktop to 4.37.4+ to prevent container escape (48h SLA)",
+      "Scan for malicious python-json-logger package and check for credential theft (24h SLA)",
+      "Update PostgreSQL and Node.js to patched versions (7d SLA)",
+      "Implement container hardening: non-root users, bridge networking, AppArmor profiles (7d SLA)"
+    ],
+    "long_term_recommendations": [
+      "Establish vulnerability management program with automated scanning",
+      "Implement container security baseline (CIS Docker Benchmark)",
+      "Enable macOS auto-updates and firewall for untrusted networks",
+      "Migrate to Node.js LTS for long-term security support",
+      "Add supply chain security controls (dependency scanning, SBOM generation)",
+      "Implement network segmentation and least-privilege access controls"
+    ]
+  }
+}
