@@ -1,0 +1,445 @@
+#!/usr/bin/env python3
+"""
+Codex Bridge v2 - Async CLI wrapper for OpenAI Codex.
+Features: async execution, retry logic, health check, batch processing, config support.
+"""
+from __future__ import annotations
+
+import argparse
+import asyncio
+import json
+import logging
+import os
+import shutil
+import sys
+import time
+from dataclasses import dataclass, field
+from enum import Enum
+from pathlib import Path
+from typing import Any
+
+# Configure logging
+logging.basicConfig(
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    level=logging.WARNING
+)
+logger = logging.getLogger(__name__)
+
+
+class ErrorType(Enum):
+    VALIDATION = "validation"
+    NETWORK = "network"
+    TIMEOUT = "timeout"
+    EXECUTION = "execution"
+
+
+@dataclass
+class Config:
+    """Configuration with defaults and file loading."""
+    sandbox: str = "read-only"
+    timeout: int = 300
+    retries: int = 3
+    verbose: bool = False
+
+    @classmethod
+    def load(cls, path: Path | None = None) -> Config:
+        """Load config from file or use defaults."""
+        config = cls()
+
+        # Config file search order
+        search_paths = [
+            path,
+            Path.cwd() / ".codex-bridge.json",
+            Path.home() / ".config" / "codex-bridge.json",
+        ]
+
+        for p in search_paths:
+            if p and p.exists():
+                try:
+                    data = json.loads(p.read_text())
+                    for key in ("sandbox", "timeout", "retries", "verbose"):
+                        if key in data:
+                            setattr(config, key, data[key])
+                    logger.info(f"Loaded config from {p}")
+                    break
+                except (json.JSONDecodeError, OSError) as e:
+                    logger.warning(f"Failed to load config from {p}: {e}")
+
+        return config
+
+
+@dataclass
+class Result:
+    """Execution result container."""
+    success: bool
+    session_id: str | None = None
+    response: str = ""
+    duration_ms: int = 0
+    error: dict[str, Any] | None = None
+    all_messages: list[dict] = field(default_factory=list)
+
+    def to_dict(self, include_all: bool = False) -> dict[str, Any]:
+        if self.success:
+            result = {
+                "success": True,
+                "session_id": self.session_id,
+                "response": self.response,
+                "duration_ms": self.duration_ms,
+            }
+        else:
+            result = {"success": False, "error": self.error}
+
+        if include_all and self.all_messages:
+            result["all_messages"] = self.all_messages
+
+        return result
+
+
+def validate_params(prompt: str | None, cd: str | None, batch: str | None) -> str | None:
+    """Validate required parameters. Returns error message or None."""
+    if batch:
+        if not Path(batch).exists():
+            return f"Batch file not found: {batch}"
+        return None
+
+    if not prompt:
+        return "Missing required parameter: --prompt"
+    if not cd:
+        return "Missing required parameter: --cd"
+    if not Path(cd).is_dir():
+        return f"Directory not found: {cd}"
+
+    return None
+
+
+def find_codex() -> str | None:
+    """Find codex executable in PATH."""
+    return shutil.which("codex")
+
+
+async def health_check() -> dict[str, Any]:
+    """Check Codex CLI availability and authentication."""
+    codex_path = find_codex()
+
+    if not codex_path:
+        return {
+            "success": False,
+            "error": "Codex CLI not found. Install with: npm i -g @openai/codex"
+        }
+
+    try:
+        proc = await asyncio.create_subprocess_exec(
+            codex_path, "--version",
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE
+        )
+        stdout, _ = await asyncio.wait_for(proc.communicate(), timeout=10)
+        version = stdout.decode().strip()
+
+        return {
+            "success": True,
+            "codex_path": codex_path,
+            "version": version
+        }
+    except asyncio.TimeoutError:
+        return {"success": False, "error": "Codex version check timed out"}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+
+async def run_codex(
+    prompt: str,
+    cd: str,
+    config: Config,
+    session_id: str | None = None,
+    images: list[str] | None = None,
+    model: str | None = None,
+    yolo: bool = False,
+    all_messages: bool = False,
+) -> Result:
+    """Execute Codex CLI with async streaming."""
+    start_time = time.monotonic()
+    codex_path = find_codex()
+
+    if not codex_path:
+        return Result(
+            success=False,
+            error={"type": ErrorType.VALIDATION.value, "message": "Codex CLI not found"}
+        )
+
+    # Build command
+    cmd = [
+        codex_path, "exec",
+        "--sandbox", config.sandbox,
+        "--cd", cd,
+        "--json",
+        "--skip-git-repo-check",
+    ]
+
+    if images:
+        cmd.extend(["--image", ",".join(images)])
+    if model:
+        cmd.extend(["--model", model])
+    if yolo:
+        cmd.append("--yolo")
+    if session_id:
+        cmd.extend(["resume", session_id])
+
+    cmd.extend(["--", prompt])
+
+    logger.debug(f"Executing: {' '.join(cmd)}")
+
+    # Execute with retry logic
+    last_error: str | None = None
+    retries_attempted = 0
+
+    for attempt in range(config.retries + 1):
+        try:
+            result = await _execute_codex(cmd, config.timeout, all_messages)
+            result.duration_ms = int((time.monotonic() - start_time) * 1000)
+            return result
+
+        except asyncio.TimeoutError:
+            last_error = f"Execution timed out after {config.timeout}s"
+            error_type = ErrorType.TIMEOUT
+        except OSError as e:
+            last_error = f"Failed to start process: {e}"
+            error_type = ErrorType.EXECUTION
+        except Exception as e:
+            last_error = str(e)
+            error_type = ErrorType.EXECUTION
+
+        retries_attempted = attempt + 1
+        if attempt < config.retries:
+            wait_time = 2 ** attempt  # Exponential backoff: 1, 2, 4 seconds
+            logger.info(f"Retry {retries_attempted}/{config.retries} after {wait_time}s")
+            await asyncio.sleep(wait_time)
+
+    return Result(
+        success=False,
+        duration_ms=int((time.monotonic() - start_time) * 1000),
+        error={
+            "type": error_type.value,
+            "message": last_error,
+            "retries_attempted": retries_attempted,
+        }
+    )
+
+
+async def _execute_codex(cmd: list[str], timeout: int, include_all: bool) -> Result:
+    """Internal async execution with streaming."""
+    proc = await asyncio.create_subprocess_exec(
+        *cmd,
+        stdin=asyncio.subprocess.DEVNULL,
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.STDOUT,
+    )
+
+    messages: list[dict] = []
+    agent_response = ""
+    thread_id: str | None = None
+
+    async def read_stream():
+        nonlocal agent_response, thread_id
+
+        while True:
+            line = await proc.stdout.readline()
+            if not line:
+                break
+
+            text = line.decode("utf-8").strip()
+            if not text:
+                continue
+
+            try:
+                data = json.loads(text)
+                messages.append(data)
+
+                # Extract session ID
+                if data.get("thread_id"):
+                    thread_id = data["thread_id"]
+
+                # Extract agent response
+                item = data.get("item", {})
+                if item.get("type") == "agent_message":
+                    agent_response += item.get("text", "")
+
+                # Check for turn completion
+                if data.get("type") == "turn.completed":
+                    proc.terminate()
+                    break
+
+            except json.JSONDecodeError:
+                logger.debug(f"Non-JSON line: {text}")
+
+    try:
+        await asyncio.wait_for(read_stream(), timeout=timeout)
+    except asyncio.TimeoutError:
+        proc.kill()
+        raise
+    finally:
+        try:
+            await asyncio.wait_for(proc.wait(), timeout=5)
+        except asyncio.TimeoutError:
+            proc.kill()
+
+    if not thread_id:
+        return Result(
+            success=False,
+            all_messages=messages if include_all else [],
+            error={"type": ErrorType.EXECUTION.value, "message": "No session ID received"}
+        )
+
+    if not agent_response:
+        return Result(
+            success=False,
+            session_id=thread_id,
+            all_messages=messages if include_all else [],
+            error={"type": ErrorType.EXECUTION.value, "message": "No response received"}
+        )
+
+    return Result(
+        success=True,
+        session_id=thread_id,
+        response=agent_response,
+        all_messages=messages if include_all else [],
+    )
+
+
+async def run_batch(batch_file: str, config: Config) -> dict[str, Any]:
+    """Process multiple prompts from JSON file."""
+    try:
+        tasks = json.loads(Path(batch_file).read_text())
+    except (json.JSONDecodeError, OSError) as e:
+        return {"success": False, "error": f"Failed to load batch file: {e}"}
+
+    if not isinstance(tasks, list):
+        return {"success": False, "error": "Batch file must contain a JSON array"}
+
+    results = []
+    succeeded = 0
+    failed = 0
+
+    for i, task in enumerate(tasks):
+        prompt = task.get("prompt", "")
+        cd = task.get("cd", "")
+
+        if not prompt or not cd:
+            results.append({"index": i, "success": False, "error": "Missing prompt or cd"})
+            failed += 1
+            continue
+
+        result = await run_codex(
+            prompt=prompt,
+            cd=cd,
+            config=config,
+            session_id=task.get("session_id"),
+        )
+
+        result_dict = result.to_dict()
+        result_dict["index"] = i
+        results.append(result_dict)
+
+        if result.success:
+            succeeded += 1
+        else:
+            failed += 1
+
+    return {
+        "success": failed == 0,
+        "results": results,
+        "summary": {"total": len(tasks), "succeeded": succeeded, "failed": failed}
+    }
+
+
+def parse_args() -> argparse.Namespace:
+    """Parse command line arguments."""
+    parser = argparse.ArgumentParser(
+        description="Codex Bridge v2 - Async CLI wrapper for OpenAI Codex"
+    )
+
+    # Required (unless health-check or batch)
+    parser.add_argument("--prompt", help="Task instruction for Codex")
+    parser.add_argument("--cd", help="Workspace root directory")
+
+    # Execution options
+    parser.add_argument("--session-id", help="Resume previous session")
+    parser.add_argument("--sandbox", choices=["read-only", "workspace-write", "full-access"],
+                        help="Sandbox policy (default: from config or read-only)")
+    parser.add_argument("--timeout", type=int, help="Max execution time in seconds")
+    parser.add_argument("--retries", type=int, help="Retry attempts on failure")
+
+    # Features
+    parser.add_argument("--health-check", action="store_true", help="Check Codex CLI availability")
+    parser.add_argument("--batch", metavar="FILE", help="Process multiple prompts from JSON file")
+    parser.add_argument("--config", metavar="FILE", help="Load settings from config file")
+    parser.add_argument("--verbose", action="store_true", help="Enable debug logging")
+    parser.add_argument("--all-messages", action="store_true", help="Include full message trace")
+
+    # Advanced
+    parser.add_argument("--image", action="append", default=[], help="Attach image files")
+    parser.add_argument("--model", help="Specify model (use only when requested)")
+    parser.add_argument("--yolo", action="store_true", help="Bypass approvals")
+
+    return parser.parse_args()
+
+
+async def main() -> int:
+    """Main entry point."""
+    args = parse_args()
+
+    # Configure logging
+    if args.verbose:
+        logging.getLogger().setLevel(logging.DEBUG)
+
+    # Load configuration
+    config_path = Path(args.config) if args.config else None
+    config = Config.load(config_path)
+
+    # Override config with CLI args
+    if args.sandbox:
+        config.sandbox = args.sandbox
+    if args.timeout:
+        config.timeout = args.timeout
+    if args.retries is not None:
+        config.retries = args.retries
+    if args.verbose:
+        config.verbose = True
+
+    # Health check mode
+    if args.health_check:
+        result = await health_check()
+        print(json.dumps(result, indent=2))
+        return 0 if result["success"] else 1
+
+    # Batch mode
+    if args.batch:
+        result = await run_batch(args.batch, config)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        return 0 if result["success"] else 1
+
+    # Validate required params
+    error = validate_params(args.prompt, args.cd, args.batch)
+    if error:
+        result = {"success": False, "error": {"type": "validation", "message": error}}
+        print(json.dumps(result, indent=2))
+        return 1
+
+    # Single execution
+    result = await run_codex(
+        prompt=args.prompt,
+        cd=args.cd,
+        config=config,
+        session_id=args.session_id,
+        images=args.image if args.image else None,
+        model=args.model,
+        yolo=args.yolo,
+        all_messages=args.all_messages,
+    )
+
+    print(json.dumps(result.to_dict(args.all_messages), indent=2, ensure_ascii=False))
+    return 0 if result.success else 1
+
+
+if __name__ == "__main__":
+    sys.exit(asyncio.run(main()))
