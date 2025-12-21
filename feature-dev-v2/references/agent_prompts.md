@@ -384,7 +384,7 @@ Review for bugs, logic errors, and correctness:
 2. Identify edge cases not handled
 3. Look for null/undefined issues
 4. Check error handling
-5. Assess security concerns
+5. Assess security concerns (see Security Checklist below)
 
 ONLY report issues with confidence >= 0.8
 
@@ -413,6 +413,125 @@ Output EXACTLY this JSON:
   "approval": "APPROVED|NEEDS_CHANGES"
 }
 ```
+
+## Security Checklist
+
+The Bug/Correctness Reviewer MUST check for these security issues:
+
+### Input Validation (OWASP A03)
+- [ ] User input sanitized before use
+- [ ] SQL queries use parameterized statements
+- [ ] HTML output properly escaped (XSS prevention)
+- [ ] File paths validated (path traversal prevention)
+- [ ] Command arguments escaped (command injection prevention)
+
+### Authentication & Authorization (OWASP A01, A07)
+- [ ] Authentication checks on protected routes
+- [ ] Authorization verified before sensitive operations
+- [ ] Session tokens properly validated
+- [ ] Password handling uses secure hashing
+- [ ] JWT tokens validated correctly
+
+### Data Exposure (OWASP A02)
+- [ ] Sensitive data not logged
+- [ ] API responses don't leak internal details
+- [ ] Error messages don't expose stack traces
+- [ ] Credentials not hardcoded
+- [ ] Environment variables used for secrets
+
+### Security Misconfiguration (OWASP A05)
+- [ ] HTTPS enforced for sensitive data
+- [ ] CORS configured restrictively
+- [ ] Security headers present (CSP, X-Frame-Options)
+- [ ] Debug mode disabled in production
+- [ ] Default credentials changed
+
+### Dependency Security (OWASP A06)
+- [ ] No known vulnerable dependencies
+- [ ] Dependencies from trusted sources
+- [ ] Lock files committed
+
+### Security Issue Severity Guide
+
+| Issue Type | Severity | Example |
+|------------|----------|---------|
+| SQL Injection | HIGH | Unparameterized query with user input |
+| XSS | HIGH | Unescaped user content in HTML |
+| Auth Bypass | HIGH | Missing authentication check |
+| Hardcoded Secret | HIGH | API key in source code |
+| Path Traversal | HIGH | User-controlled file path |
+| Missing CSRF | MEDIUM | State-changing POST without token |
+| Weak Hashing | MEDIUM | MD5/SHA1 for passwords |
+| Verbose Errors | MEDIUM | Stack traces in API responses |
+| Missing Headers | LOW | No X-Frame-Options header |
+| Weak Session | LOW | Short session timeout |
+
+## Confidence Scoring Methodology
+
+### Confidence Score Guidelines
+
+Use these criteria to assign confidence scores (0.0-1.0):
+
+| Score Range | Certainty Level | Criteria |
+|-------------|-----------------|----------|
+| 0.95-1.00 | Certain | Definite bug, will cause failure |
+| 0.90-0.94 | Very High | Highly likely issue, clear evidence |
+| 0.85-0.89 | High | Strong indicators, few edge cases |
+| 0.80-0.84 | Confident | Likely issue, some uncertainty |
+| 0.70-0.79 | Moderate | Possible issue, needs verification |
+| < 0.70 | Low | Uncertain, do not report |
+
+### Confidence Scoring Examples
+
+**Score 0.95+: Certain Issue**
+```javascript
+// Unparameterized SQL - definite SQL injection
+db.query("SELECT * FROM users WHERE id = " + userId);
+// Confidence: 0.98 - This is definitively vulnerable
+```
+
+**Score 0.90-0.94: Very High Confidence**
+```javascript
+// Missing null check before access
+function process(user) {
+  return user.profile.name; // What if user.profile is null?
+}
+// Confidence: 0.92 - Very likely to fail, but caller might validate
+```
+
+**Score 0.85-0.89: High Confidence**
+```javascript
+// Potential race condition
+let count = 0;
+async function increment() {
+  count = count + 1; // Not atomic
+}
+// Confidence: 0.87 - Issue depends on concurrent access patterns
+```
+
+**Score 0.80-0.84: Confident**
+```javascript
+// Complex function that may have edge case
+function parseDate(input) {
+  // 50 lines of parsing logic
+  // Hard to verify all edge cases
+}
+// Confidence: 0.82 - Complexity suggests possible issues
+```
+
+### Adjusting Confidence
+
+**Increase confidence (+0.05-0.10) when:**
+- Multiple indicators point to same issue
+- Issue matches known vulnerability pattern
+- Similar code caused bugs elsewhere
+- No error handling present
+
+**Decrease confidence (-0.05-0.10) when:**
+- Code has tests covering the case
+- Documentation explains the behavior
+- Pattern is intentional (commented)
+- Framework provides protection
 
 ### Conventions Reviewer
 
