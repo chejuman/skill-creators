@@ -1,0 +1,16 @@
+# Infographic Design System Dependencies
+
+# Core rendering
+pycairo>=1.25.0
+
+# Image processing and export
+Pillow>=10.0.0
+
+# Numerical operations
+numpy>=1.24.0
+
+# Optional: Advanced color handling
+# colorspacious>=1.1.0
+
+# Optional: Font management
+# fonttools>=4.40.0
