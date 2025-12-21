@@ -415,6 +415,278 @@ message2: Task(explorer2)  # Waits for message1
 | 4 | 3 | 20 | 0 high, ≤1 medium |
 | 5 | 3+ | 25+ | 0 high/medium |
 
+## Error Recovery
+
+### Agent Failure Handling
+
+When a parallel agent fails or returns malformed output:
+
+```
+1. DETECT: Check if agent returned valid JSON
+2. REPORT: Log which agent failed and error message
+3. DECIDE: Ask user how to proceed
+   - Retry failed agent only
+   - Continue with remaining agent outputs
+   - Abort and restart phase
+4. RECOVER: Execute chosen recovery action
+```
+
+**Recovery Options by Phase:**
+
+| Phase | Failure | Recovery |
+|-------|---------|----------|
+| Exploration | 1 of 3 fails | Continue with 2 explorers' output |
+| Exploration | 2+ fail | Retry phase or ask user for manual context |
+| Architecture | 1 of 3 fails | Present 2 options to user |
+| Architecture | All fail | Escalate - user provides architecture |
+| Review | 1 of 3 fails | Proceed with 2 reviewers' output |
+| Review | 2+ fail | Retry or skip review with warning |
+
+**Malformed Output Recovery:**
+```
+If agent output is not valid JSON:
+1. Extract any readable findings from text
+2. Mark agent as "partial success"
+3. Continue workflow with available data
+4. Note gap in final summary
+```
+
+## Context Budget Management
+
+### File Limits by Codebase Size
+
+To prevent context explosion, limit files based on repository size:
+
+| Codebase Size | Files | Limit per Explorer | Total Context |
+|---------------|-------|-------------------|---------------|
+| Small (< 100 files) | < 100 | 10 files | ~30 files |
+| Medium (100-1000) | 100-1000 | 5-7 files | ~21 files |
+| Large (1000+) | 1000+ | 3-5 files | ~15 files |
+
+**Context Estimation:**
+```
+Codebase size check:
+  find . -type f -name "*.{js,ts,py,go,java}" | wc -l
+
+If > 1000 files:
+  Instruct explorers: "Limit files_to_read to 3-5 most critical files"
+If 100-1000 files:
+  Instruct explorers: "Limit files_to_read to 5-7 files"
+If < 100 files:
+  Default: "Return top 10 files for deep understanding"
+```
+
+**Priority for File Selection:**
+1. Entry points (main, index, app)
+2. Files with highest relevance to feature
+3. Shared utilities and abstractions
+4. Test files (if testing focus)
+
+## Inter-Agent Data Format
+
+### Exploration Summary Schema
+
+All exploration agents output JSON that combines into `{{exploration_summary}}`:
+
+```json
+{
+  "exploration_summary": {
+    "similar_features": {
+      "agent": "Explorer #1",
+      "features": [...],
+      "patterns": [...],
+      "reusable_components": [...]
+    },
+    "architecture": {
+      "agent": "Explorer #2",
+      "layers": [...],
+      "data_flow": {...},
+      "abstractions": [...]
+    },
+    "integrations": {
+      "agent": "Explorer #3",
+      "external_apis": [...],
+      "internal_deps": [...],
+      "extension_points": [...]
+    },
+    "combined_key_files": ["path1", "path2", ...],
+    "combined_recommendations": [...]
+  }
+}
+```
+
+**Merging Algorithm:**
+```python
+def merge_exploration_outputs(explorer_outputs):
+    summary = {"exploration_summary": {}}
+    key_files = set()
+    recommendations = []
+
+    for output in explorer_outputs:
+        # Add agent-specific findings
+        summary["exploration_summary"][output["focus"]] = output
+        # Merge key files (deduplicate)
+        key_files.update(output.get("key_files", []))
+        # Collect recommendations
+        recommendations.extend(output.get("recommendations", []))
+
+    summary["exploration_summary"]["combined_key_files"] = list(key_files)
+    summary["exploration_summary"]["combined_recommendations"] = recommendations
+    return summary
+```
+
+### Architecture Design Schema
+
+All architect agents use this unified schema:
+
+```json
+{
+  "approach": "MINIMAL|CLEAN|PRAGMATIC",
+  "philosophy": "...",
+  "architecture": {
+    "components": [{"name": "...", "type": "...", "responsibility": "..."}],
+    "patterns": ["..."],
+    "data_flow": "..."
+  },
+  "file_changes": [
+    {"path": "...", "action": "CREATE|MODIFY", "lines_est": 50, "description": "..."}
+  ],
+  "trade_offs": {
+    "pros": ["..."],
+    "cons": ["..."]
+  },
+  "implementation_steps": ["Step 1", "Step 2", ...],
+  "estimated_complexity": "LOW|MEDIUM|HIGH",
+  "estimated_files": 5,
+  "estimated_time": "2-4 hours"
+}
+```
+
+## Review Consolidation
+
+### Merging Three Reviewer Outputs
+
+After parallel review agents complete, consolidate their findings:
+
+```python
+def consolidate_reviews(reviewer_outputs):
+    consolidated = {
+        "all_issues": [],
+        "by_severity": {"HIGH": [], "MEDIUM": [], "LOW": []},
+        "by_reviewer": {},
+        "overall_status": "APPROVED",
+        "summary": ""
+    }
+
+    for output in reviewer_outputs:
+        reviewer_name = output["focus"]
+        consolidated["by_reviewer"][reviewer_name] = output
+
+        for issue in output.get("issues", []):
+            issue["reviewer"] = reviewer_name
+            consolidated["all_issues"].append(issue)
+            consolidated["by_severity"][issue["severity"]].append(issue)
+
+        # If ANY reviewer says NEEDS_CHANGES, overall is NEEDS_CHANGES
+        if output.get("approval") == "NEEDS_CHANGES":
+            consolidated["overall_status"] = "NEEDS_CHANGES"
+
+    # Sort all issues by severity then confidence
+    consolidated["all_issues"].sort(
+        key=lambda x: (
+            {"HIGH": 0, "MEDIUM": 1, "LOW": 2}[x["severity"]],
+            -x["confidence"]
+        )
+    )
+
+    return consolidated
+```
+
+### Approval Decision Matrix
+
+| High Issues | Medium Issues | Decision |
+|-------------|---------------|----------|
+| 0 | 0 | APPROVED |
+| 0 | 1-2 (Level 3) | APPROVED with notes |
+| 0 | 3+ | NEEDS_CHANGES |
+| 1+ | Any | NEEDS_CHANGES |
+
+### Conflict Resolution
+
+When reviewers disagree on the same code:
+
+**Priority Order:**
+1. **Security issues** (Correctness Reviewer) - Always highest priority
+2. **Convention violations** (Conventions Reviewer) - Project consistency
+3. **Quality suggestions** (Quality Reviewer) - Style preferences
+
+**If conflicting suggestions:**
+```markdown
+## Reviewer Conflict Detected
+
+**File:** src/api/auth.ts:45
+
+**Quality Reviewer:** "Extract to helper function for clarity"
+**Conventions Reviewer:** "Keep inline per project pattern"
+
+**Resolution:** Follow Conventions Reviewer (project patterns take precedence)
+```
+
+## Phase 6b: Fix Iteration Cycle
+
+When review status is NEEDS_CHANGES, enter fix iteration:
+
+```
+Phase 6b: Fix Iteration
+    │
+    ├─► Fix Agent ──► Address identified issues
+    │
+    ├─► Lite Review ──► Re-check ONLY changed lines
+    │
+    └─► Decision ──► APPROVED? → Phase 7 : → Repeat 6b
+```
+
+**Fix Agent Task:**
+```
+Task(
+  subagent_type='general-purpose',
+  prompt='Fix the following review issues:
+    {{high_severity_issues}}
+    {{medium_severity_issues_if_selected}}
+
+    For each issue:
+    1. Read the file
+    2. Apply the suggested fix
+    3. Verify fix doesn't break other code
+
+    Return list of fixes applied.',
+  description='Fix review issues'
+)
+```
+
+**Lite Review (focused re-check):**
+```
+Task(
+  subagent_type='general-purpose',
+  prompt='Re-review ONLY the following fixed files:
+    {{fixed_files}}
+
+    Check that:
+    1. Original issues are resolved
+    2. No new issues introduced
+    3. Changes are minimal and focused
+
+    Return: APPROVED or remaining issues.',
+  description='Lite review of fixes',
+  model='haiku'
+)
+```
+
+**Iteration Limits:**
+- Maximum 3 fix iterations
+- After 3 iterations, escalate to user for manual review
+- Track iteration count in task template
+
 ## Resources
 
 - [Agent Prompts](references/agent_prompts.md) - Complete agent templates
