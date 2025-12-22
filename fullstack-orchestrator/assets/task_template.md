@@ -1,0 +1,212 @@
+# Fullstack Development: {{PROJECT_NAME}}
+
+**Created:** {{TIMESTAMP}}
+**Status:** IN_PROGRESS
+**Development Level:** {{LEVEL}}
+
+---
+
+## Overview
+
+{{Brief project description from requirements phase}}
+
+---
+
+## Agent Execution Log
+
+| Phase | Agent | Status | Output |
+|-------|-------|--------|--------|
+| 1 | Requirements Analyst | {{status}} | spec.md |
+| 1 | Environment Setup | {{status}} | config |
+| 1.5 | Explorer #1 (Similar) | {{status}} | patterns |
+| 1.5 | Explorer #2 (Architecture) | {{status}} | layers |
+| 1.5 | Explorer #3 (Integration) | {{status}} | deps |
+| 2 | Architect #1 (Minimal) | {{status}} | design |
+| 2 | Architect #2 (Clean) | {{status}} | design |
+| 2 | Architect #3 (Pragmatic) | {{status}} | design |
+| 3 | Database Agent | {{status}} | models |
+| 3 | Backend Developer | {{status}} | API |
+| 3 | Frontend Developer | {{status}} | UI |
+| 4 | Test Engineer | {{status}} | tests |
+| 4 | Security Auditor | {{status}} | report |
+| 4 | Performance Optimizer | {{status}} | metrics |
+| 4 | Code Quality Reviewer | {{status}} | issues |
+| 4 | Conventions Reviewer | {{status}} | issues |
+| 4b | Fix Agent | {{status}} | fixes |
+| 4b | Lite Reviewer | {{status}} | approval |
+| 5 | Documentation Generator | {{status}} | docs |
+| 6 | DevOps Engineer | {{status}} | docker |
+| 6 | Deployment Agent | {{status}} | deploy |
+
+---
+
+## Environment Configuration
+
+| Setting | Value |
+|---------|-------|
+| Database | {{PostgreSQL/SQLite/MySQL}} |
+| Auth | {{JWT/Session/Third-party}} |
+| Frontend | React + shadcn/ui |
+| Backend | FastAPI |
+
+---
+
+## Exploration Findings
+
+### Similar Features Found
+{{List from Explorer #1}}
+
+### Architecture Patterns
+{{List from Explorer #2}}
+
+### Integration Points
+{{List from Explorer #3}}
+
+### Key Files Identified
+{{Combined list}}
+
+---
+
+## User Decisions
+
+### Environment Choices
+| Question | Answer |
+|----------|--------|
+| Database | {{answer}} |
+| Auth | {{answer}} |
+
+### Architecture Choice
+- **Selected:** {{MINIMAL/CLEAN/PRAGMATIC}}
+- **Reasoning:** {{why_chosen}}
+
+---
+
+## Implementation Plan
+
+### Chosen Architecture
+{{Selected architecture summary}}
+
+### File Changes
+| File | Action | Description | Status |
+|------|--------|-------------|--------|
+| {{path}} | CREATE | {{desc}} | {{status}} |
+| {{path}} | MODIFY | {{desc}} | {{status}} |
+
+### Implementation Steps
+| ID | Step | Status | Notes |
+|----|------|--------|-------|
+| S-01 | {{step}} | TODO | |
+| S-02 | {{step}} | TODO | |
+
+---
+
+## Quality Assurance Results
+
+### Test Results
+- **Status:** {{PASS/FAIL}}
+- **Coverage:** {{percentage}}%
+- **Unit Tests:** {{count}}
+- **Integration Tests:** {{count}}
+- **E2E Tests:** {{count}}
+
+### Security Audit
+- **Status:** {{APPROVED/NEEDS_CHANGES}}
+- **Critical Issues:** {{count}}
+- **Warnings:** {{count}}
+
+### Performance Metrics
+- **API Response:** {{ms}} (p95)
+- **Bundle Size:** {{KB}}
+- **Lighthouse Score:** {{score}}
+
+### Code Review
+- **Quality Status:** {{APPROVED/NEEDS_CHANGES}}
+- **Conventions Status:** {{APPROVED/NEEDS_CHANGES}}
+- **Issues Found:** {{count}}
+- **High Severity:** {{count}}
+
+---
+
+## Fix Iteration Log
+
+### Iteration 1
+| Issue | Severity | Status | Fix Applied |
+|-------|----------|--------|-------------|
+| {{issue}} | HIGH | FIXED | {{fix}} |
+
+### Iteration 2
+{{if needed}}
+
+### Iteration 3
+{{if needed}}
+
+---
+
+## Documentation Generated
+
+| Document | Status | Location |
+|----------|--------|----------|
+| README.md | {{status}} | ./README.md |
+| API Docs | {{status}} | ./docs/api.md |
+| Architecture | {{status}} | ./docs/architecture.md |
+| Deployment | {{status}} | ./docs/deployment.md |
+
+---
+
+## Deployment Configuration
+
+### Docker
+- **Dockerfile (Backend):** {{status}}
+- **Dockerfile (Frontend):** {{status}}
+- **docker-compose.yml:** {{status}}
+
+### CI/CD
+- **GitHub Actions:** {{status}}
+- **Tests Pipeline:** {{status}}
+- **Deploy Pipeline:** {{status}}
+
+---
+
+## Change Log
+
+| Timestamp | Event | Details |
+|-----------|-------|---------|
+| {{time}} | Project created | Level {{level}} |
+| {{time}} | Requirements complete | spec.md created |
+| {{time}} | Exploration complete | {{n}} patterns found |
+| {{time}} | Architecture approved | {{approach}} selected |
+| {{time}} | Implementation complete | {{n}} files |
+| {{time}} | Review complete | {{status}} |
+| {{time}} | Fix iteration #{{n}} | {{n}} issues fixed |
+| {{time}} | Documentation complete | {{n}} docs |
+| {{time}} | Deployment complete | {{status}} |
+
+---
+
+## Completion Summary
+
+**Completed:** {{TIMESTAMP}}
+**Total Agents Used:** {{AGENT_COUNT}}
+
+### Deliverables
+- [ ] Specification document
+- [ ] Backend API
+- [ ] Frontend application
+- [ ] Test suite
+- [ ] Documentation
+- [ ] Docker configuration
+- [ ] CI/CD pipeline
+
+### Files Created/Modified
+- {{count}} files created
+- {{count}} files modified
+
+### Quality Metrics
+- Test Coverage: {{score}}%
+- Security Score: {{score}}/10
+- Performance Score: {{score}}/100
+- Code Quality: {{score}}/10
+
+---
+
+*Generated by Fullstack Orchestrator v2.0*
