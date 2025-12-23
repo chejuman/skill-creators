@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "EVENT_NAME": [
+      {
+        "matcher": "TOOL_PATTERN",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "COMMAND_HERE",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}
