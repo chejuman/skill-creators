@@ -1,0 +1,77 @@
+# Tech Stack
+
+## Languages
+
+| Purpose | Language | Version |
+|---------|----------|---------|
+| Backend | | |
+| Frontend | | |
+| Scripts | | |
+
+## Frameworks
+
+| Layer | Framework | Version |
+|-------|-----------|---------|
+| Backend | | |
+| Frontend | | |
+| Testing | | |
+
+## Database
+
+- **Primary**:
+- **Cache**:
+- **Search**:
+
+## Infrastructure
+
+- **Hosting**:
+- **CI/CD**:
+- **Monitoring**:
+
+## Dependencies
+
+### Required
+-
+
+### Optional
+-
+
+## Conventions
+
+### File Structure
+```
+src/
+├── components/
+├── services/
+├── utils/
+└── tests/
+```
+
+### Naming Conventions
+- Files:
+- Functions:
+- Variables:
+- Constants:
+
+### Import Order
+1.
+2.
+3.
+
+## Environment Variables
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| | | |
+
+## Development Setup
+
+```bash
+# Installation
+
+# Run development
+
+# Run tests
+
+# Build
+```

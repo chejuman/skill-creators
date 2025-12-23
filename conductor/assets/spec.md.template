@@ -1,0 +1,102 @@
+# Specification: {{DESCRIPTION}}
+
+## Summary
+
+한 줄 요약:
+
+## Background
+
+### 문제 정의
+현재 상황과 해결하려는 문제:
+
+### 동기
+이 기능이 필요한 이유:
+
+## Goals
+
+### Must Have
+1.
+2.
+
+### Should Have
+1.
+
+### Won't Have (이번 범위 외)
+1.
+
+## User Stories
+
+### Story 1
+- **As a**:
+- **I want**:
+- **So that**:
+
+### Story 2
+- **As a**:
+- **I want**:
+- **So that**:
+
+## Technical Design
+
+### Architecture Overview
+```
+[Component Diagram or Flow]
+```
+
+### Data Model
+```
+[Entity Definitions]
+```
+
+### API Design
+```
+[Endpoint Definitions]
+```
+
+### Dependencies
+- 외부 서비스:
+- 라이브러리:
+
+## Acceptance Criteria
+
+### Functional
+- [ ]
+- [ ]
+
+### Non-Functional
+- [ ] 성능:
+- [ ] 보안:
+- [ ] 접근성:
+
+## Edge Cases
+
+1.
+2.
+
+## Testing Strategy
+
+### Unit Tests
+-
+
+### Integration Tests
+-
+
+### E2E Tests
+-
+
+## Rollout Plan
+
+### Phase 1
+-
+
+### Phase 2
+-
+
+## Open Questions
+
+1.
+2.
+
+## References
+
+-
