@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deep Research Report: {{topic}}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @media print {
+        .no-print {
+          display: none;
+        }
+        .page-break {
+          page-break-before: always;
+        }
+      }
+      .collapsible-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+      .collapsible-content.open {
+        max-height: none;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- Header -->
+    <header
+      class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-8 px-6"
+    >
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-2">{{topic}}</h1>
+        <p class="text-blue-100">Deep Research Report</p>
+        <div class="mt-4 flex gap-4 text-sm">
+          <span class="bg-blue-500/30 px-3 py-1 rounded"
+            >Generated: {{date}}</span
+          >
+          <span class="bg-blue-500/30 px-3 py-1 rounded"
+            >Depth: Level {{depth}}</span
+          >
+          <span class="bg-blue-500/30 px-3 py-1 rounded"
+            >Sources: {{source_count}}</span
+          >
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-8">
+      <!-- Table of Contents -->
+      <nav class="bg-white rounded-lg shadow-sm p-6 mb-8 no-print">
+        <h2 class="text-lg font-semibold mb-4">Table of Contents</h2>
+        <ul class="space-y-2 text-blue-600">
+          <li>
+            <a href="#executive-summary" class="hover:underline"
+              >Executive Summary</a
+            >
+          </li>
+          <li>
+            <a href="#key-findings" class="hover:underline">Key Findings</a>
+          </li>
+          <li>
+            <a href="#market-overview" class="hover:underline"
+              >Market Overview</a
+            >
+          </li>
+          <li>
+            <a href="#competitive-landscape" class="hover:underline"
+              >Competitive Landscape</a
+            >
+          </li>
+          <li>
+            <a href="#technology-analysis" class="hover:underline"
+              >Technology Analysis</a
+            >
+          </li>
+          <li>
+            <a href="#swot-analysis" class="hover:underline">SWOT Analysis</a>
+          </li>
+          <li>
+            <a href="#recommendations" class="hover:underline"
+              >Recommendations</a
+            >
+          </li>
+          <li><a href="#sources" class="hover:underline">Sources</a></li>
+        </ul>
+      </nav>
+
+      <!-- Executive Summary -->
+      <section
+        id="executive-summary"
+        class="bg-white rounded-lg shadow-sm p-6 mb-6"
+      >
+        <h2 class="text-xl font-semibold mb-4 text-gray-900">
+          Executive Summary
+        </h2>
+        <div class="text-gray-700 leading-relaxed">{{executive_summary}}</div>
+      </section>
+
+      <!-- Key Findings -->
+      <section id="key-findings" class="bg-white rounded-lg shadow-sm p-6 mb-6">
+        <h2 class="text-xl font-semibold mb-4 text-gray-900">Key Findings</h2>
+        <ul class="space-y-3">
+          {{#each key_findings}}
+          <li class="flex items-start">
+            <span class="text-green-500 mr-2">✓</span>
+            <span>{{this}}</span>
+          </li>
+          {{/each}}
+        </ul>
+      </section>
+
+      <!-- Market Overview -->
+      <section
+        id="market-overview"
+        class="bg-white rounded-lg shadow-sm p-6 mb-6"
+      >
+        <button
+          class="w-full flex justify-between items-center text-xl font-semibold text-gray-900"
+          onclick="toggleSection('market-content')"
+        >
+          <span>Market Overview</span>
+          <span class="text-gray-400">▼</span>
+        </button>
+        <div
+          id="market-content"
+          class="collapsible-content open mt-4 text-gray-700"
+        >
+          {{market_overview}}
+        </div>
+      </section>
+
+      <!-- Competitive Landscape -->
+      <section
+        id="competitive-landscape"
+        class="bg-white rounded-lg shadow-sm p-6 mb-6"
+      >
+        <button
+          class="w-full flex justify-between items-center text-xl font-semibold text-gray-900"
+          onclick="toggleSection('competitive-content')"
+        >
+          <span>Competitive Landscape</span>
+          <span class="text-gray-400">▼</span>
+        </button>
+        <div
+          id="competitive-content"
+          class="collapsible-content open mt-4 text-gray-700"
+        >
+          {{competitive_landscape}}
+        </div>
+      </section>
+
+      <!-- Technology Analysis -->
+      <section
+        id="technology-analysis"
+        class="bg-white rounded-lg shadow-sm p-6 mb-6"
+      >
+        <button
+          class="w-full flex justify-between items-center text-xl font-semibold text-gray-900"
+          onclick="toggleSection('tech-content')"
+        >
+          <span>Technology Analysis</span>
+          <span class="text-gray-400">▼</span>
+        </button>
+        <div
+          id="tech-content"
+          class="collapsible-content open mt-4 text-gray-700"
+        >
+          {{technology_analysis}}
+        </div>
+      </section>
+
+      <!-- SWOT Analysis -->
+      <section
+        id="swot-analysis"
+        class="bg-white rounded-lg shadow-sm p-6 mb-6 page-break"
+      >
+        <h2 class="text-xl font-semibold mb-4 text-gray-900">SWOT Analysis</h2>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-green-50 p-4 rounded-lg">
+            <h3 class="font-semibold text-green-700 mb-2">Strengths</h3>
+            <ul class="text-sm space-y-1">
+              {{#each strengths}}
+              <li>• {{this}}</li>
+              {{/each}}
+            </ul>
+          </div>
+          <div class="bg-red-50 p-4 rounded-lg">
+            <h3 class="font-semibold text-red-700 mb-2">Weaknesses</h3>
+            <ul class="text-sm space-y-1">
+              {{#each weaknesses}}
+              <li>• {{this}}</li>
+              {{/each}}
+            </ul>
+          </div>
+          <div class="bg-blue-50 p-4 rounded-lg">
+            <h3 class="font-semibold text-blue-700 mb-2">Opportunities</h3>
+            <ul class="text-sm space-y-1">
+              {{#each opportunities}}
+              <li>• {{this}}</li>
+              {{/each}}
+            </ul>
+          </div>
+          <div class="bg-yellow-50 p-4 rounded-lg">
+            <h3 class="font-semibold text-yellow-700 mb-2">Threats</h3>
+            <ul class="text-sm space-y-1">
+              {{#each threats}}
+              <li>• {{this}}</li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recommendations -->
+      <section
+        id="recommendations"
+        class="bg-white rounded-lg shadow-sm p-6 mb-6"
+      >
+        <h2 class="text-xl font-semibold mb-4 text-gray-900">
+          Recommendations
+        </h2>
+        <div class="space-y-4">
+          {{#each recommendations}}
+          <div class="flex items-start border-l-4 border-blue-500 pl-4">
+            <span
+              class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-sm mr-3"
+              >{{@index}}</span
+            >
+            <span>{{this}}</span>
+          </div>
+          {{/each}}
+        </div>
+      </section>
+
+      <!-- Follow-up Questions -->
+      <section class="bg-indigo-50 rounded-lg p-6 mb-6">
+        <h2 class="text-xl font-semibold mb-4 text-indigo-900">
+          Suggested Follow-up Questions
+        </h2>
+        <ul class="space-y-2 text-indigo-800">
+          {{#each follow_up_questions}}
+          <li>→ {{this}}</li>
+          {{/each}}
+        </ul>
+      </section>
+
+      <!-- Sources -->
+      <section id="sources" class="bg-white rounded-lg shadow-sm p-6 mb-6">
+        <h2 class="text-xl font-semibold mb-4 text-gray-900">Sources</h2>
+        <div class="space-y-3">
+          {{#each sources}}
+          <div class="flex items-start border-b pb-3">
+            <span
+              class="text-xs px-2 py-1 rounded mr-3
+                        {{#if (eq credibility 'high')}}bg-green-100 text-green-700{{/if}}
+                        {{#if (eq credibility 'medium')}}bg-yellow-100 text-yellow-700{{/if}}
+                        {{#if (eq credibility 'low')}}bg-red-100 text-red-700{{/if}}"
+            >
+              {{credibility}}
+            </span>
+            <div>
+              <a
+                href="{{url}}"
+                class="text-blue-600 hover:underline"
+                target="_blank"
+                >{{title}}</a
+              >
+              <p class="text-sm text-gray-500">{{date}} | {{domain}}</p>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-400 py-6 px-6 text-center text-sm">
+      <p>Generated by Deep Research V3</p>
+      <p>{{date}} | {{source_count}} sources consulted</p>
+    </footer>
+
+    <script>
+      function toggleSection(id) {
+        const content = document.getElementById(id);
+        content.classList.toggle("open");
+      }
+    </script>
+  </body>
+</html>
