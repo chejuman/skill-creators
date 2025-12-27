@@ -1,0 +1,188 @@
+# Technical Debt Analysis Report
+
+**Target:** {TARGET}
+**Analysis Date:** {DATE}
+**Level:** {LEVEL}/5
+**Analyzed By:** resolve-debt-v3 multi-agent system (8 workers)
+
+---
+
+## Executive Summary
+
+| Metric                 | Value             |
+| ---------------------- | ----------------- |
+| Total Issues           | {TOTAL_ITEMS}     |
+| Critical (RICE >= 50)  | {CRITICAL_COUNT}  |
+| High (RICE 20-50)      | {HIGH_COUNT}      |
+| Medium (RICE < 20)     | {MEDIUM_COUNT}    |
+| Estimated Total Effort | {TOTAL_HOURS}h    |
+| Quick Wins Available   | {QUICK_WIN_COUNT} |
+
+### Key Risk Areas
+
+1. {RISK_AREA_1}
+2. {RISK_AREA_2}
+3. {RISK_AREA_3}
+
+### Top 3 Root Causes
+
+1. **{ROOT_CAUSE_1}** - Causes {N} downstream issues
+2. **{ROOT_CAUSE_2}** - Causes {N} downstream issues
+3. **{ROOT_CAUSE_3}** - Causes {N} downstream issues
+
+---
+
+## Issues by Category
+
+| Category      |    Count     |  Critical   |    High     |   Medium   |
+| ------------- | :----------: | :---------: | :---------: | :--------: |
+| Code Quality  |  {CQ_COUNT}  |  {CQ_CRIT}  |  {CQ_HIGH}  |  {CQ_MED}  |
+| Dependencies  | {DEP_COUNT}  | {DEP_CRIT}  | {DEP_HIGH}  | {DEP_MED}  |
+| Architecture  | {ARCH_COUNT} | {ARCH_CRIT} | {ARCH_HIGH} | {ARCH_MED} |
+| Test Coverage | {TEST_COUNT} | {TEST_CRIT} | {TEST_HIGH} | {TEST_MED} |
+| Performance   | {PERF_COUNT} | {PERF_CRIT} | {PERF_HIGH} | {PERF_MED} |
+| Security      | {SEC_COUNT}  | {SEC_CRIT}  | {SEC_HIGH}  | {SEC_MED}  |
+| Documentation | {DOC_COUNT}  | {DOC_CRIT}  | {DOC_HIGH}  | {DOC_MED}  |
+| Type Safety   | {TYPE_COUNT} | {TYPE_CRIT} | {TYPE_HIGH} | {TYPE_MED} |
+
+---
+
+## Critical Issues - Address This Sprint
+
+### {ID}: {TITLE}
+
+- **Category:** {CATEGORY}
+- **Location:** `{FILE_PATH}:{LINE}`
+- **RICE Score:** {RICE_SCORE}
+- **Severity:** {SEVERITY}/5
+- **Effort:** {EFFORT}h
+
+**Problem:**
+{PROBLEM_DESCRIPTION}
+
+**Impact:**
+{IMPACT_DESCRIPTION}
+
+**Root Cause:**
+{ROOT_CAUSE_LINK}
+
+**Solution:**
+{SOLUTION_STEPS}
+
+**Verification:**
+{VERIFICATION_STEPS}
+
+---
+
+## High Priority - Address This Quarter
+
+### {ID}: {TITLE}
+
+- **Category:** {CATEGORY}
+- **Location:** `{FILE_PATH}`
+- **RICE Score:** {RICE_SCORE}
+- **Effort:** {EFFORT}h
+
+**Problem:** {PROBLEM_SUMMARY}
+**Solution:** {SOLUTION_SUMMARY}
+
+---
+
+## Medium Priority - Backlog
+
+| ID   | Category | Issue   | Location |  RICE  |  Effort   |
+| ---- | -------- | ------- | -------- | :----: | :-------: |
+| {ID} | {CAT}    | {ISSUE} | {LOC}    | {RICE} | {EFFORT}h |
+
+---
+
+## Quick Wins (< 2h each, high impact)
+
+- [ ] **{ID}**: {DESCRIPTION} (`{LOCATION}`) - {EFFORT}h
+- [ ] **{ID}**: {DESCRIPTION} (`{LOCATION}`) - {EFFORT}h
+- [ ] **{ID}**: {DESCRIPTION} (`{LOCATION}`) - {EFFORT}h
+
+**Total Quick Win Effort:** {QUICK_WIN_HOURS}h
+**Estimated Impact:** Resolves {QUICK_WIN_IMPACT}% of critical issues
+
+---
+
+## Implementation Roadmap
+
+### Phase 1: Foundation (Week 1-2)
+
+Address root causes and unblock other fixes.
+
+```
+{ROOT_FIX_1}
+    └── Unblocks: {DEPENDENT_ITEMS}
+
+{ROOT_FIX_2}
+    └── Unblocks: {DEPENDENT_ITEMS}
+```
+
+### Phase 2: Core Fixes (Week 3-4)
+
+Address high-priority issues.
+
+```
+{CORE_FIX_1}
+    └── Depends on: Phase 1
+    └── Unblocks: {DEPENDENT_ITEMS}
+```
+
+### Phase 3: Cleanup (Week 5+)
+
+Address medium priority and remaining items.
+
+---
+
+## Metrics to Track
+
+| Metric                |   Current    |    Target    | Measurement           |
+| --------------------- | :----------: | :----------: | --------------------- |
+| Code Coverage         |  {CURRENT}%  |  {TARGET}%   | Jest/pytest coverage  |
+| Cyclomatic Complexity |  {CURRENT}   |  < {TARGET}  | ESLint/SonarQube      |
+| Dependency CVEs       |  {CURRENT}   |      0       | npm audit / pip-audit |
+| Type Coverage         |  {CURRENT}%  | > {TARGET}%  | TypeScript strict     |
+| Bundle Size           | {CURRENT}KB  | < {TARGET}KB | Webpack analyzer      |
+| Security Score        | {CURRENT}/10 | {TARGET}/10  | OWASP checks          |
+
+---
+
+## Validation Notes
+
+**Self-Critique Results:**
+
+- Items Validated: {VALIDATED_COUNT}
+- False Positives Removed: {REMOVED_COUNT}
+- Severity Adjustments: {ADJUSTED_COUNT}
+- Items Needing Review: {REVIEW_COUNT}
+
+**Confidence Distribution:**
+
+- High Confidence: {HIGH_CONF}%
+- Medium Confidence: {MED_CONF}%
+- Low Confidence (review needed): {LOW_CONF}%
+
+---
+
+## Appendix: Analysis Details
+
+| Worker        | Issues Found |  Duration   |
+| ------------- | :----------: | :---------: |
+| Code Quality  |  {CQ_COUNT}  |  {CQ_MS}ms  |
+| Dependencies  | {DEP_COUNT}  | {DEP_MS}ms  |
+| Architecture  | {ARCH_COUNT} | {ARCH_MS}ms |
+| Test Coverage | {TEST_COUNT} | {TEST_MS}ms |
+| Performance   | {PERF_COUNT} | {PERF_MS}ms |
+| Security      | {SEC_COUNT}  | {SEC_MS}ms  |
+| Documentation | {DOC_COUNT}  | {DOC_MS}ms  |
+| Type Safety   | {TYPE_COUNT} | {TYPE_MS}ms |
+
+**Total Files Analyzed:** {FILE_COUNT}
+**Total Analysis Duration:** {TOTAL_DURATION}ms
+
+---
+
+_Generated by resolve-debt-v3 multi-agent system_

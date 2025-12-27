@@ -1,0 +1,2 @@
+# Self-Upgradable Skill Creator Requirements
+# No external dependencies - uses Python stdlib only

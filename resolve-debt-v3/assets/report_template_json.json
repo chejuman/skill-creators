@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Technical Debt Report v3",
+  "description": "Machine-readable technical debt analysis report",
+  "template": {
+    "metadata": {
+      "version": "3.0.0",
+      "generator": "resolve-debt-v3",
+      "target": "{TARGET}",
+      "level": "{LEVEL}",
+      "date": "{DATE}",
+      "duration_ms": "{TOTAL_DURATION}"
+    },
+    "summary": {
+      "total_items": "{TOTAL_ITEMS}",
+      "critical_count": "{CRITICAL_COUNT}",
+      "high_count": "{HIGH_COUNT}",
+      "medium_count": "{MEDIUM_COUNT}",
+      "total_effort_hours": "{TOTAL_HOURS}",
+      "quick_win_count": "{QUICK_WIN_COUNT}",
+      "risk_areas": ["{RISK_AREA_1}", "{RISK_AREA_2}", "{RISK_AREA_3}"]
+    },
+    "categories": {
+      "code_quality": {
+        "count": "{CQ_COUNT}",
+        "critical": "{CQ_CRIT}",
+        "high": "{CQ_HIGH}",
+        "medium": "{CQ_MED}"
+      },
+      "dependencies": {
+        "count": "{DEP_COUNT}",
+        "critical": "{DEP_CRIT}",
+        "high": "{DEP_HIGH}",
+        "medium": "{DEP_MED}"
+      },
+      "architecture": {
+        "count": "{ARCH_COUNT}",
+        "critical": "{ARCH_CRIT}",
+        "high": "{ARCH_HIGH}",
+        "medium": "{ARCH_MED}"
+      },
+      "test_coverage": {
+        "count": "{TEST_COUNT}",
+        "critical": "{TEST_CRIT}",
+        "high": "{TEST_HIGH}",
+        "medium": "{TEST_MED}"
+      },
+      "performance": {
+        "count": "{PERF_COUNT}",
+        "critical": "{PERF_CRIT}",
+        "high": "{PERF_HIGH}",
+        "medium": "{PERF_MED}"
+      },
+      "security": {
+        "count": "{SEC_COUNT}",
+        "critical": "{SEC_CRIT}",
+        "high": "{SEC_HIGH}",
+        "medium": "{SEC_MED}"
+      },
+      "documentation": {
+        "count": "{DOC_COUNT}",
+        "critical": "{DOC_CRIT}",
+        "high": "{DOC_HIGH}",
+        "medium": "{DOC_MED}"
+      },
+      "type_safety": {
+        "count": "{TYPE_COUNT}",
+        "critical": "{TYPE_CRIT}",
+        "high": "{TYPE_HIGH}",
+        "medium": "{TYPE_MED}"
+      }
+    },
+    "items": [
+      {
+        "id": "{ID}",
+        "category": "{CATEGORY}",
+        "subtype": "{SUBTYPE}",
+        "title": "{TITLE}",
+        "description": "{DESCRIPTION}",
+        "location": {
+          "file": "{FILE_PATH}",
+          "line": "{LINE}"
+        },
+        "severity": "{SEVERITY}",
+        "rice": {
+          "reach": "{REACH}",
+          "impact": "{IMPACT}",
+          "confidence": "{CONFIDENCE}",
+          "effort": "{EFFORT}",
+          "score": "{RICE_SCORE}"
+        },
+        "priority": "{PRIORITY}",
+        "solution": "{SOLUTION}",
+        "root_cause": "{ROOT_CAUSE_ID}",
+        "blocked_by": ["{BLOCKED_BY_IDS}"],
+        "unblocks": ["{UNBLOCKS_IDS}"],
+        "confidence_level": "{CONFIDENCE_LEVEL}",
+        "owasp": "{OWASP_CODE}",
+        "cwe": "{CWE_CODE}",
+        "cve": "{CVE_CODE}"
+      }
+    ],
+    "quick_wins": [
+      {
+        "id": "{ID}",
+        "description": "{DESCRIPTION}",
+        "location": "{LOCATION}",
+        "effort_hours": "{EFFORT}"
+      }
+    ],
+    "root_causes": [
+      {
+        "id": "{ROOT_CAUSE_ID}",
+        "description": "{DESCRIPTION}",
+        "symptoms": ["{SYMPTOM_IDS}"],
+        "fix_unlocks": ["{UNLOCKS_IDS}"]
+      }
+    ],
+    "patterns": [
+      {
+        "pattern": "{PATTERN_NAME}",
+        "occurrences": "{OCCURRENCE_COUNT}",
+        "fix_approach": "{FIX_APPROACH}"
+      }
+    ],
+    "implementation_roadmap": {
+      "phase_1": {
+        "name": "Foundation",
+        "items": ["{ITEM_IDS}"],
+        "effort_hours": "{PHASE_EFFORT}"
+      },
+      "phase_2": {
+        "name": "Core Fixes",
+        "items": ["{ITEM_IDS}"],
+        "effort_hours": "{PHASE_EFFORT}"
+      },
+      "phase_3": {
+        "name": "Cleanup",
+        "items": ["{ITEM_IDS}"],
+        "effort_hours": "{PHASE_EFFORT}"
+      }
+    },
+    "metrics": [
+      {
+        "name": "{METRIC_NAME}",
+        "current": "{CURRENT_VALUE}",
+        "target": "{TARGET_VALUE}",
+        "measurement": "{MEASUREMENT_METHOD}"
+      }
+    ],
+    "validation": {
+      "validated_count": "{VALIDATED_COUNT}",
+      "removed_count": "{REMOVED_COUNT}",
+      "adjusted_count": "{ADJUSTED_COUNT}",
+      "review_needed_count": "{REVIEW_COUNT}",
+      "confidence_distribution": {
+        "high": "{HIGH_CONF_PCT}",
+        "medium": "{MED_CONF_PCT}",
+        "low": "{LOW_CONF_PCT}"
+      }
+    },
+    "worker_stats": [
+      {
+        "name": "Code Quality",
+        "issues_found": "{CQ_COUNT}",
+        "duration_ms": "{CQ_MS}"
+      },
+      {
+        "name": "Dependencies",
+        "issues_found": "{DEP_COUNT}",
+        "duration_ms": "{DEP_MS}"
+      },
+      {
+        "name": "Architecture",
+        "issues_found": "{ARCH_COUNT}",
+        "duration_ms": "{ARCH_MS}"
+      },
+      {
+        "name": "Test Coverage",
+        "issues_found": "{TEST_COUNT}",
+        "duration_ms": "{TEST_MS}"
+      },
+      {
+        "name": "Performance",
+        "issues_found": "{PERF_COUNT}",
+        "duration_ms": "{PERF_MS}"
+      },
+      {
+        "name": "Security",
+        "issues_found": "{SEC_COUNT}",
+        "duration_ms": "{SEC_MS}"
+      },
+      {
+        "name": "Documentation",
+        "issues_found": "{DOC_COUNT}",
+        "duration_ms": "{DOC_MS}"
+      },
+      {
+        "name": "Type Safety",
+        "issues_found": "{TYPE_COUNT}",
+        "duration_ms": "{TYPE_MS}"
+      }
+    ]
+  }
+}
