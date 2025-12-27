@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technical Debt Report - {TARGET}</title>
+    <style>
+      :root {
+        --critical: #dc2626;
+        --high: #ea580c;
+        --medium: #ca8a04;
+        --low: #16a34a;
+        --bg: #0f172a;
+        --card: #1e293b;
+        --text: #f1f5f9;
+        --muted: #94a3b8;
+        --border: #334155;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      .meta {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+      .card {
+        background: var(--card);
+        border-radius: 8px;
+        padding: 1.5rem;
+        border: 1px solid var(--border);
+      }
+      .card h3 {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-bottom: 0.5rem;
+      }
+      .card .value {
+        font-size: 2rem;
+        font-weight: bold;
+      }
+      .card .value.critical {
+        color: var(--critical);
+      }
+      .card .value.high {
+        color: var(--high);
+      }
+      .card .value.medium {
+        color: var(--medium);
+      }
+      .section {
+        margin: 2rem 0;
+      }
+      .section-title {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--border);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 0.75rem;
+        border-bottom: 1px solid var(--border);
+      }
+      th {
+        color: var(--muted);
+        font-weight: 500;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+      }
+      .badge {
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+      .badge.critical {
+        background: var(--critical);
+      }
+      .badge.high {
+        background: var(--high);
+      }
+      .badge.medium {
+        background: var(--medium);
+      }
+      .badge.low {
+        background: var(--low);
+      }
+      details {
+        background: var(--card);
+        border-radius: 8px;
+        margin: 0.5rem 0;
+        border: 1px solid var(--border);
+      }
+      summary {
+        padding: 1rem;
+        cursor: pointer;
+        font-weight: 500;
+      }
+      summary:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .detail-content {
+        padding: 1rem;
+        border-top: 1px solid var(--border);
+      }
+      code {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        font-size: 0.9rem;
+      }
+      .progress-bar {
+        height: 8px;
+        background: var(--border);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        transition: width 0.3s;
+      }
+      .chart-row {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 0.5rem 0;
+      }
+      .chart-label {
+        width: 120px;
+        font-size: 0.9rem;
+      }
+      .chart-bar {
+        flex: 1;
+        height: 24px;
+        background: var(--border);
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+      }
+      .chart-fill {
+        height: 100%;
+        display: flex;
+      }
+      .chart-segment {
+        height: 100%;
+      }
+      .chart-segment.critical {
+        background: var(--critical);
+      }
+      .chart-segment.high {
+        background: var(--high);
+      }
+      .chart-segment.medium {
+        background: var(--medium);
+      }
+      .checklist {
+        list-style: none;
+      }
+      .checklist li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .checklist input {
+        margin-right: 0.5rem;
+      }
+      footer {
+        text-align: center;
+        color: var(--muted);
+        margin-top: 3rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
+        font-size: 0.85rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Technical Debt Analysis</h1>
+        <p class="meta">{TARGET} | Level {LEVEL}/5 | {DATE}</p>
+      </header>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Total Issues</h3>
+          <div class="value">{TOTAL_ITEMS}</div>
+        </div>
+        <div class="card">
+          <h3>Critical</h3>
+          <div class="value critical">{CRITICAL_COUNT}</div>
+        </div>
+        <div class="card">
+          <h3>High Priority</h3>
+          <div class="value high">{HIGH_COUNT}</div>
+        </div>
+        <div class="card">
+          <h3>Estimated Effort</h3>
+          <div class="value">{TOTAL_HOURS}h</div>
+        </div>
+      </div>
+
+      <section class="section">
+        <h2 class="section-title">Issues by Category</h2>
+        <!-- CATEGORY_CHART_PLACEHOLDER -->
+        <div class="chart-row">
+          <span class="chart-label">Code Quality</span>
+          <div class="chart-bar">
+            <div class="chart-fill">
+              <div
+                class="chart-segment critical"
+                style="width: {CQ_CRIT_PCT}%"
+              ></div>
+              <div
+                class="chart-segment high"
+                style="width: {CQ_HIGH_PCT}%"
+              ></div>
+              <div
+                class="chart-segment medium"
+                style="width: {CQ_MED_PCT}%"
+              ></div>
+            </div>
+          </div>
+          <span>{CQ_COUNT}</span>
+        </div>
+        <!-- Repeat for other categories -->
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Critical Issues</h2>
+        <!-- CRITICAL_ISSUES_PLACEHOLDER -->
+        <details>
+          <summary>
+            <span class="badge critical">CRITICAL</span> {ID}: {TITLE}
+          </summary>
+          <div class="detail-content">
+            <p><strong>Location:</strong> <code>{FILE_PATH}:{LINE}</code></p>
+            <p><strong>RICE Score:</strong> {RICE_SCORE}</p>
+            <p><strong>Problem:</strong> {PROBLEM_DESCRIPTION}</p>
+            <p><strong>Solution:</strong> {SOLUTION_STEPS}</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Quick Wins</h2>
+        <ul class="checklist">
+          <!-- QUICK_WINS_PLACEHOLDER -->
+          <li>
+            <input type="checkbox" /> <strong>{ID}</strong>: {DESCRIPTION}
+            <code>{LOCATION}</code> - {EFFORT}h
+          </li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">All Issues</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Category</th>
+              <th>Issue</th>
+              <th>Location</th>
+              <th>RICE</th>
+              <th>Priority</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- ISSUES_TABLE_PLACEHOLDER -->
+            <tr>
+              <td>{ID}</td>
+              <td>{CATEGORY}</td>
+              <td>{DESCRIPTION}</td>
+              <td><code>{LOCATION}</code></td>
+              <td>{RICE_SCORE}</td>
+              <td><span class="badge {PRIORITY_CLASS}">{PRIORITY}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Metrics</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Current</th>
+              <th>Target</th>
+              <th>Measurement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- METRICS_PLACEHOLDER -->
+            <tr>
+              <td>{METRIC_NAME}</td>
+              <td>{CURRENT}</td>
+              <td>{TARGET}</td>
+              <td>{MEASUREMENT}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <footer>
+        Generated by resolve-debt-v3 multi-agent system | 8 workers |
+        {TOTAL_DURATION}ms
+      </footer>
+    </div>
+  </body>
+</html>
