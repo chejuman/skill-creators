@@ -1,0 +1,958 @@
+{
+  "brand": {
+    "name": "VUNO",
+    "industry": "AI Healthcare/Medical Imaging",
+    "personality": ["Professional", "Precise", "Scientific", "Innovative"],
+    "target_audience": "Medical professionals",
+    "motion_philosophy": "Subtle, purposeful, non-distracting animations that support clarity and trust",
+    "accessibility_priority": "Reduced motion alternatives required for all animations"
+  },
+  "duration_scale": {
+    "instant": {
+      "ms": 0,
+      "description": "No animation - immediate state change",
+      "use_cases": ["Color changes on interactive elements", "Focus indicators"]
+    },
+    "fast": {
+      "ms": 150,
+      "description": "Quick acknowledgment of interaction",
+      "use_cases": [
+        "Button hover effects",
+        "Toggle switches",
+        "Icon state changes",
+        "Input validation feedback"
+      ]
+    },
+    "normal": {
+      "ms": 250,
+      "description": "Standard UI transitions",
+      "use_cases": [
+        "Page transitions",
+        "Modal appearances",
+        "Drawer slides",
+        "Dropdown menus",
+        "Tab switches"
+      ]
+    },
+    "slow": {
+      "ms": 350,
+      "description": "Deliberate, noticeable transitions for important changes",
+      "use_cases": [
+        "Data visualization updates",
+        "Chart animations",
+        "Scan analysis reveal",
+        "Critical state changes"
+      ]
+    },
+    "slower": {
+      "ms": 500,
+      "description": "Extended animation for emphasis without being intrusive",
+      "use_cases": [
+        "Loading state progression",
+        "AI processing indicator",
+        "Complex data presentation",
+        "Tutorial highlights"
+      ]
+    }
+  },
+  "easing_curves": {
+    "standard": {
+      "cubic_bezier": "cubic-bezier(0.4, 0.0, 0.2, 1.0)",
+      "description": "Material Design standard easing - natural, confident motion",
+      "use_cases": [
+        "General UI transitions",
+        "State changes",
+        "Default animations"
+      ],
+      "motion_type": "ease-in-out"
+    },
+    "entrance": {
+      "cubic_bezier": "cubic-bezier(0.0, 0.0, 0.2, 1.0)",
+      "description": "Elements accelerate into view - implies readiness and clarity",
+      "use_cases": [
+        "Elements appearing on screen",
+        "Content reveals",
+        "Modal entrance",
+        "Data rows loading"
+      ],
+      "motion_type": "ease-out"
+    },
+    "exit": {
+      "cubic_bezier": "cubic-bezier(0.4, 0.0, 1.0, 1.0)",
+      "description": "Elements decelerate out of view - maintains visual momentum",
+      "use_cases": [
+        "Elements leaving screen",
+        "Modal dismissal",
+        "Drawer collapse",
+        "Content fade out"
+      ],
+      "motion_type": "ease-in"
+    },
+    "emphasis": {
+      "cubic_bezier": "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+      "description": "Subtle bounce for attention - professional yet engaging",
+      "use_cases": [
+        "Alert notifications",
+        "Success feedback",
+        "Important metric highlights",
+        "Error indicators"
+      ],
+      "motion_type": "ease-out with subtle bounce"
+    },
+    "medical_analysis": {
+      "cubic_bezier": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+      "description": "Smooth, deliberate progression for medical AI processing - builds confidence",
+      "use_cases": [
+        "Scan analysis progression",
+        "AI confidence meter",
+        "Detection indication",
+        "Report generation"
+      ],
+      "motion_type": "ease-in-out"
+    },
+    "data_reveal": {
+      "cubic_bezier": "cubic-bezier(0.17, 0.67, 0.83, 0.67)",
+      "description": "Symmetric easing for balanced data presentation",
+      "use_cases": [
+        "Chart animations",
+        "Data table reveals",
+        "Graph line draws",
+        "Metric counter increments"
+      ],
+      "motion_type": "ease-in-out symmetric"
+    },
+    "reduced_motion_standard": {
+      "cubic_bezier": "linear",
+      "description": "Linear easing for accessibility - removes easing complexity",
+      "use_cases": ["All animations when prefers-reduced-motion is set"],
+      "motion_type": "linear"
+    }
+  },
+  "micro_interactions": {
+    "button_hover": {
+      "states": {
+        "default": {
+          "background_opacity": 1.0,
+          "scale": 1.0,
+          "shadow": "none"
+        },
+        "hover": {
+          "background_opacity": 0.9,
+          "scale": 1.0,
+          "shadow": "0 2px 8px rgba(0, 0, 0, 0.12)",
+          "animation": {
+            "duration": "fast",
+            "easing": "standard",
+            "properties": ["background-color", "box-shadow"]
+          }
+        },
+        "active": {
+          "background_opacity": 0.85,
+          "scale": 0.98,
+          "animation": {
+            "duration": "instant",
+            "easing": "instant"
+          }
+        }
+      },
+      "accessibility": {
+        "reduced_motion_hover": {
+          "properties": ["border-color"],
+          "animation": {
+            "duration": "instant",
+            "easing": "linear"
+          }
+        }
+      }
+    },
+    "toggle_switch": {
+      "states": {
+        "off": {
+          "position": "0%",
+          "background": "#E5E7EB"
+        },
+        "on": {
+          "position": "100%",
+          "background": "#10B981",
+          "animation": {
+            "duration": "fast",
+            "easing": "standard",
+            "properties": ["background-color", "transform"]
+          }
+        }
+      },
+      "details": {
+        "thumb_scale_on_interaction": 1.1,
+        "scale_animation_duration": "fast",
+        "scale_easing": "emphasis"
+      },
+      "accessibility": {
+        "reduced_motion": {
+          "duration": "instant",
+          "easing": "linear",
+          "no_scale_animation": true
+        }
+      }
+    },
+    "input_focus": {
+      "states": {
+        "default": {
+          "border_color": "#D1D5DB",
+          "background_opacity": 1.0,
+          "box_shadow": "none"
+        },
+        "focused": {
+          "border_color": "#3B82F6",
+          "background_opacity": 1.0,
+          "box_shadow": "0 0 0 3px rgba(59, 130, 246, 0.1)",
+          "animation": {
+            "duration": "fast",
+            "easing": "standard",
+            "properties": ["border-color", "box-shadow"]
+          }
+        },
+        "error": {
+          "border_color": "#EF4444",
+          "box_shadow": "0 0 0 3px rgba(239, 68, 68, 0.1)",
+          "animation": {
+            "duration": "fast",
+            "easing": "emphasis",
+            "properties": ["border-color", "box-shadow"]
+          }
+        },
+        "success": {
+          "border_color": "#10B981",
+          "box_shadow": "0 0 0 3px rgba(16, 185, 129, 0.1)",
+          "animation": {
+            "duration": "fast",
+            "easing": "emphasis",
+            "properties": ["border-color", "box-shadow"]
+          }
+        }
+      },
+      "accessibility": {
+        "reduced_motion": {
+          "no_shadow_animation": true,
+          "border_change_only": true,
+          "duration": "instant"
+        }
+      }
+    },
+    "checkbox_interaction": {
+      "states": {
+        "unchecked": {
+          "scale": 1.0,
+          "opacity": 1.0
+        },
+        "checked": {
+          "scale": 1.0,
+          "opacity": 1.0,
+          "fill_animation": {
+            "duration": "fast",
+            "easing": "emphasis",
+            "properties": ["background-color", "border-color"]
+          },
+          "checkmark_animation": {
+            "duration": "fast",
+            "delay": "50ms",
+            "easing": "entrance",
+            "properties": ["stroke-dashoffset"]
+          }
+        },
+        "indeterminate": {
+          "animation": {
+            "duration": "fast",
+            "easing": "standard"
+          }
+        }
+      },
+      "accessibility": {
+        "reduced_motion": {
+          "no_checkmark_animation": true,
+          "duration": "instant"
+        }
+      }
+    },
+    "dropdown_menu": {
+      "states": {
+        "closed": {
+          "opacity": 0,
+          "transform": "scaleY(0.8) translateY(-8px)",
+          "pointer_events": "none"
+        },
+        "open": {
+          "opacity": 1,
+          "transform": "scaleY(1) translateY(0)",
+          "animation": {
+            "duration": "normal",
+            "easing": "entrance",
+            "properties": ["opacity", "transform"]
+          }
+        }
+      },
+      "item_stagger": {
+        "delay_increment": "40ms",
+        "max_items": 8
+      },
+      "accessibility": {
+        "reduced_motion": {
+          "duration": "instant",
+          "easing": "linear",
+          "no_stagger": true
+        }
+      }
+    }
+  },
+  "transitions": {
+    "page_transition": {
+      "type": "fade_and_slide",
+      "exit": {
+        "opacity": {
+          "from": 1.0,
+          "to": 0.0,
+          "duration": "fast",
+          "easing": "exit"
+        },
+        "transform": {
+          "from": "translateX(0)",
+          "to": "translateX(-20px)",
+          "duration": "fast",
+          "easing": "exit"
+        }
+      },
+      "entrance": {
+        "opacity": {
+          "from": 0.0,
+          "to": 1.0,
+          "duration": "normal",
+          "easing": "entrance"
+        },
+        "transform": {
+          "from": "translateX(20px)",
+          "to": "translateX(0)",
+          "duration": "normal",
+          "easing": "entrance"
+        }
+      },
+      "use_cases": [
+        "Route changes in web dashboard",
+        "Medical report navigation"
+      ],
+      "accessibility": {
+        "reduced_motion": {
+          "exit_duration": "instant",
+          "entrance_duration": "instant",
+          "no_transform": true,
+          "fade_only": true
+        }
+      }
+    },
+    "modal_appearance": {
+      "overlay": {
+        "opacity": {
+          "from": 0.0,
+          "to": 1.0,
+          "duration": "normal",
+          "easing": "entrance"
+        }
+      },
+      "modal_content": {
+        "transform": {
+          "from": "scale(0.95) translateY(-20px)",
+          "to": "scale(1) translateY(0)",
+          "duration": "normal",
+          "easing": "entrance"
+        },
+        "opacity": {
+          "from": 0.0,
+          "to": 1.0,
+          "duration": "normal",
+          "easing": "entrance"
+        }
+      },
+      "dismissal": {
+        "transform": {
+          "from": "scale(1) translateY(0)",
+          "to": "scale(0.95) translateY(20px)",
+          "duration": "fast",
+          "easing": "exit"
+        },
+        "opacity": {
+          "from": 1.0,
+          "to": 0.0,
+          "duration": "fast",
+          "easing": "exit"
+        }
+      },
+      "medical_context": "Use for patient consent modals, critical action confirmations, scan result reviews",
+      "accessibility": {
+        "reduced_motion": {
+          "transform_duration": "instant",
+          "no_scale": true,
+          "fade_only": true
+        }
+      }
+    },
+    "drawer_navigation": {
+      "slide_direction": "left",
+      "entrance": {
+        "transform": {
+          "from": "translateX(-100%)",
+          "to": "translateX(0)",
+          "duration": "normal",
+          "easing": "entrance"
+        },
+        "overlay": {
+          "opacity": {
+            "from": 0.0,
+            "to": 0.5,
+            "duration": "normal",
+            "easing": "entrance"
+          }
+        }
+      },
+      "exit": {
+        "transform": {
+          "from": "translateX(0)",
+          "to": "translateX(-100%)",
+          "duration": "fast",
+          "easing": "exit"
+        },
+        "overlay": {
+          "opacity": {
+            "from": 0.5,
+            "to": 0.0,
+            "duration": "fast",
+            "easing": "exit"
+          }
+        }
+      },
+      "use_cases": ["Mobile navigation menu", "Filter panel in image viewer"],
+      "accessibility": {
+        "reduced_motion": {
+          "duration": "instant",
+          "easing": "linear",
+          "no_overlay_animation": true
+        }
+      }
+    },
+    "tab_switch": {
+      "active_indicator": {
+        "transform": {
+          "duration": "normal",
+          "easing": "standard",
+          "properties": ["width", "transform"]
+        }
+      },
+      "content": {
+        "opacity": {
+          "from": 0.0,
+          "to": 1.0,
+          "duration": "normal",
+          "easing": "entrance"
+        }
+      },
+      "cross_fade": true,
+      "stagger_delay": "50ms",
+      "use_cases": [
+        "Patient history tabs",
+        "Analysis result categories",
+        "Settings sections"
+      ],
+      "accessibility": {
+        "reduced_motion": {
+          "no_stagger": true,
+          "duration": "instant",
+          "fade_only": true
+        }
+      }
+    },
+    "data_visualization": {
+      "chart_entrance": {
+        "duration": "slow",
+        "easing": "data_reveal",
+        "animation_type": "line-draw",
+        "description": "Animate chart lines from left to right, creating visual narrative"
+      },
+      "bar_chart": {
+        "animation_type": "scale-from-bottom",
+        "duration": "slow",
+        "easing": "entrance",
+        "stagger_delay": "50ms",
+        "description": "Bars grow from baseline with staggered timing for visual rhythm"
+      },
+      "data_update": {
+        "duration": "normal",
+        "easing": "standard",
+        "animation_type": "morphing",
+        "description": "Smooth transition when data values change - update without jarring jumps"
+      },
+      "medical_context": "For vital signs graphs, tumor segmentation visualization, confidence heatmaps",
+      "accessibility": {
+        "reduced_motion": {
+          "static_chart": true,
+          "no_animation": true
+        }
+      }
+    }
+  },
+  "loading_states": {
+    "skeleton_loader": {
+      "animation": {
+        "type": "gradient-shimmer",
+        "duration": "slower",
+        "easing": "linear",
+        "properties": ["background-position"]
+      },
+      "gradient": {
+        "from": "#F3F4F6",
+        "via": "#FFFFFF",
+        "to": "#F3F4F6",
+        "angle": "90deg"
+      },
+      "wave_speed": "1.5s",
+      "accessibility": {
+        "reduced_motion": {
+          "animation_type": "static-pulse",
+          "duration": "instant",
+          "opacity_change_only": true
+        }
+      },
+      "use_cases": [
+        "Image loading in dashboard",
+        "Table data preparation",
+        "Report generation"
+      ]
+    },
+    "spinner_medical": {
+      "type": "indeterminate-circular",
+      "size": "40px",
+      "stroke_width": "3px",
+      "animation": {
+        "rotation": {
+          "from": 0,
+          "to": 360,
+          "duration": "slower",
+          "easing": "linear",
+          "repeat": "infinite"
+        }
+      },
+      "color": "#3B82F6",
+      "accessibility": {
+        "reduced_motion": {
+          "animation_type": "static",
+          "show_percentage": true,
+          "duration": "instant"
+        }
+      },
+      "medical_context": "For AI scan analysis, report generation, data processing",
+      "best_practice": "Always pair with text label indicating process (e.g., 'Analyzing scan...')"
+    },
+    "progress_bar": {
+      "type": "determinate",
+      "height": "4px",
+      "background": "#E5E7EB",
+      "fill": {
+        "color": "#3B82F6",
+        "animation": {
+          "width_change": {
+            "duration": "normal",
+            "easing": "standard"
+          }
+        }
+      },
+      "animation": {
+        "type": "width-transition",
+        "easing": "standard",
+        "duration": "normal"
+      },
+      "accessibility": {
+        "reduced_motion": {
+          "duration": "instant",
+          "easing": "linear"
+        }
+      },
+      "use_cases": [
+        "File upload",
+        "AI processing stages",
+        "Multi-step workflow"
+      ],
+      "stages": {
+        "initiating": {
+          "width": "5%",
+          "label": "Preparing..."
+        },
+        "processing": {
+          "width": "45%",
+          "label": "Processing..."
+        },
+        "analyzing": {
+          "width": "85%",
+          "label": "Analyzing..."
+        },
+        "complete": {
+          "width": "100%",
+          "label": "Complete"
+        }
+      }
+    },
+    "ai_processing_indicator": {
+      "type": "multi_stage",
+      "stages": [
+        {
+          "name": "upload",
+          "icon": "upload",
+          "duration": "500ms",
+          "animation": "pulse"
+        },
+        {
+          "name": "processing",
+          "icon": "spinner",
+          "duration": "2000ms",
+          "animation": "rotate"
+        },
+        {
+          "name": "analyzing",
+          "icon": "analysis",
+          "duration": "1500ms",
+          "animation": "scan-lines"
+        },
+        {
+          "name": "complete",
+          "icon": "check",
+          "duration": "500ms",
+          "animation": "scale-entrance"
+        }
+      ],
+      "label_animation": {
+        "duration": "normal",
+        "easing": "standard"
+      },
+      "medical_context": "Display confidence score incrementally, show AI model used, indicate abnormality detection",
+      "best_practice": "Always communicate what AI is analyzing (e.g., 'Detecting nodules...', 'Cross-referencing standards...')",
+      "accessibility": {
+        "reduced_motion": {
+          "static_indicators": true,
+          "percentage_only": true,
+          "no_animation": true
+        }
+      }
+    },
+    "empty_state": {
+      "illustration": {
+        "animation": {
+          "type": "gentle-float",
+          "duration": "slower",
+          "easing": "linear",
+          "transform": "translateY(-10px) to translateY(10px)",
+          "repeat": "infinite"
+        }
+      },
+      "text_entrance": {
+        "opacity": {
+          "from": 0.0,
+          "to": 1.0,
+          "duration": "normal",
+          "easing": "entrance"
+        },
+        "transform": {
+          "from": "translateY(10px)",
+          "to": "translateY(0)",
+          "duration": "normal",
+          "easing": "entrance"
+        }
+      },
+      "accessibility": {
+        "reduced_motion": {
+          "no_float_animation": true,
+          "instant_appearance": true
+        }
+      }
+    }
+  },
+  "medical_context_animations": {
+    "scan_analysis_reveal": {
+      "description": "Reveal AI findings with confidence building",
+      "phases": [
+        {
+          "phase": "scan_detection",
+          "duration": "300ms",
+          "animation": "highlight-detected-area",
+          "easing": "entrance",
+          "opacity_change": {
+            "from": 0.0,
+            "to": 1.0
+          }
+        },
+        {
+          "phase": "confidence_build",
+          "duration": "700ms",
+          "animation": "percentage-counter-increment",
+          "easing": "medical_analysis",
+          "counter": {
+            "from": 0,
+            "to": "AI_confidence_score"
+          }
+        },
+        {
+          "phase": "metadata_appear",
+          "duration": "400ms",
+          "delay": "200ms",
+          "animation": "fade-in-with-slide",
+          "easing": "entrance"
+        }
+      ],
+      "total_duration": "1400ms",
+      "best_practice": "Stagger reveals to guide user attention through findings progressively",
+      "accessibility": {
+        "reduced_motion": {
+          "instant_reveal": true,
+          "static_confidence": true
+        }
+      }
+    },
+    "abnormality_alert": {
+      "severity_levels": {
+        "low": {
+          "color": "#FBBF24",
+          "animation_easing": "standard",
+          "duration": "normal"
+        },
+        "medium": {
+          "color": "#F97316",
+          "animation_easing": "emphasis",
+          "duration": "fast"
+        },
+        "high": {
+          "color": "#EF4444",
+          "animation_easing": "emphasis",
+          "duration": "fast",
+          "pulse_intensity": "stronger"
+        }
+      },
+      "animation_pattern": "gentle-pulse-with-glow",
+      "pulse_count": 3,
+      "accessibility": {
+        "reduced_motion": {
+          "no_pulse": true,
+          "static_indication": true,
+          "rely_on_color": false,
+          "add_icon": true
+        }
+      }
+    },
+    "comparison_transition": {
+      "description": "Smooth transition between baseline and current scans",
+      "animation": {
+        "type": "cross-fade-or-slide",
+        "duration": "normal",
+        "easing": "standard"
+      },
+      "options": [
+        {
+          "type": "fade",
+          "description": "Simple opacity transition - minimal distraction"
+        },
+        {
+          "type": "horizontal-slide",
+          "description": "Slide from left to right - helps understand temporal progression"
+        }
+      ],
+      "best_practice": "Let medical professionals choose transition style preference",
+      "accessibility": {
+        "reduced_motion": {
+          "fade_only": true,
+          "no_slide": true
+        }
+      }
+    },
+    "report_generation_progress": {
+      "stages": [
+        {
+          "stage": "data_collection",
+          "label": "Collecting findings...",
+          "duration": "1000ms",
+          "icon_animation": "rotate"
+        },
+        {
+          "stage": "formatting",
+          "label": "Formatting report...",
+          "duration": "800ms",
+          "icon_animation": "pulse"
+        },
+        {
+          "stage": "finalizing",
+          "label": "Finalizing...",
+          "duration": "500ms",
+          "icon_animation": "scale"
+        }
+      ],
+      "color_progression": "#3B82F6",
+      "accessibility": {
+        "reduced_motion": {
+          "all_instant": true,
+          "text_only": true
+        }
+      }
+    }
+  },
+  "accessibility_guidelines": {
+    "prefers_reduced_motion": {
+      "media_query": "@media (prefers-reduced-motion: reduce)",
+      "rules": [
+        "Set all animation durations to 0ms or instant",
+        "Use linear easing only",
+        "Remove scale and transform animations",
+        "Rely on opacity changes instead",
+        "Remove stagger delays",
+        "Remove parallax effects"
+      ],
+      "implementation": {
+        "js_detection": "window.matchMedia('(prefers-reduced-motion: reduce)').matches",
+        "css_variables": {
+          "animation_duration": "var(--animation-duration)",
+          "animation_easing": "var(--animation-easing)"
+        }
+      }
+    },
+    "color_contrast": {
+      "focus_indicator": "Minimum 3:1 contrast ratio",
+      "animation_color": "Do not rely solely on animated color changes for important information",
+      "alert_states": "Combine animated glow with icon or pattern change"
+    },
+    "motion_sickness_prevention": {
+      "avoid": [
+        "Excessive parallax",
+        "Rapid flashing (>3Hz)",
+        "Extreme scale transforms",
+        "Spinning animations without clear purpose",
+        "Complex morphing transitions"
+      ],
+      "use_instead": [
+        "Subtle, purposeful motion",
+        "Linear animations when possible",
+        "Opacity-based transitions",
+        "Horizontal/vertical movement only"
+      ]
+    },
+    "screen_reader_support": {
+      "live_regions": "Announce loading states and status changes",
+      "aria_labels": "Use aria-label for animated buttons and state changes",
+      "semantic_html": "Ensure animated elements have proper semantic meaning"
+    },
+    "testing_checklist": [
+      "Test with prefers-reduced-motion enabled",
+      "Verify keyboard navigation is smooth",
+      "Check color contrast of animated elements",
+      "Test on low-end devices for performance",
+      "Verify screen reader announces state changes",
+      "Test with various connection speeds"
+    ]
+  },
+  "performance_optimization": {
+    "best_practices": [
+      "Use transform and opacity properties (GPU accelerated)",
+      "Avoid animating: width, height, position (triggering reflow)",
+      "Use will-change CSS property sparingly",
+      "Batch animations on same timeline when possible",
+      "Debounce scroll and resize animations"
+    ],
+    "gpu_acceleration": {
+      "use_transforms": "translateX, translateY, scale, rotate",
+      "use_opacity": "opacity changes are GPU-optimized",
+      "avoid": "Left, right, top, bottom properties"
+    },
+    "mobile_optimization": {
+      "reduce_duration": "150ms instead of 250ms on mobile",
+      "disable_complex_animations": "On devices with low performance",
+      "use_prefers_reduced_motion": "Query system preference on load",
+      "test_device_battery": "Avoid animations when in low power mode"
+    },
+    "monitoring": {
+      "frame_rate_target": "60fps (16.67ms per frame)",
+      "performance_budget": "Max 200ms visible delay",
+      "tools": ["Chrome DevTools Performance", "Lighthouse", "WebPageTest"]
+    }
+  },
+  "implementation_examples": {
+    "css_variables": {
+      "description": "Use CSS custom properties for consistent animation configuration",
+      "variables": {
+        "--duration-fast": "150ms",
+        "--duration-normal": "250ms",
+        "--duration-slow": "350ms",
+        "--duration-slower": "500ms",
+        "--easing-standard": "cubic-bezier(0.4, 0.0, 0.2, 1.0)",
+        "--easing-entrance": "cubic-bezier(0.0, 0.0, 0.2, 1.0)",
+        "--easing-exit": "cubic-bezier(0.4, 0.0, 1.0, 1.0)",
+        "--easing-emphasis": "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+        "--easing-medical": "cubic-bezier(0.25, 0.46, 0.45, 0.94)"
+      },
+      "usage_example": "transition: background-color var(--duration-fast) var(--easing-standard);"
+    },
+    "reduced_motion_pattern": {
+      "css": "@media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }",
+      "description": "Global reduced-motion override for all animations"
+    },
+    "button_hover_example": {
+      "html": "<button class=\"btn btn-primary\">Analyze Scan</button>",
+      "css": ".btn { transition: background-color var(--duration-fast) var(--easing-standard), box-shadow var(--duration-fast) var(--easing-standard); } .btn:hover { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); }"
+    },
+    "spinner_example": {
+      "description": "Medical-context loading spinner",
+      "html": "<div class=\"spinner\" aria-label=\"Analyzing scan\" role=\"status\"></div>",
+      "css": ".spinner { animation: spin var(--duration-slower) linear infinite; } @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }"
+    }
+  },
+  "animation_guidelines_medical": {
+    "trust_building": [
+      "Use consistent animations across platform - predictability builds trust",
+      "Never make critical medical data appear/disappear without transition",
+      "Provide clear labels for all AI processes",
+      "Show progression of analysis - build confidence incrementally",
+      "Use familiar conventions (spinners, progress bars)"
+    ],
+    "clinical_workflow": [
+      "Do not distract during image analysis - keep animations subtle",
+      "Support quick workflows with fast micro-interactions",
+      "Provide clear confirmation of important actions",
+      "Animation should never obscure critical information",
+      "Secondary information can use more prominent animation for discovery"
+    ],
+    "data_presentation": [
+      "Animate data reveals from left to right (natural reading direction)",
+      "Use color animation to highlight abnormalities, not distract",
+      "Chart animations should feel scientific, not playful",
+      "Stagger reveals for complex data - guide attention",
+      "Always provide static alternative for screen readers"
+    ],
+    "medical_compliance": [
+      "Animations must not delay access to critical information",
+      "All animations must be interruptible (user can skip/disable)",
+      "Accessibility alternatives required for all visual animations",
+      "Test with actual medical professionals for appropriateness",
+      "Document animation purposes in user training"
+    ]
+  },
+  "validation_checklist": {
+    "before_deployment": [
+      "All animations respect prefers-reduced-motion",
+      "Performance tested on target devices (60fps minimum)",
+      "Color contrast verified for animated elements",
+      "Keyboard navigation smooth and intuitive",
+      "Screen readers properly announce state changes",
+      "Medical workflows tested with actual clinicians",
+      "Load time not impacted by animation resources",
+      "Animations provide value, not just decoration",
+      "Reduced-motion alternatives tested thoroughly",
+      "Mobile performance verified"
+    ],
+    "after_deployment": [
+      "Monitor animation-related performance metrics",
+      "Collect feedback from medical professionals",
+      "Track users with reduced-motion preferences",
+      "Test on new device types",
+      "Verify animations still appropriate after UI updates"
+    ]
+  }
+}

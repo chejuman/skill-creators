@@ -1,0 +1,353 @@
+{
+  "brand": {
+    "company": "VUNO",
+    "industry": "AI Healthcare/Medical Imaging",
+    "personality": ["Professional", "Scientific", "Innovative", "Trustworthy"]
+  },
+  "video_style": {
+    "pacing": {
+      "type": "Professional",
+      "description": "Measured, deliberate pacing that conveys precision and expertise",
+      "shot_duration_seconds": {
+        "establishing": "3-5",
+        "product_demo": "4-7",
+        "transition": "1-2",
+        "conclusion": "3-5"
+      },
+      "overall_tempo": "Slow to moderate",
+      "target_video_length": {
+        "social_short": "15-30 seconds",
+        "product_demo": "2-4 minutes",
+        "training_module": "5-10 minutes",
+        "investor_presentation": "8-15 minutes"
+      }
+    },
+    "transitions": {
+      "primary": "Dissolve",
+      "secondary": "Fade to black",
+      "tertiary": "Wipe (left to right for data reveals)",
+      "duration_milliseconds": 300,
+      "avoided": ["Jump cuts", "Fast spins", "Zoom effects"],
+      "philosophy": "Clean and minimal - respect the viewer's cognitive load"
+    },
+    "color_grading": {
+      "primary_palette": {
+        "background": "#0F1419",
+        "accent_primary": "#00D4FF",
+        "accent_secondary": "#1E90FF",
+        "highlight": "#FFFFFF",
+        "medical_overlay": "Cool cyan/blue overlays with 70% opacity"
+      },
+      "tone": "Cool, clinical, professional",
+      "contrast": "High (medical data clarity)",
+      "saturation": "Moderate (not oversaturated, clinical feel)",
+      "temperature": "Cool (5600K-6500K color temperature)",
+      "mood": "Trustworthy, innovative, precise"
+    },
+    "text_animation": {
+      "lower_thirds": {
+        "style": "Minimal, sans-serif (Helvetica, Inter, or Roboto)",
+        "animation": "Fade in from bottom, hold 3-5 seconds, fade out",
+        "position": "Bottom 20% of frame",
+        "background": "Semi-transparent dark bar with accent border",
+        "use_cases": ["Speaker introduction", "Job titles", "Hospital names"]
+      },
+      "medical_data_overlays": {
+        "ai_analysis_display": {
+          "style": "Technical readout aesthetic",
+          "animation": "Scan lines from top, reveal data progressively",
+          "color": "Cyan (#00D4FF) with glow effect",
+          "examples": ["CT scan results", "AI confidence scores", "Diagnostic metrics"]
+        },
+        "confidence_metrics": {
+          "style": "Animated progress bar with percentage",
+          "animation": "Fill from left to right over 2-3 seconds",
+          "format": "0-100% with visual bar indicator",
+          "precision": "Display to 1 decimal place"
+        },
+        "data_visualization": {
+          "style": "Clean charts, graphs, heat maps",
+          "animation": "Animate data points appearing sequentially",
+          "colors": "Cyan, teal, white on dark backgrounds"
+        }
+      },
+      "callout_text": {
+        "animation": "Fade in with subtle scale (1.0x to 1.05x)",
+        "duration": "2-4 seconds hold",
+        "font_hierarchy": "Large headline, smaller supporting text"
+      }
+    }
+  },
+  "audio_branding": {
+    "sonic_logo": {
+      "description": "A 3-second audio signature representing VUNO's AI intelligence and medical precision",
+      "composition": {
+        "opening": "Clean, ascending electronic tone starting at 440Hz (A4), rising to 880Hz (A5) over 0.5 seconds",
+        "middle": "Harmonic resonance with synthesized heartbeat (72 BPM) pulsing underneath",
+        "closing": "Resolved with a single, confident tone that fades gracefully",
+        "overall_duration": "3 seconds",
+        "instrumentation": "Digital synthesizer with organic undertones"
+      },
+      "emotional_tone": "Innovative, trustworthy, precise",
+      "usage": "Logo reveal, product launch moments, section breaks",
+      "file_specs": {
+        "format": "WAV/AIFF (48kHz, 16-bit)",
+        "variants": ["Full 3s", "Short 1s stinger", "Fade variant"]
+      }
+    },
+    "music_style": {
+      "genre": "Ambient + Technological",
+      "characteristics": [
+        "Subtle background presence (not dominant)",
+        "Flowing, organic synth pads",
+        "Minimal percussion (glitchy, AI-like elements)",
+        "Inspiring but never intrusive"
+      ],
+      "tempo": "60-80 BPM (calm, professional)",
+      "instrumentation": [
+        "Ambient synthesizers",
+        "Subtle electronic pulses",
+        "Organic string textures (processed)",
+        "Minimal percussive elements"
+      ],
+      "mood_progression": "Calm opening → Subtle buildup → Confident resolution",
+      "use_cases": {
+        "product_demo": "Ambient tech with light electronic elements (volume: -18dB to -12dB)",
+        "training_videos": "Consistent ambient background throughout",
+        "investor_presentation": "More dynamic with subtle crescendos at key moments",
+        "social_media": "Shorter loops (30-60 seconds), more energetic"
+      },
+      "reference_artists": "Tycho, Ólafur Arnalds, Nils Frahm (electronic/ambient style)"
+    },
+    "sound_effects": {
+      "ai_processing": {
+        "scanning_sound": "Subtle ascending chirp (0.5s duration, rising sine wave from 200Hz to 800Hz)",
+        "processing_sound": "Soft pulsing tone with slight granular texture (repeating every 0.3s)",
+        "analysis_complete": "Clean, confident 'ding' sound at 880Hz, slightly bell-like"
+      },
+      "ui_interactions": {
+        "button_click": "Soft electronic click (100-150ms, bright tone at 600Hz)",
+        "data_load": "Smooth whoosh with underlying tone (300-500ms)",
+        "error_tone": "Brief, non-alarming alert at lower frequency (400Hz, 200ms)",
+        "success_chime": "Confident double-tone: 880Hz then 1320Hz (each 200ms)"
+      },
+      "medical_interface": {
+        "scan_initiation": "Ascending tone sequence representing system activation",
+        "result_ready": "Gentle bell tone followed by subtle confirmation sound",
+        "alert_notification": "Professional, non-jarring alert (avoid medical alarm sounds)"
+      },
+      "volume_levels": {
+        "background_music": "-18dB to -12dB (never dominating)",
+        "sound_effects": "-10dB to -6dB (clear but not startling)",
+        "sonic_logo": "-8dB to -4dB (prominent but professional)"
+      }
+    }
+  },
+  "aspect_ratios": {
+    "16_9_presentations": {
+      "use_cases": ["Product demos", "Training videos", "Webinars", "Conference presentations"],
+      "resolution": "1920x1080 (Full HD) minimum, 3840x2160 (4K) preferred",
+      "safe_area": "90% of frame (ensure text/graphics fit safely)"
+    },
+    "9_16_social": {
+      "use_cases": ["TikTok", "Instagram Reels", "LinkedIn short videos", "Mobile-first content"],
+      "resolution": "1080x1920 (Full HD minimum)",
+      "safe_area": "80% of frame for text/graphics",
+      "content_adaptation": "Vertical layout with centered key elements, readable on mobile"
+    },
+    "1_1_square": {
+      "use_cases": ["Instagram feed posts", "YouTube shorts cover", "LinkedIn feed", "Twitter/X"],
+      "resolution": "1080x1080 minimum",
+      "safe_area": "80% of frame",
+      "layout": "Centered, symmetrical design"
+    }
+  },
+  "thumbnail_style": {
+    "design_philosophy": "Professional medical imagery with clean, readable text",
+    "imagery": {
+      "medical_focus": "AI-enhanced medical images (CT, MRI, X-ray) with clear labeling",
+      "backgrounds": "Blurred medical imaging with VUNO brand color overlay (15-25% opacity)",
+      "subject": "Clear, uncluttered with focus on key diagnostic element"
+    },
+    "text_treatment": {
+      "headline": {
+        "font": "Bold sans-serif (Helvetica Bold, Inter Bold)",
+        "size": "Large (25-30% of thumbnail height)",
+        "color": "White or VUNO cyan (#00D4FF)",
+        "background": "Dark semi-transparent box for readability",
+        "content": "Clear, benefit-driven (e.g., 'AI Diagnostic Accuracy', 'Patient Data Security')"
+      },
+      "secondary_text": {
+        "font": "Regular sans-serif",
+        "size": "12-15% of thumbnail height",
+        "color": "White or light gray",
+        "content": "Context or supporting detail"
+      }
+    },
+    "branding_element": {
+      "logo_placement": "Top right or bottom right, 10-15% of thumbnail size",
+      "accent_color": "Cyan border or icon indicator of key theme"
+    },
+    "composition": {
+      "rule_of_thirds": "Apply for visual interest",
+      "contrast": "High (ensure text legibility at small sizes)",
+      "clutter": "Avoid - medical professionalism requires clean design"
+    }
+  },
+  "caption_style": {
+    "accessibility": {
+      "standard": "Closed captions (CC) in SRT or VTT format",
+      "coverage": "100% of dialogue, significant sound effects, music cues",
+      "timing": "Synchronized within 100ms of audio"
+    },
+    "formatting": {
+      "font": "Sans-serif (Arial, Verdana, or system fonts for web)",
+      "size": "Readable at 1/20th of video height",
+      "color": "White with black outline (2-3px) for contrast",
+      "background": "Semi-transparent black box (70% opacity)",
+      "positioning": "Bottom 20% of frame, centered or left-aligned"
+    },
+    "professional_standards": {
+      "speaker_identification": "Bold name before dialogue (e.g., 'DOCTOR SMITH: Results show...')",
+      "medical_terminology": "Spell out abbreviations on first use (e.g., 'CT scan' before 'CT')",
+      "sound_descriptions": "[Medical scanning sound]", "[Data processing noise]", "[Success chime]",
+      "voice_tone_hints": "[Confident tone]", "[Thoughtful pause]" (sparingly, when critical)"
+    },
+    "line_breaks": {
+      "max_characters_per_line": "42 characters",
+      "max_lines": "2 lines per caption block",
+      "reading_time": "Minimum 3 seconds per caption (180ms per character)"
+    },
+    "medical_content_specific": {
+      "patient_data": "Never display real PHI (Protected Health Information) - use placeholder/de-identified data",
+      "technical_terms": "Define in context (e.g., 'sensitivity' is detection rate, not emotional sensitivity)",
+      "results_readout": "Present clearly and separately from explanatory text"
+    }
+  },
+  "medical_video": {
+    "compliance_guidelines": {
+      "hipaa_compliance": {
+        "patient_privacy": "All patient data must be de-identified or use stock medical imagery",
+        "no_real_phi": "Never show real patient names, MRNs, dates of birth, medical record numbers",
+        "consent": "If using patient likeness, obtain informed written consent",
+        "data_handling": "Demonstrate secure data transmission/encryption when applicable"
+      },
+      "regulatory_standards": {
+        "fda_claims": "Ensure any clinical claims are substantiated and compliant with FDA guidance",
+        "disclaimer": "Include disclaimer if making diagnostic or treatment claims",
+        "research_citations": "Reference peer-reviewed studies when making clinical claims"
+      }
+    },
+    "ai_analysis_visualization": {
+      "scanning_process": {
+        "animation": "Progressive scan lines moving across medical image (top to bottom)",
+        "duration": "2-4 seconds for visual interest",
+        "color_scheme": "Cyan scan lines on original medical image",
+        "sound_design": "Subtle scanning audio throughout"
+      },
+      "ai_detection_display": {
+        "bounding_boxes": "Glowing cyan rectangles around detected areas",
+        "confidence_scores": "Display percentage with smooth numerical animation",
+        "heatmaps": "Color-coded intensity maps (cyan = high confidence, blue = moderate)",
+        "data_readout": "Clean text display of findings"
+      },
+      "comparison_view": {
+        "split_screen": "Before/after or original/AI-enhanced side-by-side",
+        "transition": "Wipe or dissolve between views",
+        "emphasis": "Highlight key differences with subtle animation"
+      },
+      "timeline_integration": {
+        "historical_data": "Show multiple scans/results over time progression",
+        "trend_visualization": "Graph showing improvement/change trajectory"
+      }
+    },
+    "patient_data_representation": {
+      "display_standards": {
+        "anonymization": "Replace names with 'Patient #' or generic identifiers",
+        "age_only": "If including demographics, use age range not exact date of birth",
+        "medical_history": "Show relevant clinical context without identifying details",
+        "location": "Generic 'Regional Hospital' or institution name, not specific location"
+      },
+      "consent_demonstration": {
+        "workflow_steps": "Show how patients grant consent for AI analysis",
+        "transparency": "Demonstrate what data is collected, used, and stored",
+        "security_measures": "Visual representation of encryption, access controls"
+      },
+      "result_communication": {
+        "physician_review": "Show doctor interpreting AI results",
+        "patient_communication": "Demonstrate how results are communicated to patient",
+        "next_steps": "Show recommended follow-up actions or treatment planning"
+      }
+    },
+    "imagery_standards": {
+      "medical_images": {
+        "sources": "Use licensed stock medical imagery or owned/consented patient data",
+        "quality": "High-resolution, clinically relevant images",
+        "authenticity": "Real medical images (not AI-generated for demo purposes, unless clearly labeled)",
+        "variety": "Show diverse modalities (CT, MRI, X-ray, ultrasound) as relevant"
+      },
+      "clinical_accuracy": {
+        "pathology_depiction": "Accurate representation of conditions demonstrated",
+        "terminology": "Use correct clinical terminology consistently",
+        "context": "Provide clinical context for findings shown"
+      },
+      "ethics": {
+        "representation": "Include diverse patient demographics in imagery",
+        "sensitivity": "Respectful treatment of patient conditions/vulnerabilities",
+        "educational": "Ensure clinical content serves educational purpose"
+      }
+    },
+    "workflow_documentation": {
+      "end_to_end_process": {
+        "patient_intake": "Data collection and consent process",
+        "image_acquisition": "Imaging procedure and capture",
+        "ai_analysis": "Processing and analysis workflow",
+        "result_generation": "Output and report generation",
+        "physician_review": "Interpretation and clinical decision-making",
+        "patient_outcome": "Communication and follow-up"
+      },
+      "integration_points": {
+        "ehr_integration": "How results integrate with patient electronic health records",
+        "worklist_management": "Prioritization and case management",
+        "reporting_system": "Final report generation and delivery"
+      }
+    }
+  },
+  "technical_specifications": {
+    "video_codec": {
+      "production": "ProRes 422 HQ or DNxHD (for editing)",
+      "delivery": "H.264 MP4 or H.265 HEVC (for web delivery)",
+      "bitrate": "8-12 Mbps for 1080p, 20-25 Mbps for 4K"
+    },
+    "audio_codec": {
+      "production": "WAV (16-bit, 48kHz)",
+      "delivery": "AAC 128-256 kbps (stereo), Dolby Digital if available",
+      "sample_rate": "48kHz standard"
+    },
+    "frame_rate": {
+      "standard": "24fps (cinematic) or 30fps (professional video standard)",
+      "social_media": "30fps minimum for smooth playback"
+    },
+    "color_space": {
+      "production": "Rec.709 (HD standard)",
+      "delivery": "sRGB for web, Rec.2020 for broadcast"
+    }
+  },
+  "distribution_checklist": {
+    "pre_delivery": [
+      "All captions proofread for accuracy",
+      "Color grading consistent across all scenes",
+      "Audio levels normalized (dialogue -16dB to -20dB LUFS)",
+      "No PHI visible in final output",
+      "Sonic logo and UI sounds properly implemented",
+      "Transitions smooth and professional",
+      "Text legible on all delivery formats (16:9, 9:16, 1:1)"
+    ],
+    "platform_specific": {
+      "youtube": ["16:9 primary", "Subtitles in English and additional languages", "Custom thumbnails for all formats"],
+      "linkedin": ["9:16 vertical priority", "Subtitles mandatory", "Professional lower thirds"],
+      "tiktok": ["9:16 vertical only", "Engaging first 3 seconds critical", "Captions built-in"],
+      "internal_training": ["16:9 standard", "Complete captions", "Downloadable for offline access"]
+    }
+  }
+}

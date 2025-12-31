@@ -1,0 +1,382 @@
+{
+  "brand": {
+    "name": "VUNO",
+    "tagline": "View the Invisible, Know the Unknown",
+    "industry": "AI Healthcare / Medical Imaging",
+    "core_audience": [
+      "Radiologists and medical imaging specialists",
+      "Hospital administrators and healthcare executives",
+      "Healthcare IT professionals",
+      "Clinical researchers",
+      "Medical device procurement teams"
+    ]
+  },
+  "voice_attributes": [
+    {
+      "attribute": "Scientifically Rigorous",
+      "description": "Grounded in clinical evidence and peer-reviewed research. Every claim is substantiated with data, studies, or regulatory approvals.",
+      "example_good": "VUNO Med®-DeepBrain® achieved 98.2% sensitivity in detecting acute intracranial hemorrhage, validated across three independent clinical trials (n=12,847).",
+      "example_avoid": "Our AI is incredibly accurate at finding brain bleeds."
+    },
+    {
+      "attribute": "Clarity-Driven",
+      "description": "Complex AI concepts are explained in accessible language without oversimplification. Technical accuracy is maintained while ensuring understanding.",
+      "example_good": "Our deep learning model analyzes 3D CT volumes slice-by-slice, identifying subtle density variations that may indicate early-stage lesions.",
+      "example_avoid": "Our advanced neural networks use cutting-edge algorithms to process images."
+    },
+    {
+      "attribute": "Patient-Centric Impact",
+      "description": "Technology serves a human purpose. Every feature connects back to improved patient outcomes, faster diagnosis, or reduced physician burden.",
+      "example_good": "By reducing average interpretation time by 37%, radiologists can focus more on complex cases and patient consultations.",
+      "example_avoid": "Our solution processes images 10x faster than competitors."
+    },
+    {
+      "attribute": "Collaborative Partnership",
+      "description": "AI augments clinician expertise rather than replacing it. Language emphasizes partnership, support, and empowerment of medical professionals.",
+      "example_good": "VUNO Med acts as a second reader, flagging potential findings for radiologist review while you maintain full diagnostic control.",
+      "example_avoid": "Let AI do the work for you. Our system can diagnose automatically."
+    },
+    {
+      "attribute": "Trustworthy Transparency",
+      "description": "Open about capabilities and limitations. Regulatory compliance, data privacy, and clinical validation are proactively communicated.",
+      "example_good": "FDA-cleared for triage and notification. Model performance metrics and validation datasets are available in our clinical white paper.",
+      "example_avoid": "Trusted by leading hospitals. Revolutionary AI technology."
+    }
+  ],
+  "tone_matrix": {
+    "description": "Tone adjustments based on context and audience. VUNO maintains professional credibility across all contexts while adapting formality and technical depth.",
+    "contexts": [
+      {
+        "context": "Clinical White Papers / Research Publications",
+        "formality": 1.0,
+        "technical_depth": 1.0,
+        "emotional_warmth": 0.2,
+        "urgency": 0.1,
+        "example": "Retrospective analysis of 8,432 chest radiographs demonstrated area under the ROC curve (AUC) of 0.94 for pneumothorax detection (95% CI: 0.92-0.96)."
+      },
+      {
+        "context": "Product Documentation / User Guides",
+        "formality": 0.8,
+        "technical_depth": 0.9,
+        "emotional_warmth": 0.4,
+        "urgency": 0.2,
+        "example": "To configure notification thresholds, navigate to Settings > Alerts. We recommend starting with High Sensitivity mode during your first 30 days of deployment."
+      },
+      {
+        "context": "Marketing Website / Product Pages",
+        "formality": 0.7,
+        "technical_depth": 0.6,
+        "emotional_warmth": 0.6,
+        "urgency": 0.4,
+        "example": "View the invisible. VUNO Med-BoneAge® analyzes pediatric hand X-rays in seconds, providing consistent bone age assessments that support your clinical judgment."
+      },
+      {
+        "context": "Executive Presentations / ROI Discussions",
+        "formality": 0.9,
+        "technical_depth": 0.5,
+        "emotional_warmth": 0.5,
+        "urgency": 0.6,
+        "example": "Healthcare systems implementing VUNO Med report 23% reduction in critical finding notification time and 18% improvement in radiologist productivity metrics."
+      },
+      {
+        "context": "Customer Support / Training Materials",
+        "formality": 0.6,
+        "technical_depth": 0.7,
+        "emotional_warmth": 0.8,
+        "urgency": 0.3,
+        "example": "We understand integration challenges. Our technical team is here to support your PACS workflow every step of the way. Let's walk through the DICOM configuration together."
+      },
+      {
+        "context": "Social Media / Thought Leadership",
+        "formality": 0.5,
+        "technical_depth": 0.4,
+        "emotional_warmth": 0.7,
+        "urgency": 0.5,
+        "example": "What does it mean to 'view the invisible'? For Dr. Kim at Seoul National University Hospital, it meant detecting a 3mm lung nodule that changed a patient's treatment trajectory. This is AI in healthcare."
+      },
+      {
+        "context": "Regulatory / Compliance Communications",
+        "formality": 1.0,
+        "technical_depth": 0.8,
+        "emotional_warmth": 0.1,
+        "urgency": 0.7,
+        "example": "VUNO Med-DeepBrain® has received FDA 510(k) clearance (K193658) as a Computer-Aided Triage and Notification software for intracranial hemorrhage detection. All adverse events must be reported per 21 CFR Part 803."
+      }
+    ]
+  },
+  "vocabulary": {
+    "preferred_words": {
+      "technology_terms": [
+        "deep learning model",
+        "convolutional neural network (CNN)",
+        "medical image analysis",
+        "computer-aided detection (CAD)",
+        "computer-aided diagnosis",
+        "algorithm validation",
+        "clinical decision support",
+        "DICOM integration",
+        "PACS workflow",
+        "radiomics",
+        "quantitative imaging biomarkers"
+      ],
+      "clinical_terms": [
+        "diagnostic accuracy",
+        "sensitivity and specificity",
+        "positive predictive value (PPV)",
+        "negative predictive value (NPV)",
+        "area under the curve (AUC)",
+        "clinical validation",
+        "multi-center study",
+        "retrospective analysis",
+        "prospective trial",
+        "peer-reviewed publication",
+        "clinical endpoints",
+        "patient outcomes"
+      ],
+      "value_propositions": [
+        "augment clinical expertise",
+        "enhance diagnostic confidence",
+        "reduce interpretation time",
+        "improve workflow efficiency",
+        "support clinical decision-making",
+        "prioritize critical findings",
+        "standardize assessments",
+        "reduce reader variability",
+        "enable early detection",
+        "optimize resource allocation"
+      ],
+      "trust_builders": [
+        "FDA-cleared",
+        "CE-marked",
+        "clinically validated",
+        "peer-reviewed",
+        "evidence-based",
+        "regulatory-compliant",
+        "HIPAA-compliant",
+        "ISO 13485 certified",
+        "transparent methodology",
+        "published results"
+      ]
+    },
+    "avoided_words": {
+      "hype_terms": [
+        "revolutionary",
+        "game-changing",
+        "disruptive",
+        "breakthrough" (unless substantiated with clinical evidence),
+        "magic",
+        "effortless",
+        "perfect",
+        "infallible",
+        "unbeatable"
+      ],
+      "vague_claims": [
+        "highly accurate" (use specific metrics instead),
+        "leading solution" (unless backed by market data),
+        "trusted by thousands" (use specific customer numbers or case studies)",
+        "cutting-edge" (without technical specifics)",
+        "state-of-the-art" (without comparison data)",
+        "best-in-class" (without benchmarking evidence)"
+      ],
+      "replacement_concerns": [
+        "replace radiologists",
+        "eliminate human error",
+        "automate diagnosis",
+        "AI does the work",
+        "no need for expert review",
+        "fully autonomous"
+      ],
+      "unexplained_jargon": [
+        "black box" (explain model interpretability instead)",
+        "AI magic" (describe actual methodology)",
+        "deep tech" (specify the technology)",
+        "next-gen" (define what makes it advanced)",
+        "smart algorithm" (explain what it does)"
+      ]
+    },
+    "vocabulary_guidelines": [
+      "Always define acronyms on first use, even common medical ones",
+      "Use quantitative metrics (sensitivity, AUC) instead of subjective descriptors",
+      "When discussing AI capabilities, specify: what it detects, how it was validated, and regulatory status",
+      "Replace marketing superlatives with clinical evidence",
+      "Use active voice for clarity: 'The model analyzes CT scans' not 'CT scans are analyzed by the model'"
+    ]
+  },
+  "writing_principles": {
+    "dos": [
+      {
+        "principle": "Lead with clinical impact",
+        "explanation": "Start with patient or clinician benefit, then explain the technology",
+        "example": "Detect pneumothorax 40% faster [impact], powered by deep learning trained on 50,000+ chest X-rays [technology]."
+      },
+      {
+        "principle": "Quantify whenever possible",
+        "explanation": "Replace adjectives with numbers. Specific metrics build credibility.",
+        "example": "Instead of 'significant improvement,' write 'reduced false positive rate from 8.2% to 3.1%.'"
+      },
+      {
+        "principle": "Use concrete examples",
+        "explanation": "Illustrate abstract AI concepts with real clinical scenarios",
+        "example": "Our bone age model analyzes 11 anatomical landmarks in the hand and wrist—the same markers pediatric radiologists assess manually."
+      },
+      {
+        "principle": "Acknowledge limitations transparently",
+        "explanation": "Build trust by being upfront about what the technology cannot do",
+        "example": "VUNO Med-DeepBrain® is optimized for non-contrast CT scans. For contrast-enhanced studies or MRI, radiologist interpretation remains the primary diagnostic method."
+      },
+      {
+        "principle": "Structure for scanability",
+        "explanation": "Healthcare professionals are time-constrained. Use headers, bullets, and short paragraphs.",
+        "example": "Break complex validation results into: Study Design | Patient Population | Primary Endpoints | Results | Clinical Significance"
+      },
+      {
+        "principle": "Connect AI to workflow",
+        "explanation": "Don't just describe the algorithm—explain how it fits into daily practice",
+        "example": "When VUNO Med detects a critical finding, it automatically prioritizes the study in your worklist and sends a notification to your mobile device."
+      }
+    ],
+    "donts": [
+      {
+        "principle": "Don't oversimplify medical complexity",
+        "explanation": "Respect the audience's expertise. Avoid patronizing explanations.",
+        "example_avoid": "AI looks at pictures and finds problems.",
+        "example_correct": "Our convolutional neural network performs multi-scale feature extraction across anatomical regions."
+      },
+      {
+        "principle": "Don't make unsubstantiated claims",
+        "explanation": "Every assertion requires evidence: clinical data, regulatory approval, or published research.",
+        "example_avoid": "VUNO is the most accurate AI in radiology.",
+        "example_correct": "VUNO Med-LungCT® achieved 94.3% sensitivity at 0.5 false positives per scan in LUNA16 benchmark testing."
+      },
+      {
+        "principle": "Don't anthropomorphize AI",
+        "explanation": "AI doesn't 'think,' 'understand,' or 'learn' in human terms. Use precise technical language.",
+        "example_avoid": "Our AI understands what pneumonia looks like and learns from every case.",
+        "example_correct": "Our model was trained on 45,000 labeled chest radiographs and validated on an independent test set of 8,000 images."
+      },
+      {
+        "principle": "Don't use fear-based messaging",
+        "explanation": "Avoid implying that clinicians are inadequate without AI. Emphasize augmentation, not replacement.",
+        "example_avoid": "Don't miss another critical finding. Let AI catch what you might overlook.",
+        "example_correct": "Support diagnostic confidence with AI-powered second reads that flag potential findings for your review."
+      },
+      {
+        "principle": "Don't bury regulatory information",
+        "explanation": "Intended use, indications, and regulatory status should be prominent, not fine print.",
+        "example_avoid": "Amazing AI for brain scans. *FDA cleared for certain uses, see label.",
+        "example_correct": "VUNO Med-DeepBrain®: FDA-cleared CADt software for intracranial hemorrhage triage and notification in non-contrast head CT."
+      }
+    ]
+  },
+  "sentence_structure": {
+    "preferred_patterns": [
+      {
+        "pattern": "Metric + Context + Clinical Significance",
+        "example": "98.2% sensitivity [metric] in detecting acute hemorrhage [context] enables faster treatment decisions in emergency departments [clinical significance]."
+      },
+      {
+        "pattern": "Clinical Challenge + AI Solution + Validation",
+        "example": "Vertebral compression fractures are often overlooked in trauma CT [challenge]. VUNO Med-BoneCT® highlights potential fractures with color-coded overlays [solution], validated in a 6,432-patient multi-center trial [validation]."
+      },
+      {
+        "pattern": "Action Verb + Specific Target + Measurable Outcome",
+        "example": "Prioritize [action] critical head CT cases [target] reducing notification time by 37% [outcome]."
+      },
+      {
+        "pattern": "Technology Description + Clinical Integration + User Benefit",
+        "example": "Deep learning segmentation [technology] integrated directly into your PACS viewer [integration] eliminates manual ROI tracing [user benefit]."
+      }
+    ],
+    "length_guidelines": {
+      "headlines": "5-10 words. Lead with benefit or intriguing clinical scenario.",
+      "subheads": "8-12 words. Expand on headline with specific capability or metric.",
+      "body_sentences": "15-25 words average. Vary length for readability. Complex technical content may use longer sentences with clauses, but follow with a short punchy sentence.",
+      "bullet_points": "One complete thought per bullet. 10-20 words. Front-load key information.",
+      "captions": "15-30 words. Explain what the viewer sees and why it matters clinically."
+    },
+    "paragraph_structure": {
+      "opening": "Hook with a clinical pain point, surprising statistic, or patient impact story.",
+      "body": "2-4 sentences. Each paragraph covers ONE idea. Use transitions to connect concepts.",
+      "closing": "Call-to-action, next step, or forward-looking statement about patient care."
+    }
+  },
+  "ai_chatbot_config": {
+    "personality_prompt": "You are a VUNO AI clinical assistant—knowledgeable, precise, and supportive. Your purpose is to help healthcare professionals understand VUNO's medical imaging AI solutions and how they integrate into clinical workflows.\n\nCore behaviors:\n- Provide accurate, evidence-based information about VUNO products, citing clinical validation data and regulatory status when relevant\n- Explain AI concepts clearly without oversimplification, respecting the medical expertise of your audience\n- Focus on clinical impact: how AI augments diagnostic confidence, improves workflow efficiency, and supports patient outcomes\n- When you don't know something, acknowledge it and offer to connect the user with VUNO's clinical or technical teams\n- Maintain professional, collaborative tone—you're a knowledgeable colleague, not a salesperson\n- For regulatory, safety, or specific patient case questions, direct users to appropriate VUNO resources or their institution's protocols\n\nYou do NOT:\n- Make claims about diagnostic capabilities without referencing validated performance metrics\n- Suggest AI can replace radiologist judgment\n- Provide medical advice or clinical decision-making guidance for specific patient cases\n- Use marketing hype or unsubstantiated superlatives\n- Discuss competitor products or comparative claims without evidence\n\nWhen discussing VUNO products:\n- Use full product names (e.g., 'VUNO Med-DeepBrain®' not 'our brain AI')\n- Mention regulatory status (FDA 510(k), CE Mark, MFDS approval) when relevant\n- Cite validation study results with specific metrics (sensitivity, specificity, AUC)\n- Explain how the product integrates with existing PACS/RIS workflows\n- Highlight intended use and any limitations or contraindications\n\nYour ultimate goal: Help healthcare professionals understand how VUNO AI can support their clinical practice while maintaining the highest standards of accuracy, transparency, and patient safety.",
+    "temperature": 0.45,
+    "top_p": 0.9,
+    "max_tokens": 800,
+    "frequency_penalty": 0.3,
+    "presence_penalty": 0.2,
+    "response_style": {
+      "greeting": "Professional and helpful. Acknowledge user context (e.g., 'Hello Dr. [Name]' if known, 'Welcome to VUNO support' if anonymous).",
+      "structure": "Start with direct answer, then provide supporting details. Use bullets for multi-part responses. End with 'Is there anything else I can help clarify?' for open-ended questions.",
+      "technical_depth": "Match user expertise. If uncertain, start mid-technical and adjust based on follow-up questions. Always offer to 'dive deeper into technical details' or 'provide a higher-level overview.'",
+      "citations": "When citing clinical data, include: study type, sample size, key metric. Example: 'In a retrospective analysis of 12,847 CT scans, VUNO Med-DeepBrain® demonstrated 98.2% sensitivity for ICH detection (Park et al., 2021).'",
+      "escalation_triggers": [
+        "Questions about specific patient cases → 'For patient-specific clinical decisions, please consult with your institution's radiologists or VUNO's clinical applications team.'",
+        "Regulatory compliance in specific jurisdictions → 'For detailed regulatory information in [country], I recommend contacting our regulatory affairs team at regulatory@vuno.co.'",
+        "Pricing or contracting → 'I'll connect you with our business development team who can discuss implementation options: sales@vuno.co.'",
+        "Technical integration challenges → 'Our integration specialists can provide detailed PACS workflow guidance. Would you like me to arrange a technical consultation?'"
+      ],
+      "error_handling": "If you don't understand a question: 'I want to make sure I provide accurate information. Could you clarify [specific ambiguity]?' If information is outside your knowledge: 'I don't have specific data on that, but I can connect you with [appropriate VUNO team/resource].'",
+      "proactive_helpfulness": "Anticipate follow-up needs. Example: After explaining a product feature, add 'Would you like to see a demonstration video?' or 'I can send you the clinical validation white paper if you'd like to review the study design.'"
+    },
+    "conversation_memory": {
+      "remember_user_context": "Track user role (radiologist, admin, IT), institution if mentioned, products of interest, and previous questions to personalize responses.",
+      "avoid_repetition": "If user asks similar question, acknowledge: 'Building on what we discussed earlier about [topic]...'",
+      "maintain_thread": "In multi-turn conversations, reference earlier context: 'You mentioned your hospital uses GE PACS—VUNO Med integrates via our Universal PACS Connector module.'"
+    }
+  },
+  "content_examples": {
+    "example_1_product_description": {
+      "before": "VUNO Med-LungCT® is an amazing AI solution that automatically detects lung nodules in CT scans with incredible accuracy. Our cutting-edge deep learning technology analyzes images faster than ever before, helping radiologists catch things they might miss. It's a game-changer for lung cancer screening.",
+      "after": "VUNO Med-LungCT® is an FDA-cleared computer-aided detection software for pulmonary nodule identification in chest CT scans. \n\nClinical Performance:\n- Sensitivity: 94.3% at 0.5 false positives per scan (LUNA16 validation)\n- Validated on 8,432 low-dose screening CTs across three medical centers\n- Published in Radiology (2021, IF: 12.1)\n\nWorkflow Integration:\nAutomatically analyzes incoming chest CTs and overlays color-coded annotations on detected nodules (≥3mm). Integrates with your PACS via DICOM, requiring no change to radiologist reading workflow.\n\nClinical Impact:\nSupports consistent nodule detection in lung cancer screening programs, reducing average interpretation time by 28% while maintaining diagnostic accuracy (University of Seoul Medical Center, 2022).\n\nIntended Use: Adjunctive tool for radiologist review. Not intended as standalone diagnostic device.",
+      "improvement_notes": "Added specific validation metrics, regulatory status, workflow details, and limitations. Removed hype language ('amazing,' 'incredible,' 'game-changer'). Focused on clinical evidence and practical implementation."
+    },
+    "example_2_marketing_headline": {
+      "before": "Revolutionary AI That Never Misses a Finding!",
+      "after": "Supporting Diagnostic Confidence with AI-Powered Second Reads",
+      "improvement_notes": "Removed absolute claim ('never misses') which is medically and legally problematic. Changed from replacement framing to augmentation. More modest, accurate, and trustworthy."
+    },
+    "example_3_technical_explanation": {
+      "before": "Our AI uses advanced neural networks and super smart algorithms to look at X-rays and figure out what's wrong. It's trained on millions of images so it knows what diseases look like.",
+      "after": "VUNO Med-BoneAge® employs a convolutional neural network (CNN) architecture trained on 47,513 pediatric hand radiographs from the RSNA Bone Age dataset and Seoul National University Hospital.\n\nModel Architecture:\n- Base: ResNet-50 with custom regression head\n- Input: 2D anterior-posterior hand/wrist radiographs (DICOM)\n- Output: Bone age estimate (months) with 95% confidence interval\n\nTraining Methodology:\nGround truth labels established by three pediatric radiologists using Greulich-Pyle atlas. Model validated on independent test set (n=4,821) achieving mean absolute error of 4.2 months.\n\nClinical Application:\nProvides consistent bone age assessments to support endocrinologist evaluation of growth disorders, reducing inter-reader variability from 7.8 months to 4.1 months in our validation study.",
+      "improvement_notes": "Replaced vague terms ('super smart,' 'figure out,' 'knows') with precise technical language. Added specific architecture, training data details, and validation metrics. Maintained clarity while respecting audience expertise."
+    },
+    "example_4_customer_support_response": {
+      "before": "Sorry you're having trouble! Our system is really easy to use. Just click the button and it should work. If not, try restarting your computer. Let us know if you need more help!",
+      "after": "Thank you for reaching out about the DICOM send error. I understand integration challenges can be frustrating, especially during your initial deployment phase.\n\nLet's troubleshoot systematically:\n\n1. DICOM Configuration Check:\n   - Verify VUNO Med AE Title matches your PACS configuration (default: VUNO_MED)\n   - Confirm destination port (typically 104 or 11112)\n   - Check firewall allows outbound traffic on DICOM port\n\n2. Network Connectivity:\n   - From the VUNO Med server, ping your PACS IP address\n   - Run DICOM echo test: Tools > Network > Test Connection\n\n3. Common Causes:\n   - Mismatched character encoding (VUNO uses UTF-8; some legacy PACS expect ISO-8859-1)\n   - Transfer syntax negotiation failure\n\nCould you share the specific error code from Logs > DICOM Activity? This will help me identify the exact issue.\n\nIf this is urgent and impacting clinical workflow, I can escalate to our technical integration team for same-day support. Would that be helpful?\n\nBest regards,\nVUNO Support Team",
+      "improvement_notes": "Acknowledged user frustration with empathy. Provided structured troubleshooting steps with specific technical details. Avoided condescending language ('really easy to use'). Offered escalation path. Maintained helpful, professional tone appropriate for technical support."
+    },
+    "example_5_thought_leadership_social_post": {
+      "before": "AI is the future of healthcare! VUNO is leading the revolution with the most advanced technology. Follow us to stay ahead of the curve! #AI #Innovation #HealthTech",
+      "after": "What does radiologist + AI collaboration look like in practice?\n\nAt Asan Medical Center's emergency department, VUNO Med-DeepBrain® analyzes every head CT for intracranial hemorrhage. When a critical finding is detected, it's automatically prioritized in the worklist.\n\nThe result: 41% reduction in notification time for ICH cases, from 28 minutes to 16.5 minutes on average.\n\n\"AI doesn't replace our clinical judgment,\" says Dr. Lee, Section Chief of Emergency Radiology. \"It ensures we see the most urgent cases first, especially during high-volume shifts.\"\n\nThis is augmented intelligence: combining AI speed with human expertise to improve patient outcomes.\n\nRead the full case study: [link]\n\n#MedicalImaging #AIinHealthcare #Radiology",
+      "improvement_notes": "Replaced generic hype with specific, evidence-based story. Used real clinical data and attributed quote. Showed concrete outcome (reduced notification time). Emphasized collaboration over replacement. More engaging, credible, and aligned with VUNO brand values."
+    },
+    "example_6_executive_roi_pitch": {
+      "before": "VUNO AI will save your hospital tons of money and make everything more efficient. Our technology is the best in the market and will give you a competitive advantage. ROI is guaranteed!",
+      "after": "Healthcare systems implementing VUNO Med report measurable operational and clinical impact across three key areas:\n\n1. Radiologist Productivity:\n   - 23-37% reduction in average interpretation time for AI-assisted studies\n   - Equivalent to 2.1 additional FTE radiologist capacity at a 300-bed hospital\n   - Allows reallocation of resources to complex cases and multidisciplinary conferences\n\n2. Critical Finding Notification:\n   - 41% faster time to treatment for intracranial hemorrhage (Asan Medical Center, 2022)\n   - Reduces mortality risk in time-sensitive conditions\n   - Supports Joint Commission standards for critical result communication\n\n3. Quality & Consistency:\n   - 48% reduction in inter-reader variability for bone age assessments (Seoul National University Hospital, 2021)\n   - Supports standardized reporting for lung cancer screening programs (ACR Lung-RADS)\n   - Reduces callbacks and repeat imaging\n\nImplementation Model:\nPhased deployment starting with highest-volume modality (typically chest X-ray or head CT). Average time to full PACS integration: 4-6 weeks. Ongoing support includes quarterly performance reviews and model updates.\n\nWe can provide a customized ROI analysis based on your institution's case volume, payer mix, and strategic priorities. Would you like to schedule a discovery call with our clinical applications team?",
+      "improvement_notes": "Replaced vague promises with specific, quantified outcomes. Structured by executive priorities (productivity, patient outcomes, quality). Included real-world data from named institutions. Acknowledged implementation timeline. Ended with clear next step, not guaranteed ROI."
+    }
+  },
+  "brand_guidelines_summary": {
+    "core_principle": "VUNO's voice balances scientific rigor with human impact. We are credible because we're specific, trustworthy because we're transparent, and compelling because we connect AI technology to real patient outcomes.",
+    "tone_in_one_sentence": "Knowledgeable and precise, yet warm and collaborative—like a trusted clinical colleague sharing evidence-based insights.",
+    "key_differentiators": [
+      "We quantify claims with clinical validation data, not marketing superlatives",
+      "We emphasize AI as augmentation tool, not replacement for clinical expertise",
+      "We proactively disclose regulatory status, limitations, and intended use",
+      "We respect our audience's medical expertise with appropriate technical depth",
+      "We connect every AI feature to clinical workflow and patient outcomes"
+    ],
+    "voice_consistency_checklist": [
+      "Have I supported claims with specific metrics or clinical evidence?",
+      "Does this content respect the reader's medical expertise?",
+      "Am I emphasizing collaboration between AI and clinicians?",
+      "Have I been transparent about regulatory status and limitations?",
+      "Does this connect to patient outcomes or clinician workflow?",
+      "Would a skeptical radiologist find this credible and respectful?",
+      "Have I avoided hype language and unsubstantiated claims?"
+    ]
+  }
+}

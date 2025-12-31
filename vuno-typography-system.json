@@ -1,0 +1,731 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/#token-format",
+  "metadata": {
+    "brand": "VUNO",
+    "description": "Typography system specification for VUNO - AI Healthcare/Medical Imaging platform",
+    "category": "typography",
+    "version": "1.0.0",
+    "created": "2025-12-31",
+    "personality": ["Professional", "Scientific", "Innovative", "Trustworthy"],
+    "platforms": ["Web", "Print"],
+    "languages": ["English", "Korean"],
+    "rationale": "VUNO's typography system balances scientific precision with modern aesthetics. Inter provides clean, geometric letterforms ideal for medical data visualization and dashboards, while Pretendard (Korean) maintains visual hierarchy and readability in bilingual contexts. The type scale (1.25 ratio) ensures clear hierarchy from UI labels to hero headlines, with fluid responsive scaling for optimal readability across devices."
+  },
+  "fontFamilies": {
+    "heading": {
+      "$value": "-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif",
+      "$type": "fontFamily",
+      "$description": "Primary heading font - modern, geometric sans-serif optimized for medical dashboards and scientific content",
+      "$context": ["headlines", "page-titles", "data-labels"]
+    },
+    "body": {
+      "$value": "-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif",
+      "$type": "fontFamily",
+      "$description": "Body text font - excellent legibility at all sizes for long-form medical content and reports",
+      "$context": ["body-text", "descriptions", "paragraphs"]
+    },
+    "monospace": {
+      "$value": "'IBM Plex Mono', 'Courier New', monospace",
+      "$type": "fontFamily",
+      "$description": "Monospace font for technical data, medical codes, and precise numerical values in dashboards",
+      "$context": ["code", "data-values", "medical-ids"]
+    },
+    "korean": {
+      "$value": "'Pretendard', '-apple-system', 'BlinkMacSystemFont', sans-serif",
+      "$type": "fontFamily",
+      "$description": "Korean-optimized font providing excellent readability for Hangul text with consistent x-height and weight distribution",
+      "$context": ["korean-text", "bilingual-content"]
+    },
+    "korean-monospace": {
+      "$value": "'Noto Sans Mono', 'IBM Plex Mono', monospace",
+      "$type": "fontFamily",
+      "$description": "Korean-compatible monospace for medical codes and numerical data in Korean interfaces",
+      "$context": ["korean-code", "korean-data"]
+    }
+  },
+  "fontWeights": {
+    "normal": {
+      "$value": 400,
+      "$type": "number",
+      "$description": "Regular weight for body text and standard content"
+    },
+    "medium": {
+      "$value": 500,
+      "$type": "number",
+      "$description": "Medium weight for subtle emphasis and UI components"
+    },
+    "semibold": {
+      "$value": 600,
+      "$type": "number",
+      "$description": "Semibold weight for subheadings and key UI labels"
+    },
+    "bold": {
+      "$value": 700,
+      "$type": "number",
+      "$description": "Bold weight for primary headings and critical alerts"
+    }
+  },
+  "typeScale": {
+    "fontSize": {
+      "xs": {
+        "$value": "12px",
+        "$type": "dimension",
+        "$description": "Extra small - UI labels, captions, helper text",
+        "$responsive": "clamp(11px, 0.75vw, 12px)"
+      },
+      "sm": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "Small - secondary labels, table captions, annotations",
+        "$responsive": "clamp(13px, 0.875vw, 14px)"
+      },
+      "base": {
+        "$value": "16px",
+        "$type": "dimension",
+        "$description": "Base/body text - default size for all body content",
+        "$responsive": "clamp(15px, 1vw, 16px)",
+        "$scale-reference": "1x (base)"
+      },
+      "lg": {
+        "$value": "20px",
+        "$type": "dimension",
+        "$description": "Large - section subheadings, prominent labels",
+        "$responsive": "clamp(18px, 1.25vw, 20px)",
+        "$scale-calculation": "16px × 1.25 = 20px"
+      },
+      "xl": {
+        "$value": "25px",
+        "$type": "dimension",
+        "$description": "Extra large - subsection titles, card headlines",
+        "$responsive": "clamp(22px, 1.5625vw, 25px)",
+        "$scale-calculation": "16px × 1.25² = 25px"
+      },
+      "2xl": {
+        "$value": "32px",
+        "$type": "dimension",
+        "$description": "2X large - section titles, modal headers",
+        "$responsive": "clamp(28px, 2vw, 32px)",
+        "$scale-calculation": "16px × 1.25³ = 32px"
+      },
+      "3xl": {
+        "$value": "40px",
+        "$type": "dimension",
+        "$description": "3X large - page titles, hero sections",
+        "$responsive": "clamp(34px, 2.5vw, 40px)",
+        "$scale-calculation": "16px × 1.25⁴ = 40px"
+      },
+      "4xl": {
+        "$value": "50px",
+        "$type": "dimension",
+        "$description": "4X large - hero headlines, brand statements",
+        "$responsive": "clamp(40px, 3.125vw, 50px)",
+        "$scale-calculation": "16px × 1.25⁵ = 50px"
+      }
+    },
+    "scaleRatio": {
+      "$value": 1.25,
+      "$type": "number",
+      "$description": "Perfect Fifth ratio - mathematical scale for harmonious type hierarchy",
+      "$rationale": "1.25 ratio provides clear visual distinction between sizes while maintaining proportional relationships, ideal for scientific and technical interfaces"
+    }
+  },
+  "lineHeights": {
+    "tight": {
+      "$value": 1.25,
+      "$type": "number",
+      "$description": "Tight line height (20px at base) - single-line labels, dense data",
+      "$accessibility": "Use with caution - not recommended for body text over 2 lines"
+    },
+    "normal": {
+      "$value": 1.5,
+      "$type": "number",
+      "$description": "Normal line height (24px at base) - standard body text and readability",
+      "$accessibility": "Recommended for all body copy and standard paragraphs (WCAG AA compliant)"
+    },
+    "relaxed": {
+      "$value": 1.75,
+      "$type": "number",
+      "$description": "Relaxed line height (28px at base) - improved readability in medical reports",
+      "$accessibility": "Optimal for dense medical content and long-form documentation (WCAG AAA compliant)"
+    },
+    "loose": {
+      "$value": 2,
+      "$type": "number",
+      "$description": "Loose line height (32px at base) - maximum readability for print",
+      "$context": ["print-reports", "educational-content"]
+    }
+  },
+  "letterSpacing": {
+    "tight": {
+      "$value": "-0.02em",
+      "$type": "dimension",
+      "$description": "Tight tracking (-0.32px at base) - headlines, display text",
+      "$context": ["4xl", "3xl", "headlines"]
+    },
+    "normal": {
+      "$value": "0em",
+      "$type": "dimension",
+      "$description": "Normal tracking - default for all text sizes"
+    },
+    "wide": {
+      "$value": "0.025em",
+      "$type": "dimension",
+      "$description": "Wide tracking (0.4px at base) - UI labels, all-caps text",
+      "$context": ["labels", "badges", "caps"]
+    },
+    "extraWide": {
+      "$value": "0.05em",
+      "$type": "dimension",
+      "$description": "Extra wide tracking (0.8px at base) - medical acronyms, emphasis",
+      "$context": ["acronyms", "medical-codes"]
+    }
+  },
+  "typographyCompositions": {
+    "heading1": {
+      "fontSize": {
+        "$value": "50px",
+        "$type": "dimension"
+      },
+      "fontWeight": {
+        "$value": 700,
+        "$type": "number"
+      },
+      "lineHeight": {
+        "$value": 1.2,
+        "$type": "number"
+      },
+      "letterSpacing": {
+        "$value": "-0.02em",
+        "$type": "dimension"
+      },
+      "$description": "Hero headline - brand statements and main page titles",
+      "$responsive": "clamp(36px, 3.5vw, 50px)"
+    },
+    "heading2": {
+      "fontSize": {
+        "$value": "40px",
+        "$type": "dimension"
+      },
+      "fontWeight": {
+        "$value": 700,
+        "$type": "number"
+      },
+      "lineHeight": {
+        "$value": 1.25,
+        "$type": "number"
+      },
+      "letterSpacing": {
+        "$value": "-0.01em",
+        "$type": "dimension"
+      },
+      "$description": "Major section heading - dashboard sections, report chapters",
+      "$responsive": "clamp(32px, 2.75vw, 40px)"
+    },
+    "heading3": {
+      "fontSize": {
+        "$value": "32px",
+        "$type": "dimension"
+      },
+      "fontWeight": {
+        "$value": 700,
+        "$type": "number"
+      },
+      "lineHeight": {
+        "$value": 1.3,
+        "$type": "number"
+      },
+      "letterSpacing": {
+        "$value": "0em",
+        "$type": "dimension"
+      },
+      "$description": "Subsection heading - card titles, modal headers",
+      "$responsive": "clamp(26px, 2.25vw, 32px)"
+    },
+    "heading4": {
+      "fontSize": {
+        "$value": "25px",
+        "$type": "dimension"
+      },
+      "fontWeight": {
+        "$value": 600,
+        "$type": "number"
+      },
+      "lineHeight": {
+        "$value": 1.4,
+        "$type": "number"
+      },
+      "letterSpacing": {
+        "$value": "0em",
+        "$type": "dimension"
+      },
+      "$description": "Minor heading - list items, component titles",
+      "$responsive": "clamp(22px, 1.75vw, 25px)"
+    },
+    "heading5": {
+      "fontSize": {
+        "$value": "20px",
+        "$type": "dimension"
+      },
+      "fontWeight": {
+        "$value": 600,
+        "$type": "number"
+      },
+      "lineHeight": {
+        "$value": 1.4,
+        "$type": "number"
+      },
+      "letterSpacing": {
+        "$value": "0em",
+        "$type": "dimension"
+      },
+      "$description": "Small heading - metric labels, field names",
+      "$responsive": "clamp(18px, 1.35vw, 20px)"
+    },
+    "heading6": {
+      "fontSize": {
+        "$value": "16px",
+        "$type": "dimension"
+      },
+      "fontWeight": {
+        "$value": 600,
+        "$type": "number"
+      },
+      "lineHeight": {
+        "$value": 1.5,
+        "$type": "number"
+      },
+      "letterSpacing": {
+        "$value": "0.01em",
+        "$type": "dimension"
+      },
+      "$description": "Micro heading - form labels, badge text",
+      "$responsive": "clamp(15px, 1.05vw, 16px)"
+    },
+    "bodyLarge": {
+      "fontSize": {
+        "$value": "18px",
+        "$type": "dimension"
+      },
+      "fontWeight": {
+        "$value": 400,
+        "$type": "number"
+      },
+      "lineHeight": {
+        "$value": 1.6,
+        "$type": "number"
+      },
+      "letterSpacing": {
+        "$value": "0em",
+        "$type": "dimension"
+      },
+      "$description": "Large body text - featured content, introductions",
+      "$responsive": "clamp(16px, 1.15vw, 18px)"
+    },
+    "body": {
+      "fontSize": {
+        "$value": "16px",
+        "$type": "dimension"
+      },
+      "fontWeight": {
+        "$value": 400,
+        "$type": "number"
+      },
+      "lineHeight": {
+        "$value": 1.5,
+        "$type": "number"
+      },
+      "letterSpacing": {
+        "$value": "0em",
+        "$type": "dimension"
+      },
+      "$description": "Standard body text - paragraphs, descriptions, medical content",
+      "$responsive": "clamp(15px, 1vw, 16px)",
+      "$wcag": "AA compliant for readability"
+    },
+    "bodySmall": {
+      "fontSize": {
+        "$value": "14px",
+        "$type": "dimension"
+      },
+      "fontWeight": {
+        "$value": 400,
+        "$type": "number"
+      },
+      "lineHeight": {
+        "$value": 1.5,
+        "$type": "number"
+      },
+      "letterSpacing": {
+        "$value": "0em",
+        "$type": "dimension"
+      },
+      "$description": "Small body text - secondary content, annotations",
+      "$responsive": "clamp(13px, 0.9vw, 14px)"
+    },
+    "caption": {
+      "fontSize": {
+        "$value": "12px",
+        "$type": "dimension"
+      },
+      "fontWeight": {
+        "$value": 400,
+        "$type": "number"
+      },
+      "lineHeight": {
+        "$value": 1.4,
+        "$type": "number"
+      },
+      "letterSpacing": {
+        "$value": "0.01em",
+        "$type": "dimension"
+      },
+      "$description": "Caption text - image captions, helper text, UI labels",
+      "$responsive": "clamp(11px, 0.8vw, 12px)"
+    },
+    "captionStrong": {
+      "fontSize": {
+        "$value": "12px",
+        "$type": "dimension"
+      },
+      "fontWeight": {
+        "$value": 600,
+        "$type": "number"
+      },
+      "lineHeight": {
+        "$value": 1.4,
+        "$type": "number"
+      },
+      "letterSpacing": {
+        "$value": "0.025em",
+        "$type": "dimension"
+      },
+      "$description": "Strong caption - emphasized labels, UI emphasis",
+      "$responsive": "clamp(11px, 0.8vw, 12px)"
+    },
+    "code": {
+      "fontFamily": {
+        "$value": "'IBM Plex Mono', 'Courier New', monospace",
+        "$type": "fontFamily"
+      },
+      "fontSize": {
+        "$value": "13px",
+        "$type": "dimension"
+      },
+      "fontWeight": {
+        "$value": 400,
+        "$type": "number"
+      },
+      "lineHeight": {
+        "$value": 1.5,
+        "$type": "number"
+      },
+      "letterSpacing": {
+        "$value": "0.02em",
+        "$type": "dimension"
+      },
+      "$description": "Code text - medical IDs, technical values, data fields",
+      "$responsive": "clamp(12px, 0.85vw, 13px)"
+    },
+    "codeStrong": {
+      "fontFamily": {
+        "$value": "'IBM Plex Mono', 'Courier New', monospace",
+        "$type": "fontFamily"
+      },
+      "fontSize": {
+        "$value": "13px",
+        "$type": "dimension"
+      },
+      "fontWeight": {
+        "$value": 700,
+        "$type": "number"
+      },
+      "lineHeight": {
+        "$value": 1.5,
+        "$type": "number"
+      },
+      "letterSpacing": {
+        "$value": "0.02em",
+        "$type": "dimension"
+      },
+      "$description": "Emphasized code - highlighted values, critical data",
+      "$responsive": "clamp(12px, 0.85vw, 13px)"
+    }
+  },
+  "responsiveScaling": {
+    "fluidType": {
+      "$description": "Fluid typography using CSS clamp() for smooth scaling across viewport sizes",
+      "$formula": "clamp(min-size, preferred-size, max-size)",
+      "$notes": [
+        "min-size: smallest readable size on mobile",
+        "preferred-size: calculated as percentage of viewport width (0.5-3vw typical)",
+        "max-size: maximum size on large desktops",
+        "Smooth interpolation between breakpoints - no discrete size jumps"
+      ],
+      "$example": "clamp(15px, 1vw, 16px) scales from 15px to 16px as viewport grows"
+    },
+    "breakpoints": {
+      "mobile": {
+        "$value": "320px",
+        "$description": "Small mobile devices"
+      },
+      "tablet": {
+        "$value": "768px",
+        "$description": "Tablet and larger phones"
+      },
+      "desktop": {
+        "$value": "1024px",
+        "$description": "Standard desktop"
+      },
+      "largeDesktop": {
+        "$value": "1440px",
+        "$description": "Large desktop and ultra-wide displays"
+      },
+      "ultraWide": {
+        "$value": "1920px",
+        "$description": "Ultra-wide monitors and medical workstations"
+      }
+    },
+    "scalingBehavior": {
+      "$description": "All typography scales responsively using clamp(). No media queries needed for type sizes.",
+      "$rationale": "Ensures optimal readability across all devices without discrete jumps in size"
+    }
+  },
+  "koreanSupport": {
+    "recommendations": {
+      "pretendard": {
+        "$value": "Pretendard",
+        "$type": "fontFamily",
+        "$description": "Modern, variable Korean font optimized for on-screen readability",
+        "$pros": [
+          "Excellent x-height matching with Inter",
+          "Superior rendering at small sizes (medical dashboards)",
+          "Variable font support for weight consistency",
+          "Free and open-source (OFL license)",
+          "Supports full Hangul range"
+        ],
+        "$weights": [100, 200, 300, 400, 500, 600, 700, 800, 900],
+        "$fallback": "-apple-system, BlinkMacSystemFont, 'Segoe UI'"
+      },
+      "notoSansKorean": {
+        "$value": "Noto Sans CJK KR",
+        "$type": "fontFamily",
+        "$description": "Google's comprehensive Korean font with extensive character support",
+        "$pros": [
+          "Massive character set coverage",
+          "Good medical term support",
+          "Google Fonts integration",
+          "Multiple weights available"
+        ],
+        "$context": "Alternative or secondary choice"
+      }
+    },
+    "bilingualPairing": {
+      "latin": {
+        "$value": "Inter",
+        "$description": "English text in bilingual content"
+      },
+      "korean": {
+        "$value": "Pretendard",
+        "$description": "Korean text in bilingual content"
+      },
+      "$strategy": "Stack fonts with Korean first to ensure Hangul renders with proper font, Latin falls back to Inter",
+      "$cssExample": "font-family: 'Pretendard', 'Inter', sans-serif;"
+    },
+    "characterSets": {
+      "hangul": {
+        "$description": "Complete Hangul Jamo and combinations",
+        "$range": "U+1100-U+11FF, U+3130-U+318F, U+AC00-U+D7AF"
+      },
+      "koreanPunctuation": {
+        "$description": "Korean-specific punctuation and symbols",
+        "$examples": ["。", "、", "，", "；", "：", "？", "！"]
+      },
+      "medicalTerms": {
+        "$description": "Korean medical and scientific terminology",
+        "$examples": ["영상의학", "진단", "분석", "의료", "임상"]
+      }
+    },
+    "hangulOptimization": {
+      "xHeight": {
+        "$description": "Pretendard has similar x-height to Inter for seamless mixing",
+        "$benefit": "Consistent visual weight in bilingual text"
+      },
+      "weight": {
+        "$description": "Weight progression 400→500→600→700 matches Inter exactly",
+        "$benefit": "Identical visual emphasis across languages"
+      },
+      "rendering": {
+        "$description": "Optimized hinting for on-screen display at 72-96 DPI",
+        "$benefit": "Crisp Hangul rendering on medical displays"
+      }
+    }
+  },
+  "pairingRationale": {
+    "interHeadingBody": {
+      "fonts": ["Inter", "Inter"],
+      "$description": "Single-font strategy using Inter for all English content",
+      "$rationale": [
+        "Geometric sans-serif conveys precision and science",
+        "Excellent readability in medical dashboards",
+        "Professional appearance suitable for healthcare",
+        "Strong letterform differentiation aids scanning",
+        "Superior digital rendering (web optimization)"
+      ],
+      "$strengths": [
+        "Visual consistency across all sizes",
+        "Modern, minimal aesthetic",
+        "Excellent for data-heavy interfaces",
+        "Responsive weight system (100-900)"
+      ],
+      "$context": ["web-dashboards", "medical-interfaces", "digital-first"]
+    },
+    "pretendardKorean": {
+      "fonts": ["Pretendard", "Hangul + Latin mix"],
+      "$description": "Korean-optimized pairing with consistent visual weight",
+      "$rationale": [
+        "Pretendard designed for Korean medical/tech contexts",
+        "X-height matches Inter for seamless bilingual integration",
+        "Weight system perfectly aligned with Inter weights",
+        "Open-source ensures reliable rendering",
+        "Extensive medical terminology support"
+      ],
+      "$strengths": [
+        "Perfect metric compatibility with Inter",
+        "Maintains hierarchy in bilingual contexts",
+        "Excellent at small sizes (important for medical UIs)",
+        "Free licensing (no font cost concerns)"
+      ],
+      "$context": ["bilingual-dashboards", "korean-interfaces", "asia-pacific"]
+    },
+    "monospacePairing": {
+      "fonts": ["IBM Plex Mono", "Noto Sans Mono"],
+      "$description": "Technical font pairing for medical codes and data",
+      "$rationale": [
+        "IBM Plex Mono complements Inter (same designer philosophy)",
+        "Clear, distinct glyphs prevent medical code misreading (critical)",
+        "Generous spacing reduces readability errors",
+        "Professional appearance for technical data",
+        "Noto Sans Mono provides Korean support in code contexts"
+      ],
+      "$strengths": [
+        "High legibility for numerical data (97.5°F readability)",
+        "Distinct 0/O and 1/l/I differentiation",
+        "Open-source (OFL), free licensing",
+        "Excellent for print and digital medical reports"
+      ],
+      "$context": ["medical-codes", "data-values", "technical-output"]
+    },
+    "scientificTrust": {
+      "designPrinciples": [
+        "Geometric sans-serifs (Inter, Pretendard) convey scientific precision",
+        "Consistent weights build credibility and trust",
+        "High contrast supports accessibility and readability",
+        "Clear letterforms reduce cognitive load in medical contexts",
+        "Modern aesthetic signals innovation while maintaining professionalism"
+      ],
+      "$forHealthcare": "Typography must be trustworthy and clear - poorly rendered medical information can have safety implications. Inter and Pretendard provide confidence through clarity."
+    },
+    "bilingualConsistency": {
+      "challenge": "Korean and Latin scripts have different optical properties",
+      "$solution": [
+        "Pretendard's x-height matches Inter's metrics",
+        "Identical weight nomenclature (400, 500, 600, 700)",
+        "Both fonts optimized for medical/technical content",
+        "Consistent line-height ratios across languages"
+      ],
+      "$result": "Seamless visual hierarchy in bilingual medical dashboards"
+    }
+  },
+  "implementation": {
+    "webFontStacks": {
+      "english": {
+        "recommended": "-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Roboto', sans-serif",
+        "$description": "English text with system fonts as fallback"
+      },
+      "korean": {
+        "recommended": "'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', sans-serif",
+        "$description": "Korean text with Pretendard priority"
+      },
+      "bilingual": {
+        "recommended": "'Pretendard', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', sans-serif",
+        "$description": "Mixed Korean/English content - Pretendard renders Hangul, Inter renders Latin"
+      },
+      "monospace": {
+        "recommended": "'IBM Plex Mono', 'Noto Sans Mono', 'Courier New', monospace",
+        "$description": "Data and code display"
+      }
+    },
+    "cssVariables": {
+      "example": "--font-heading: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;",
+      "$usage": "Apply via CSS custom properties for maintainability and theming"
+    },
+    "performanceOptimization": {
+      "strategy": "System fonts first (no HTTP request), with web font fallback",
+      "$rationale": "Medical interfaces prioritize speed and reliability",
+      "$loadingStrategy": [
+        "System fonts: -apple-system, BlinkMacSystemFont (instant)",
+        "Subset Inter/Pretendard to required weights/characters",
+        "Use font-display: swap for graceful degradation",
+        "Preload critical fonts via <link rel='preload'>"
+      ]
+    }
+  },
+  "accessibility": {
+    "wcagCompliance": {
+      "wcagAA": {
+        "$description": "Standard accessibility requirement",
+        "$requirement": "Line height ≥ 1.5 for body text (24px at 16px base)",
+        "$compliance": "All body compositions meet or exceed this"
+      },
+      "wcagAAA": {
+        "$description": "Enhanced accessibility for medical content",
+        "$requirement": "Line height ≥ 1.75 for body text (28px at 16px base)",
+        "$recommendation": "Use for dense medical reports and technical documentation"
+      }
+    },
+    "contrast": {
+      "$description": "Ensure sufficient contrast between text and background",
+      "$wcagAA": "4.5:1 for normal text, 3:1 for large text",
+      "$wcagAAA": "7:1 for normal text, 4.5:1 for large text",
+      "$context": "Critical for medical interfaces where misreading could impact patient care"
+    },
+    "dyslexiaSupport": {
+      "fontChoice": "Inter includes excellent spacing and character differentiation",
+      "$recommendations": [
+        "Use left-aligned text (not justified)",
+        "Maintain adequate line spacing (1.5+)",
+        "Avoid all-caps except for acronyms",
+        "Use generous letter spacing for technical terms"
+      ]
+    },
+    "mobileDyslexia": {
+      "$note": "Fluid type ensures readable sizes on all devices",
+      "$minimum": "Never scale below 14px for body text"
+    }
+  },
+  "printSpecifications": {
+    "medicalReports": {
+      "body": {
+        "fontSize": "11-12pt",
+        "lineHeight": "1.75-2.0",
+        "$description": "Optimal for 300+ DPI print output",
+        "$recommendation": "Use line height 1.75 minimum for medical legibility"
+      },
+      "headings": {
+        "fontSize": "16-28pt",
+        "lineHeight": "1.2-1.3",
+        "$description": "Clear hierarchy in printed documents"
+      },
+      "monospace": {
+        "fontSize": "9-10pt",
+        "lineHeight": "1.5",
+        "$description": "Medical codes and technical data in print",
+        "$example": "Patient IDs, test codes, lab values"
+      }
+    },
+    "printContrast": {
+      "$recommendation": "Always use 100% black text on white for medical documents",
+      "$reason": "Ensures legibility in archival conditions and photocopies"
+    }
+  }
+}

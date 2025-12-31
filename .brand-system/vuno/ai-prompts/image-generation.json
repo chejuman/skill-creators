@@ -1,0 +1,165 @@
+{
+  "$schema": "https://brand-system-architect.io/ai-prompts-schema.json",
+  "brand": "VUNO",
+  "industry": "AI Healthcare / Medical Imaging",
+  "tagline": "View the Invisible, Know the Unknown",
+
+  "midjourney": {
+    "version": "6.1",
+    "style_keywords": [
+      "medical technology",
+      "clinical precision",
+      "healthcare innovation",
+      "scientific accuracy",
+      "professional healthcare",
+      "modern medical",
+      "AI diagnostics"
+    ],
+    "templates": {
+      "product_hero": {
+        "prompt": "{subject}, medical AI technology, clean clinical environment, professional healthcare setting, cool blue tones, precise and scientific, high-tech medical equipment, VUNO brand aesthetic --ar 16:9 --stylize 200 --v 6.1",
+        "negative": "--no cartoon, anime, dark, grungy, horror, blood, graphic"
+      },
+      "dashboard_mockup": {
+        "prompt": "medical AI dashboard interface, clean data visualization, diagnostic charts and graphs, professional healthcare UI, cool cyan and blue color palette, minimalist design, VUNO brand style --ar 16:9 --stylize 150 --v 6.1",
+        "negative": "--no cluttered, messy, amateur, bright red"
+      },
+      "medical_imaging": {
+        "prompt": "{imaging_type} scan visualization, AI-enhanced medical imaging, diagnostic overlay, cool cyan highlights on grayscale, professional medical aesthetic, clinical precision --ar 4:3 --stylize 100 --v 6.1",
+        "negative": "--no disturbing, graphic injury, blood, horror"
+      },
+      "healthcare_professionals": {
+        "prompt": "medical professionals reviewing AI diagnostics, modern hospital environment, diverse healthcare team, confident and collaborative, cool professional lighting, VUNO brand aesthetic --ar 16:9 --stylize 180 --v 6.1",
+        "negative": "--no sad, distressed, outdated equipment"
+      },
+      "abstract_ai": {
+        "prompt": "abstract AI neural network visualization, medical data flowing, interconnected nodes, cyan and blue gradient, scientific precision, innovative technology aesthetic --ar 1:1 --stylize 300 --v 6.1",
+        "negative": "--no chaotic, dark, aggressive"
+      }
+    },
+    "parameters": {
+      "aspect_ratios": {
+        "hero_banner": "16:9",
+        "social_square": "1:1",
+        "medical_report": "4:3",
+        "mobile_vertical": "9:16"
+      },
+      "stylize_range": {
+        "product_shots": "100-200",
+        "marketing": "200-300",
+        "abstract": "300-400"
+      },
+      "quality_settings": "--quality 1 --v 6.1"
+    }
+  },
+
+  "stable_diffusion": {
+    "model": "SDXL 1.0 / SD 3.5",
+    "templates": {
+      "product_visualization": {
+        "positive": "masterpiece, best quality, medical AI technology, healthcare innovation, clean clinical aesthetic, professional medical equipment, cool blue and cyan color palette, sharp focus, high detail, modern hospital environment, scientific precision, VUNO brand style",
+        "negative": "low quality, blurry, text, watermark, signature, amateur, oversaturated, cartoon, anime, horror, blood, disturbing imagery, outdated equipment, messy, cluttered",
+        "cfg_scale": 7,
+        "steps": 30,
+        "sampler": "DPM++ 2M Karras"
+      },
+      "dashboard_ui": {
+        "positive": "best quality, professional medical dashboard interface, clean data visualization, healthcare AI software, diagnostic charts, modern UI design, cool cyan accent color, minimalist, clinical precision, high contrast",
+        "negative": "low quality, blurry, outdated design, cluttered interface, amateur, messy, bright red warnings, horror, text errors",
+        "cfg_scale": 8,
+        "steps": 25,
+        "sampler": "DPM++ 2M Karras"
+      },
+      "medical_scan": {
+        "positive": "medical imaging scan, AI diagnostic overlay, professional radiology, X-ray CT MRI aesthetic, cool cyan highlights, clinical precision, healthcare technology, VUNO visualization style",
+        "negative": "blurry, low quality, horror, disturbing, graphic injury, unprofessional, outdated, amateur",
+        "cfg_scale": 7,
+        "steps": 25,
+        "sampler": "Euler a"
+      },
+      "healthcare_team": {
+        "positive": "professional medical team, healthcare professionals, modern hospital, diverse doctors and nurses, collaborative environment, confident expressions, clinical lighting, clean scrubs and coats, innovative technology setting",
+        "negative": "sad, distressed, outdated, messy, amateur photography, low quality, inappropriate, unprofessional",
+        "cfg_scale": 6,
+        "steps": 30,
+        "sampler": "DPM++ 2M Karras"
+      }
+    },
+    "lora_recommendations": [
+      "medical_equipment_lora",
+      "professional_portrait_lora",
+      "ui_design_lora"
+    ]
+  },
+
+  "dall_e": {
+    "version": "3",
+    "templates": {
+      "hero_image": {
+        "prompt": "A professional medical technology hero image showing advanced AI diagnostic equipment in a modern hospital setting. Cool blue and cyan color palette reflecting innovation and trust. Clean, clinical environment with subtle technology elements. VUNO brand aesthetic with scientific precision and healthcare professionalism.",
+        "style": "vivid",
+        "quality": "hd",
+        "size": "1792x1024"
+      },
+      "dashboard_concept": {
+        "prompt": "A clean, modern medical AI dashboard interface displaying diagnostic data visualizations, charts showing patient metrics, and AI analysis results. Professional healthcare UI with cool cyan accents on white background. Minimalist design with clear data hierarchy and clinical precision.",
+        "style": "natural",
+        "quality": "hd",
+        "size": "1792x1024"
+      },
+      "medical_analysis": {
+        "prompt": "AI-enhanced medical imaging visualization showing diagnostic overlay on a radiological scan. Cool cyan highlighting indicating areas of analysis. Professional medical aesthetic combining technology and healthcare. Clinical precision with innovative AI elements.",
+        "style": "vivid",
+        "quality": "hd",
+        "size": "1024x1024"
+      }
+    },
+    "guidelines": [
+      "Always specify 'professional medical' or 'healthcare technology' context",
+      "Use cool color descriptions: 'cyan', 'sky blue', 'clinical blue'",
+      "Include 'clean', 'precise', 'innovative' for VUNO aesthetic",
+      "Avoid disturbing medical imagery - focus on technology and professionals",
+      "Request 'high quality' or 'HD' for marketing assets"
+    ]
+  },
+
+  "chatbot_voice": {
+    "system_prompt": "You are VUNO's AI assistant, representing a leading medical AI company. Your communication style is:\n\n**Voice Attributes:**\n- Professional and knowledgeable about healthcare technology\n- Precise and scientifically accurate\n- Trustworthy and reassuring\n- Innovative yet accessible\n- Caring about patient outcomes\n\n**Tone Guidelines:**\n- Formality: 7/10 (professional but not cold)\n- Enthusiasm: 6/10 (confident, not hype)\n- Humor: 2/10 (minimal, always appropriate)\n\n**Communication Rules:**\n- Use clear medical terminology, but explain complex concepts\n- Never make unsubstantiated clinical claims\n- Emphasize AI as physician augmentation, not replacement\n- Be helpful and solution-oriented\n- Show empathy when discussing patient care\n\n**Preferred Vocabulary:**\n- 'AI-assisted diagnostics', 'physician augmentation'\n- 'clinical validation', 'evidence-based'\n- 'diagnostic confidence', 'precision medicine'\n- 'healthcare innovation', 'patient outcomes'\n\n**Avoided Vocabulary:**\n- Hype words: 'revolutionary', 'game-changing', 'disruptive'\n- Replacement language: 'replaces doctors', 'no need for physicians'\n- Overpromising: 'guaranteed', 'perfect accuracy', '100%'\n\nRemember: You represent VUNO's mission to 'View the Invisible, Know the Unknown' through responsible, physician-augmenting AI.",
+    "parameters": {
+      "temperature": 0.5,
+      "top_p": 0.9,
+      "frequency_penalty": 0.3,
+      "presence_penalty": 0.2
+    }
+  },
+
+  "voice_synthesis": {
+    "characteristics": {
+      "gender": "Neutral/Professional",
+      "age_range": "30-45 (mature, trustworthy)",
+      "accent": "Neutral (Korean or American English depending on market)",
+      "pitch": "Medium",
+      "speed": "0.95 (slightly measured, precise)",
+      "warmth": "0.7 (professional but caring)"
+    },
+    "platform_presets": {
+      "eleven_labs": {
+        "stability": 0.6,
+        "similarity_boost": 0.8,
+        "style": 0.4,
+        "voice_model": "Professional, healthcare-appropriate"
+      },
+      "azure_tts": {
+        "style": "professional",
+        "style_degree": "1.2",
+        "voice_name": "en-US-GuyNeural or ko-KR-InJoonNeural"
+      }
+    },
+    "guidelines": [
+      "Emphasize medical terminology with clear pronunciation",
+      "Pause briefly before critical diagnostic information",
+      "Maintain consistent, reassuring pace",
+      "Never rush through patient-related information"
+    ]
+  }
+}
