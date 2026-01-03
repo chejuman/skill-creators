@@ -1,0 +1,33 @@
+{
+  "name": "opensource-librarian",
+  "version": "3.0.0",
+  "description": "Premium Level 7 multi-agent open source code research plugin. Features 5 specialized agents, 3 knowledge skills, 3 output commands, and 6 automation hooks. Provides SHA-based GitHub permalinks, bilingual EN/KR output, and JSON API v3 responses using gitmvp and context7 MCP integration.",
+  "author": {
+    "name": "skill-creators",
+    "url": "https://github.com/skill-creators"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skill-creators/opensource-librarian-v3.git"
+  },
+  "engines": {
+    "claude-code": ">=1.0.33"
+  },
+  "keywords": [
+    "opensource",
+    "code-research",
+    "github",
+    "permalink",
+    "multi-agent",
+    "gitmvp",
+    "context7",
+    "mcp",
+    "bilingual",
+    "json-api"
+  ],
+  "agents": "agents/",
+  "skills": "skills/",
+  "commands": "commands/",
+  "hooks": "hooks/hooks.json"
+}

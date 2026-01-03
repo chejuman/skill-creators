@@ -1,0 +1,10 @@
+{
+  "displayName": "Open Source Librarian V3",
+  "shortDescription": "Evidence-based open source code research with GitHub permalinks",
+  "category": "research",
+  "tags": ["opensource", "github", "research", "multi-agent", "mcp"],
+  "icon": "library",
+  "screenshots": [],
+  "featured": true,
+  "pricing": "free"
+}
