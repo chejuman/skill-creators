@@ -1,0 +1,276 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opensource-librarian.v2/api-response",
+  "title": "Open Source Librarian V2 API Response",
+  "description": "Schema for structured JSON API v2 responses",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "const": "v2",
+      "description": "API version identifier"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Response metadata",
+      "properties": {
+        "generated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO8601 timestamp when response was generated"
+        },
+        "query": {
+          "type": "string",
+          "description": "Original user query"
+        },
+        "classification": {
+          "type": "string",
+          "enum": ["TYPE_A", "TYPE_B", "TYPE_C", "TYPE_D"],
+          "description": "Request classification type"
+        },
+        "workersUsed": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20,
+          "description": "Number of parallel workers used"
+        },
+        "executionTimeMs": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Execution time in milliseconds"
+        },
+        "language": {
+          "type": "string",
+          "enum": ["en", "ko", "bilingual"],
+          "default": "bilingual",
+          "description": "Response language"
+        }
+      },
+      "required": ["generated", "query", "classification", "workersUsed"]
+    },
+    "summary": {
+      "type": "object",
+      "description": "Bilingual summary",
+      "properties": {
+        "en": {
+          "type": "string",
+          "maxLength": 500,
+          "description": "English summary"
+        },
+        "ko": {
+          "type": "string",
+          "maxLength": 500,
+          "description": "Korean summary"
+        }
+      },
+      "required": ["en", "ko"]
+    },
+    "findings": {
+      "type": "array",
+      "description": "Research findings with evidence",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^F[0-9]{3}$",
+            "description": "Finding ID (F001, F002, etc.)"
+          },
+          "claim": {
+            "type": "object",
+            "properties": {
+              "en": {
+                "type": "string",
+                "description": "English claim statement"
+              },
+              "ko": {
+                "type": "string",
+                "description": "Korean claim statement"
+              }
+            },
+            "required": ["en", "ko"]
+          },
+          "evidence": {
+            "type": "object",
+            "description": "Evidence supporting the claim",
+            "properties": {
+              "permalink": {
+                "type": "string",
+                "format": "uri",
+                "pattern": "^https://github\\.com/.+/blob/[a-f0-9]{7,40}/.+#L[0-9]+",
+                "description": "GitHub permalink with SHA and line numbers"
+              },
+              "sha": {
+                "type": "string",
+                "minLength": 7,
+                "maxLength": 40,
+                "pattern": "^[a-f0-9]+$",
+                "description": "Git commit SHA"
+              },
+              "repository": {
+                "type": "string",
+                "pattern": "^[a-zA-Z0-9_-]+/[a-zA-Z0-9_.-]+$",
+                "description": "Repository in owner/repo format"
+              },
+              "path": {
+                "type": "string",
+                "description": "File path in repository"
+              },
+              "lines": {
+                "type": "object",
+                "properties": {
+                  "start": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "end": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
+                },
+                "required": ["start", "end"]
+              }
+            },
+            "required": ["permalink", "sha"]
+          },
+          "snippet": {
+            "type": "string",
+            "maxLength": 2000,
+            "description": "Relevant code snippet"
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Confidence score (0.0-1.0)"
+          }
+        },
+        "required": ["id", "claim", "evidence"]
+      }
+    },
+    "history": {
+      "type": "object",
+      "description": "Git history context",
+      "properties": {
+        "timeline": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "eventType": {
+                "type": "string",
+                "enum": ["issue", "pr", "commit", "discussion"]
+              },
+              "reference": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "summary": {
+                "type": "string"
+              },
+              "link": {
+                "type": "string",
+                "format": "uri"
+              }
+            }
+          }
+        },
+        "keyDecisions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "decision": {
+                "type": "string"
+              },
+              "rationale": {
+                "type": "string"
+              },
+              "evidenceLink": {
+                "type": "string",
+                "format": "uri"
+              }
+            }
+          }
+        },
+        "contributors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "role": {
+                "type": "string"
+              },
+              "commits": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "description": "All sources referenced",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["code", "docs", "issue", "pr", "discussion", "web"],
+            "description": "Source type"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Source URL"
+          },
+          "title": {
+            "type": "string",
+            "description": "Source title"
+          },
+          "relevance": {
+            "type": "string",
+            "description": "Why this source is relevant"
+          }
+        },
+        "required": ["type", "url", "title", "relevance"]
+      }
+    },
+    "errors": {
+      "type": "array",
+      "description": "Errors encountered during research",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Error code"
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "recoveryAttempted": {
+            "type": "boolean",
+            "description": "Whether recovery was attempted"
+          },
+          "recoveryAction": {
+            "type": "string",
+            "description": "Recovery action taken"
+          }
+        },
+        "required": ["code", "message"]
+      }
+    }
+  },
+  "required": ["apiVersion", "metadata", "summary", "findings", "sources"]
+}

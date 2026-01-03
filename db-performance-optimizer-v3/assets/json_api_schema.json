@@ -1,0 +1,429 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DB Performance Optimizer V3 API Response",
+  "description": "JSON API output schema for database optimization analysis",
+  "type": "object",
+  "required": ["apiVersion", "metadata", "summary", "recommendations"],
+  "properties": {
+    "apiVersion": {
+      "type": "string",
+      "const": "v3",
+      "description": "API version identifier"
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["generated", "depth", "database", "workersUsed"],
+      "properties": {
+        "generated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO8601 timestamp of report generation"
+        },
+        "depth": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 7,
+          "description": "Analysis depth level (1-7)"
+        },
+        "database": {
+          "type": "string",
+          "description": "Database name analyzed"
+        },
+        "workersUsed": {
+          "type": "integer",
+          "minimum": 5,
+          "maximum": 20,
+          "description": "Number of parallel agents used"
+        },
+        "pgVersion": {
+          "type": "string",
+          "description": "PostgreSQL version"
+        },
+        "timescaleVersion": {
+          "type": "string",
+          "description": "TimescaleDB version if installed"
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "full",
+            "indexes",
+            "n1",
+            "vacuum",
+            "locks",
+            "partition",
+            "timescale",
+            "connections",
+            "explain"
+          ],
+          "description": "Analysis mode"
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["healthScore", "categories", "metrics"],
+      "properties": {
+        "healthScore": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Overall database health score"
+        },
+        "categories": {
+          "type": "object",
+          "properties": {
+            "indexing": {
+              "$ref": "#/definitions/categoryScore"
+            },
+            "queryPerf": {
+              "$ref": "#/definitions/categoryScore"
+            },
+            "maintenance": {
+              "$ref": "#/definitions/categoryScore"
+            },
+            "architecture": {
+              "$ref": "#/definitions/categoryScore"
+            }
+          }
+        },
+        "metrics": {
+          "type": "object",
+          "properties": {
+            "avgQueryTime": {
+              "$ref": "#/definitions/metricComparison"
+            },
+            "cacheHitRatio": {
+              "$ref": "#/definitions/metricComparison"
+            },
+            "n1Queries": {
+              "$ref": "#/definitions/metricComparison"
+            },
+            "deadTupleRatio": {
+              "$ref": "#/definitions/metricComparison"
+            },
+            "connectionUsage": {
+              "$ref": "#/definitions/metricComparison"
+            }
+          }
+        }
+      }
+    },
+    "recommendations": {
+      "type": "object",
+      "required": ["p1_critical", "p2_high", "p3_medium"],
+      "properties": {
+        "p1_critical": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/recommendation"
+          },
+          "description": "Critical issues requiring immediate action"
+        },
+        "p2_high": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/recommendation"
+          },
+          "description": "High priority issues for current sprint"
+        },
+        "p3_medium": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/recommendation"
+          },
+          "description": "Medium priority items for backlog"
+        }
+      }
+    },
+    "implementation": {
+      "type": "object",
+      "properties": {
+        "sql": {
+          "type": "object",
+          "properties": {
+            "indexes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "CREATE/DROP INDEX statements"
+            },
+            "vacuum": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "VACUUM commands"
+            },
+            "config": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "ALTER SYSTEM statements"
+            }
+          }
+        },
+        "python": {
+          "type": "object",
+          "properties": {
+            "orm_fixes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/codeFix"
+              },
+              "description": "SQLAlchemy code optimizations"
+            }
+          }
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "postgresql": {
+              "type": "object",
+              "description": "postgresql.conf settings"
+            },
+            "sqlalchemy": {
+              "type": "object",
+              "description": "Engine configuration"
+            },
+            "pgbouncer": {
+              "type": "object",
+              "description": "PgBouncer settings"
+            }
+          }
+        }
+      }
+    },
+    "timescale": {
+      "type": "object",
+      "properties": {
+        "hypertables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/hypertableInfo"
+          }
+        },
+        "compression": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/compressionRecommendation"
+          }
+        },
+        "aggregates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/aggregateRecommendation"
+          }
+        },
+        "retention": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/retentionPolicy"
+          }
+        }
+      }
+    },
+    "aiInsights": {
+      "type": "object",
+      "properties": {
+        "workloadClassification": {
+          "type": "string",
+          "enum": ["OLTP", "OLAP", "Mixed"]
+        },
+        "predictions": {
+          "type": "object",
+          "properties": {
+            "growthRate": {
+              "type": "string"
+            },
+            "scalingTrigger": {
+              "type": "string"
+            }
+          }
+        },
+        "cloudRecommendations": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "costOptimization": {
+          "type": "object",
+          "properties": {
+            "currentMonthlyCost": {
+              "type": "string"
+            },
+            "projectedSavings": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "categoryScore": {
+      "type": "object",
+      "properties": {
+        "score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 25
+        },
+        "issues": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "metricComparison": {
+      "type": "object",
+      "properties": {
+        "current": {
+          "type": "string"
+        },
+        "projected": {
+          "type": "string"
+        },
+        "improvement": {
+          "type": "string"
+        }
+      }
+    },
+    "recommendation": {
+      "type": "object",
+      "required": ["id", "type", "title", "impact"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "index",
+            "query",
+            "config",
+            "vacuum",
+            "partition",
+            "orm",
+            "architecture",
+            "timescale"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "impact": {
+          "type": "string"
+        },
+        "effort": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        },
+        "risk": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        },
+        "code": {
+          "type": "string"
+        }
+      }
+    },
+    "codeFix": {
+      "type": "object",
+      "properties": {
+        "file": {
+          "type": "string"
+        },
+        "line": {
+          "type": "integer"
+        },
+        "original": {
+          "type": "string"
+        },
+        "fixed": {
+          "type": "string"
+        },
+        "explanation": {
+          "type": "string"
+        }
+      }
+    },
+    "hypertableInfo": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "chunkInterval": {
+          "type": "string"
+        },
+        "chunkCount": {
+          "type": "integer"
+        },
+        "totalSize": {
+          "type": "string"
+        },
+        "compressionEnabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "compressionRecommendation": {
+      "type": "object",
+      "properties": {
+        "table": {
+          "type": "string"
+        },
+        "segmentBy": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "orderBy": {
+          "type": "string"
+        },
+        "estimatedRatio": {
+          "type": "string"
+        }
+      }
+    },
+    "aggregateRecommendation": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "sourceTable": {
+          "type": "string"
+        },
+        "bucketInterval": {
+          "type": "string"
+        },
+        "refreshPolicy": {
+          "type": "string"
+        }
+      }
+    },
+    "retentionPolicy": {
+      "type": "object",
+      "properties": {
+        "table": {
+          "type": "string"
+        },
+        "retentionPeriod": {
+          "type": "string"
+        },
+        "compressionAfter": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
