@@ -1,0 +1,176 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "Brand System Template - Replace with actual values",
+  "$version": "1.0.0",
+
+  "brand": {
+    "name": { "$value": "BRAND_NAME", "$type": "string" },
+    "purpose": { "$value": "PURPOSE_STATEMENT", "$type": "string" },
+    "personality": {
+      "traits": ["trait1", "trait2", "trait3"],
+      "archetype": { "primary": "ARCHETYPE", "secondary": "ARCHETYPE" }
+    }
+  },
+
+  "color": {
+    "brand": {
+      "primary": {
+        "$value": "#0066CC",
+        "$type": "color",
+        "$description": "Primary brand color"
+      },
+      "secondary": {
+        "$value": "#6B7280",
+        "$type": "color"
+      }
+    },
+    "neutral": {
+      "50": { "$value": "#F9FAFB", "$type": "color" },
+      "100": { "$value": "#F3F4F6", "$type": "color" },
+      "200": { "$value": "#E5E7EB", "$type": "color" },
+      "300": { "$value": "#D1D5DB", "$type": "color" },
+      "400": { "$value": "#9CA3AF", "$type": "color" },
+      "500": { "$value": "#6B7280", "$type": "color" },
+      "600": { "$value": "#4B5563", "$type": "color" },
+      "700": { "$value": "#374151", "$type": "color" },
+      "800": { "$value": "#1F2937", "$type": "color" },
+      "900": { "$value": "#111827", "$type": "color" }
+    },
+    "semantic": {
+      "success": { "$value": "#10B981", "$type": "color" },
+      "warning": { "$value": "#F59E0B", "$type": "color" },
+      "error": { "$value": "#EF4444", "$type": "color" },
+      "info": { "$value": "#3B82F6", "$type": "color" }
+    }
+  },
+
+  "font": {
+    "family": {
+      "heading": { "$value": "Inter, sans-serif", "$type": "fontFamily" },
+      "body": { "$value": "Inter, sans-serif", "$type": "fontFamily" },
+      "mono": { "$value": "JetBrains Mono, monospace", "$type": "fontFamily" }
+    },
+    "size": {
+      "xs": { "$value": "0.75rem", "$type": "dimension" },
+      "sm": { "$value": "0.875rem", "$type": "dimension" },
+      "base": { "$value": "1rem", "$type": "dimension" },
+      "lg": { "$value": "1.125rem", "$type": "dimension" },
+      "xl": { "$value": "1.25rem", "$type": "dimension" },
+      "2xl": { "$value": "1.5rem", "$type": "dimension" },
+      "3xl": { "$value": "1.875rem", "$type": "dimension" },
+      "4xl": { "$value": "2.25rem", "$type": "dimension" }
+    },
+    "weight": {
+      "normal": { "$value": 400, "$type": "fontWeight" },
+      "medium": { "$value": 500, "$type": "fontWeight" },
+      "semibold": { "$value": 600, "$type": "fontWeight" },
+      "bold": { "$value": 700, "$type": "fontWeight" }
+    },
+    "lineHeight": {
+      "tight": { "$value": 1.25, "$type": "number" },
+      "normal": { "$value": 1.5, "$type": "number" },
+      "relaxed": { "$value": 1.75, "$type": "number" }
+    }
+  },
+
+  "motion": {
+    "duration": {
+      "instant": { "$value": "0ms", "$type": "duration" },
+      "fast": { "$value": "150ms", "$type": "duration" },
+      "normal": { "$value": "250ms", "$type": "duration" },
+      "slow": { "$value": "350ms", "$type": "duration" },
+      "slower": { "$value": "500ms", "$type": "duration" }
+    },
+    "easing": {
+      "standard": {
+        "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "$type": "cubicBezier"
+      },
+      "entrance": {
+        "$value": "cubic-bezier(0, 0, 0.2, 1)",
+        "$type": "cubicBezier"
+      },
+      "exit": {
+        "$value": "cubic-bezier(0.4, 0, 1, 1)",
+        "$type": "cubicBezier"
+      },
+      "emphasis": {
+        "$value": "cubic-bezier(0.4, 0, 0.6, 1)",
+        "$type": "cubicBezier"
+      }
+    }
+  },
+
+  "spacing": {
+    "0": { "$value": "0", "$type": "dimension" },
+    "1": { "$value": "0.25rem", "$type": "dimension" },
+    "2": { "$value": "0.5rem", "$type": "dimension" },
+    "3": { "$value": "0.75rem", "$type": "dimension" },
+    "4": { "$value": "1rem", "$type": "dimension" },
+    "5": { "$value": "1.25rem", "$type": "dimension" },
+    "6": { "$value": "1.5rem", "$type": "dimension" },
+    "8": { "$value": "2rem", "$type": "dimension" },
+    "10": { "$value": "2.5rem", "$type": "dimension" },
+    "12": { "$value": "3rem", "$type": "dimension" },
+    "16": { "$value": "4rem", "$type": "dimension" }
+  },
+
+  "radius": {
+    "none": { "$value": "0", "$type": "dimension" },
+    "sm": { "$value": "0.25rem", "$type": "dimension" },
+    "md": { "$value": "0.5rem", "$type": "dimension" },
+    "lg": { "$value": "1rem", "$type": "dimension" },
+    "xl": { "$value": "1.5rem", "$type": "dimension" },
+    "full": { "$value": "9999px", "$type": "dimension" }
+  },
+
+  "shadow": {
+    "sm": { "$value": "0 1px 2px 0 rgb(0 0 0 / 0.05)", "$type": "shadow" },
+    "md": { "$value": "0 4px 6px -1px rgb(0 0 0 / 0.1)", "$type": "shadow" },
+    "lg": { "$value": "0 10px 15px -3px rgb(0 0 0 / 0.1)", "$type": "shadow" },
+    "xl": { "$value": "0 20px 25px -5px rgb(0 0 0 / 0.1)", "$type": "shadow" }
+  },
+
+  "voice": {
+    "attributes": [
+      {
+        "trait": "TRAIT_1",
+        "description": "Description",
+        "example": "Example text"
+      }
+    ],
+    "tone_matrix": {
+      "formal_casual": { "scale": 0.5, "description": "Balanced" },
+      "serious_playful": { "scale": 0.5, "description": "Balanced" }
+    },
+    "ai_config": {
+      "system_prompt": "You are BRAND_NAME's AI assistant. Be helpful and on-brand.",
+      "temperature": 0.7,
+      "style_parameters": {
+        "formality": 0.5,
+        "enthusiasm": 0.6,
+        "humor": 0.3
+      }
+    }
+  },
+
+  "imagery": {
+    "photography": {
+      "lighting": "natural",
+      "color_treatment": "vibrant",
+      "composition": ["rule of thirds", "negative space"]
+    },
+    "ai_generation": {
+      "midjourney": {
+        "base_prompt": "professional, brand aesthetic, clean design",
+        "parameters": "--ar 16:9 --stylize 200 --v 6.1",
+        "negative": "--no text, watermark, blur"
+      },
+      "stable_diffusion": {
+        "positive": "professional, high quality, brand aesthetic, sharp focus",
+        "negative": "low quality, blurry, amateur, text, watermark",
+        "cfg_scale": 7
+      }
+    }
+  }
+}

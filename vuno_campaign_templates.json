@@ -1,0 +1,1294 @@
+{
+  "brand": {
+    "company": "VUNO",
+    "industry": "AI Healthcare / Medical Imaging",
+    "headquarters": "South Korea",
+    "primary_audience": "Medical Professionals, Hospital Administrators, Healthcare Investors",
+    "primary_channels": [
+      "LinkedIn",
+      "Medical Conferences",
+      "Trade Publications",
+      "Investor Relations"
+    ]
+  },
+  "social_templates": {
+    "linkedin": {
+      "post_image": {
+        "dimensions": {
+          "width": 1200,
+          "height": 627,
+          "aspect_ratio": "1.91:1"
+        },
+        "safe_area": {
+          "top": 50,
+          "bottom": 50,
+          "left": 60,
+          "right": 60
+        },
+        "specifications": {
+          "format": "PNG or JPG",
+          "max_file_size_mb": 10,
+          "color_mode": "RGB",
+          "dpi": 72,
+          "text_size_min_px": 24,
+          "contrast_ratio_min": "4.5:1"
+        },
+        "layout_guidelines": {
+          "logo_placement": "Top-left or center",
+          "logo_size": "80-120px width",
+          "headline_position": "Center or upper-third",
+          "headline_max_length": 80,
+          "body_text_max": 250,
+          "use_healthcare_imagery": true,
+          "use_data_visualization": true
+        },
+        "recommended_content_types": [
+          "Clinical study results",
+          "Product feature highlights",
+          "AI diagnostic examples",
+          "Industry insights",
+          "Company milestones"
+        ]
+      },
+      "article_header": {
+        "dimensions": {
+          "width": 1500,
+          "height": 800,
+          "aspect_ratio": "1.875:1"
+        },
+        "safe_area": {
+          "top": 100,
+          "bottom": 100,
+          "left": 100,
+          "right": 100
+        },
+        "specifications": {
+          "format": "PNG or JPG",
+          "max_file_size_mb": 15,
+          "color_mode": "RGB",
+          "dpi": 72,
+          "minimum_contrast": "7:1 for text"
+        },
+        "layout_guidelines": {
+          "title_placement": "Center or lower-half",
+          "title_font_size": "48-72px",
+          "subtitle_font_size": "28-36px",
+          "background_treatment": "Gradient or solid with medical imagery overlay",
+          "overlay_opacity": "40-60%",
+          "callout_elements": "Maximum 2 per header"
+        },
+        "medical_b2b_elements": {
+          "include_accreditation_badges": true,
+          "include_clinical_data_snippet": true,
+          "include_regulatory_marks": true,
+          "professional_tone": "Clinical, trustworthy, innovation-focused"
+        }
+      },
+      "post_text_guidelines": {
+        "optimal_length": "100-150 words",
+        "include_hashtags": true,
+        "recommended_hashtags": [
+          "#MedicalAI",
+          "#HealthTech",
+          "#MedicalImaging",
+          "#DigitalHealth",
+          "#AIinHealthcare",
+          "#ClinicalInnovation",
+          "#DiagnosticAI",
+          "#HealthcareLeaders"
+        ],
+        "call_to_action": "Required",
+        "cta_types": [
+          "Learn more",
+          "Request demo",
+          "Read the study",
+          "Join webinar",
+          "Schedule consultation"
+        ]
+      }
+    },
+    "twitter": {
+      "medical_news_card": {
+        "dimensions": {
+          "width": 506,
+          "height": 506,
+          "aspect_ratio": "1:1"
+        },
+        "safe_area": {
+          "margin": 20
+        },
+        "specifications": {
+          "format": "PNG or JPG",
+          "max_file_size_mb": 5,
+          "color_mode": "RGB",
+          "dpi": 72,
+          "text_minimum_size": 18
+        },
+        "layout_guidelines": {
+          "headline": "40-50 characters maximum",
+          "data_point": "Primary statistic or finding",
+          "visual_hierarchy": "Icon/image + headline + one key metric",
+          "branding": "VUNO logo in corner, 40x40px minimum"
+        },
+        "content_strategy": {
+          "post_frequency": "2-3 times per week",
+          "content_mix": [
+            "Research announcements (30%)",
+            "Product updates (25%)",
+            "Clinical insights (25%)",
+            "Industry news (20%)"
+          ],
+          "engagement_tactics": "Ask questions, share statistics, tag industry leaders"
+        }
+      },
+      "text_guidelines": {
+        "character_limit": 280,
+        "include_link": true,
+        "hashtag_count": "1-3",
+        "emoji_usage": "Minimal, use medical/science emojis only"
+      }
+    }
+  },
+  "ad_formats": {
+    "display": {
+      "medical_publication_banners": {
+        "leaderboard": {
+          "dimensions": "728x90px",
+          "aspect_ratio": "8.1:1",
+          "file_format": "PNG, JPG, or animated GIF",
+          "max_file_size_kb": 150,
+          "animation_duration_sec": 15,
+          "animation_frames_max": 5
+        },
+        "medium_rectangle": {
+          "dimensions": "300x250px",
+          "aspect_ratio": "1.2:1",
+          "file_format": "PNG, JPG, or animated GIF",
+          "max_file_size_kb": 150,
+          "use_case": "Primary ad unit for medical websites and publications"
+        },
+        "wide_skyscraper": {
+          "dimensions": "160x600px",
+          "aspect_ratio": "0.27:1",
+          "file_format": "PNG, JPG, or animated GIF",
+          "max_file_size_kb": 150
+        },
+        "half_page": {
+          "dimensions": "300x600px",
+          "aspect_ratio": "0.5:1",
+          "file_format": "PNG, JPG, or animated GIF",
+          "max_file_size_kb": 200,
+          "use_case": "Premium placement on medical journals and healthcare platforms"
+        }
+      },
+      "safe_zones": {
+        "logo_clearance": "20px minimum from edges",
+        "text_clearance": "15px from all edges",
+        "critical_content_area": "Center 80% of ad",
+        "avoid_overlays": "Ensure no text overlays clinical images"
+      },
+      "creative_guidelines": {
+        "primary_visual": "Product screenshot or AI diagnostic example",
+        "text_hierarchy": "Headline (largest) > Subheading > Body copy",
+        "headline_max_length": 35,
+        "body_copy_max": 100,
+        "call_to_action_button": "Required, size 100x40px minimum",
+        "color_palette": "Professional blues, grays with accent colors",
+        "brand_presence": "VUNO logo minimum 60px width"
+      },
+      "compliance_elements": {
+        "include_disclaimers": true,
+        "regulatory_marks_position": "Bottom-right corner",
+        "font_size_disclaimer": "Minimum 8px",
+        "hipaa_compliance_note": "If handling patient data examples"
+      }
+    },
+    "video": {
+      "pre_roll_medical_conference": {
+        "duration_options": [6, 15, 30],
+        "dimensions": "1920x1080 (16:9)",
+        "frame_rate": "30fps or 60fps",
+        "file_format": "MP4 (H.264 codec, AAC audio)",
+        "file_size_max_mb": {
+          "6_second": 20,
+          "15_second": 50,
+          "30_second": 100
+        },
+        "specifications": {
+          "color_space": "Rec.709",
+          "audio_bitrate": "128kbps stereo minimum",
+          "video_bitrate": "6000-8000kbps recommended"
+        }
+      },
+      "storyboard": {
+        "6_second": [
+          {
+            "frame": 1,
+            "description": "Hook/Problem statement (0-2s)",
+            "content": "Clinical challenge or medical need"
+          },
+          {
+            "frame": 2,
+            "description": "Solution/Product demo (2-4s)",
+            "content": "VUNO AI in action, diagnostic output"
+          },
+          {
+            "frame": 3,
+            "description": "CTA (4-6s)",
+            "content": "Contact info, QR code, or URL"
+          }
+        ],
+        "15_second": [
+          {
+            "frame": 1,
+            "description": "Opening/Brand (0-2s)",
+            "content": "VUNO logo, company name"
+          },
+          {
+            "frame": 2,
+            "description": "Problem (2-5s)",
+            "content": "Healthcare challenge, diagnostic gap"
+          },
+          {
+            "frame": 3,
+            "description": "Solution (5-10s)",
+            "content": "Product features, AI capabilities, clinical benefits"
+          },
+          {
+            "frame": 4,
+            "description": "Social proof (10-13s)",
+            "content": "Statistics, case study results, or testimonial"
+          },
+          {
+            "frame": 5,
+            "description": "CTA (13-15s)",
+            "content": "Call-to-action, contact, booth location"
+          }
+        ],
+        "30_second": [
+          {
+            "frame": 1,
+            "description": "Hook (0-3s)",
+            "content": "Compelling statistic or clinical question"
+          },
+          {
+            "frame": 2,
+            "description": "Problem depth (3-8s)",
+            "content": "Market challenge, diagnostic accuracy gap, clinical workflow pain points"
+          },
+          {
+            "frame": 3,
+            "description": "Solution introduction (8-13s)",
+            "content": "VUNO platform overview, AI diagnostic engine"
+          },
+          {
+            "frame": 4,
+            "description": "Product demonstration (13-22s)",
+            "content": "Live product demo, before/after results, accuracy metrics"
+          },
+          {
+            "frame": 5,
+            "description": "Results/Impact (22-26s)",
+            "content": "Clinical outcomes, efficiency gains, ROI metrics"
+          },
+          {
+            "frame": 6,
+            "description": "CTA (26-30s)",
+            "content": "Clear call-to-action, contact details, QR code, booth information"
+          }
+        ]
+      },
+      "creative_requirements": {
+        "opening_visual": "Must grab attention within 2 seconds",
+        "graphics_quality": "Professional, medical-grade imagery",
+        "on_screen_text": "High contrast, sans-serif font, 16pt minimum",
+        "audio": "Professional voiceover or background music, clear and audible",
+        "logo_placement": "Final frame minimum 3 seconds, or watermark throughout",
+        "text_overlay_safety": "Avoid bottom 20% and top 20% of frame for broadcast safety"
+      }
+    }
+  },
+  "email_design": {
+    "healthcare_outreach": {
+      "email_width": {
+        "design_width": 600,
+        "mobile_breakpoint": 480,
+        "units": "pixels"
+      },
+      "header": {
+        "height": 120,
+        "background": "Solid color (VUNO brand blue) or subtle gradient",
+        "logo": {
+          "width": 150,
+          "height": 50,
+          "position": "Left-aligned or centered",
+          "padding": "20px top, 20px sides"
+        },
+        "tagline": {
+          "optional": true,
+          "font_size": "14px",
+          "color": "White or light gray",
+          "text": "e.g., 'AI-Powered Diagnostic Intelligence' or 'Advancing Medical Imaging'"
+        },
+        "mobile_height": 100
+      },
+      "body": {
+        "sections": [
+          {
+            "section_name": "Greeting",
+            "spacing_top_px": 20,
+            "spacing_bottom_px": 15,
+            "font_size": 16,
+            "line_height": 1.5,
+            "guidance": "Personalized with recipient name when possible"
+          },
+          {
+            "section_name": "Opening paragraph",
+            "spacing_bottom_px": 15,
+            "font_size": 14,
+            "line_height": 1.6,
+            "guidance": "Relevant to recipient role (clinician, administrator, investor)"
+          },
+          {
+            "section_name": "Body content",
+            "max_paragraphs": 3,
+            "paragraph_spacing_px": 15,
+            "font_size": 14,
+            "line_height": 1.6,
+            "guidance": "Use short paragraphs, benefit-driven copy"
+          },
+          {
+            "section_name": "Visual element",
+            "recommended_type": "Product screenshot or infographic",
+            "width": "540px (90% of email width)",
+            "max_height": 300,
+            "spacing_top_px": 20,
+            "spacing_bottom_px": 20,
+            "border_radius": "4px",
+            "guidance": "Highlight key product features or clinical outcomes"
+          },
+          {
+            "section_name": "Social proof section",
+            "optional": true,
+            "content": "Case study quote, statistic, or testimonial",
+            "styling": "Light background color, italicized text, 12px font"
+          }
+        ],
+        "padding": "20px all sides",
+        "background": "White (FFFFFF) or very light gray (F9F9F9)"
+      },
+      "cta_primary": {
+        "button_type": "Primary action",
+        "dimensions": {
+          "width": 200,
+          "height": 50
+        },
+        "styling": {
+          "background_color": "VUNO brand color (primary blue)",
+          "text_color": "White",
+          "font_size": 16,
+          "font_weight": "bold",
+          "border_radius": "4px",
+          "padding": "12px 24px",
+          "text_decoration": "none"
+        },
+        "text_options": [
+          "Schedule Demo",
+          "Request More Information",
+          "Download White Paper",
+          "Watch Demo Video",
+          "Learn More"
+        ],
+        "spacing_top_px": 20,
+        "spacing_bottom_px": 20
+      },
+      "cta_secondary": {
+        "button_type": "Secondary action (optional)",
+        "styling": {
+          "background_color": "White",
+          "text_color": "VUNO brand blue",
+          "border": "2px solid VUNO brand blue",
+          "font_size": 14,
+          "padding": "10px 20px"
+        },
+        "text_examples": ["View Case Study", "Read Blog", "Follow on LinkedIn"],
+        "spacing_left_px": 10
+      },
+      "footer": {
+        "height": 100,
+        "background": "Light gray (F5F5F5) or slightly darker than body",
+        "content": [
+          {
+            "item": "Contact information",
+            "font_size": 12,
+            "color": "Gray (666666)"
+          },
+          {
+            "item": "Physical mailing address",
+            "font_size": 11,
+            "color": "Gray"
+          },
+          {
+            "item": "Unsubscribe link",
+            "font_size": 11,
+            "color": "Link blue"
+          },
+          {
+            "item": "Social media icons",
+            "size": "24x24px",
+            "platforms": ["LinkedIn", "Twitter", "YouTube"]
+          },
+          {
+            "item": "Legal/Privacy",
+            "font_size": 10,
+            "content": "Privacy Policy | Terms of Service"
+          }
+        ],
+        "padding": "20px all sides",
+        "border_top": "1px solid #DDDDDD"
+      }
+    },
+    "template_variations": {
+      "clinical_audience": {
+        "tone": "Evidence-based, clinical outcomes focused",
+        "content_emphasis": [
+          "Diagnostic accuracy",
+          "Clinical validation",
+          "Peer-reviewed data"
+        ],
+        "visual_focus": "Medical imaging examples, diagnostic results"
+      },
+      "hospital_administrator": {
+        "tone": "ROI and operational efficiency focused",
+        "content_emphasis": [
+          "Workflow improvement",
+          "Cost savings",
+          "Implementation timeline"
+        ],
+        "visual_focus": "Workflow diagrams, efficiency metrics"
+      },
+      "investor": {
+        "tone": "Market opportunity and growth potential",
+        "content_emphasis": [
+          "Market size",
+          "Competitive advantage",
+          "Revenue potential"
+        ],
+        "visual_focus": "Market charts, company milestones, team credentials"
+      }
+    },
+    "responsive_design": {
+      "mobile_optimizations": [
+        "Stack layout vertically",
+        "Single-column design",
+        "Larger touch targets for links (44x44px minimum)",
+        "Font size minimum 16px for body text to prevent auto-zoom on iOS",
+        "CTA button width 100% or 90% of email width on mobile"
+      ],
+      "media_queries": {
+        "mobile_breakpoint": 480,
+        "tablet_breakpoint": 768
+      }
+    }
+  },
+  "presentation_template": {
+    "slide_formats": {
+      "product_demo": {
+        "slide_number": 1,
+        "layout": "Full-screen product showcase",
+        "sections": [
+          {
+            "name": "Title area",
+            "height_percent": 15,
+            "content": "Slide title, presenter name, date"
+          },
+          {
+            "name": "Main content",
+            "height_percent": 70,
+            "content": "High-quality product screenshot or demo video embedded"
+          },
+          {
+            "name": "Annotation area",
+            "height_percent": 15,
+            "content": "Key features highlighted, feature labels"
+          }
+        ],
+        "design_elements": {
+          "background": "White or light brand color",
+          "highlight_boxes": "Use semi-transparent overlays to point out features",
+          "call_outs": "Arrows and numbered annotations",
+          "demo_video_duration_max": 30,
+          "video_should_autoplay": false
+        }
+      },
+      "clinical_data": {
+        "slide_number": 2,
+        "layout": "Data-driven visualization",
+        "sections": [
+          {
+            "name": "Study info header",
+            "content": "Study name, institution, publication details"
+          },
+          {
+            "name": "Data visualization",
+            "height_percent": 60,
+            "content": "Charts, graphs, or comparison tables"
+          },
+          {
+            "name": "Key findings",
+            "content": "Bullet points highlighting important results"
+          },
+          {
+            "name": "Source/footnotes",
+            "content": "Study citation, regulatory compliance notes"
+          }
+        ],
+        "chart_specifications": {
+          "chart_types": [
+            "Bar chart",
+            "Line graph",
+            "Comparison table",
+            "Infographic"
+          ],
+          "data_label_font_size": "18pt minimum",
+          "legend_position": "Below chart or to the right",
+          "color_palette": "Use brand colors, high contrast for accessibility"
+        },
+        "compliance_notes": {
+          "include_regulatory_marks": "FDA clearance badges if applicable",
+          "cite_all_studies": "Full citations or footnotes",
+          "avoid_misleading_scales": "Y-axis must start at 0 for bar charts",
+          "disclaimer_font_size": "10pt minimum"
+        }
+      },
+      "investor_pitch": {
+        "slide_number": 3,
+        "layout": "Market opportunity and business metrics",
+        "sections": [
+          {
+            "name": "Market size header",
+            "font_size": 44,
+            "content": "Total Addressable Market (TAM)"
+          },
+          {
+            "name": "Primary metric",
+            "font_size": 72,
+            "color": "Brand color (blue)",
+            "content": "Market size in billions or percentage growth"
+          },
+          {
+            "name": "Supporting metrics",
+            "layout": "3-column grid",
+            "content": [
+              "Metric 1: Market growth rate",
+              "Metric 2: Addressable segment",
+              "Metric 3: Key trend"
+            ]
+          },
+          {
+            "name": "Source attribution",
+            "font_size": 12,
+            "content": "Data source and year"
+          }
+        ]
+      },
+      "company_overview": {
+        "slide_number": 4,
+        "layout": "Mission and capabilities overview",
+        "content_sections": [
+          {
+            "name": "Logo and headline",
+            "height_percent": 20
+          },
+          {
+            "name": "Mission statement",
+            "height_percent": 20,
+            "font_size": 28,
+            "guidance": "Concise company mission or value proposition"
+          },
+          {
+            "name": "Capabilities grid",
+            "height_percent": 60,
+            "grid_layout": "2x2 or 3-column",
+            "items": [
+              "AI-Powered Diagnostics",
+              "Regulatory Approved",
+              "Global Reach",
+              "Clinical Validation"
+            ]
+          }
+        ]
+      },
+      "team": {
+        "slide_number": 5,
+        "layout": "Leadership and team overview",
+        "content": [
+          {
+            "name": "Leadership grid",
+            "layout": "Photo + title + brief bio",
+            "photo_size": "150x150px minimum",
+            "bio_length": "1-2 sentences per person",
+            "key_executives": 4,
+            "include_credentials": true
+          }
+        ]
+      },
+      "closing": {
+        "slide_number": -1,
+        "layout": "Contact and next steps",
+        "content": [
+          {
+            "name": "Headline",
+            "text": "Thank You / Let's Connect"
+          },
+          {
+            "name": "Contact section",
+            "elements": [
+              "Email address",
+              "Phone number",
+              "LinkedIn profile link",
+              "Company website"
+            ]
+          },
+          {
+            "name": "QR code",
+            "size": "150x150px",
+            "links_to": "Company website, meeting request form, or demo booking"
+          }
+        ]
+      }
+    },
+    "master_elements": {
+      "color_palette": {
+        "primary": {
+          "name": "VUNO Blue",
+          "hex": "#0066CC",
+          "rgb": "rgb(0, 102, 204)",
+          "usage": "Headers, CTAs, accent elements"
+        },
+        "secondary": {
+          "name": "Accent Gray",
+          "hex": "#555555",
+          "rgb": "rgb(85, 85, 85)",
+          "usage": "Body text, borders"
+        },
+        "accent": {
+          "name": "Success Green",
+          "hex": "#2DB880",
+          "rgb": "rgb(45, 184, 128)",
+          "usage": "Positive metrics, validation checkmarks"
+        },
+        "background": {
+          "name": "Off-white",
+          "hex": "#F5F5F5",
+          "rgb": "rgb(245, 245, 245)",
+          "usage": "Slide backgrounds"
+        }
+      },
+      "typography": {
+        "font_family_heading": "Arial, Helvetica, sans-serif",
+        "font_family_body": "Arial, Helvetica, sans-serif",
+        "font_sizes": {
+          "slide_title": 54,
+          "section_header": 40,
+          "body_text": 24,
+          "caption": 14,
+          "footnote": 10
+        },
+        "font_weights": {
+          "heading": "bold",
+          "subheading": "semi-bold",
+          "body": "regular"
+        },
+        "line_spacing": 1.4
+      },
+      "logo": {
+        "logo_files": [
+          "VUNO_logo_horizontal_color.png",
+          "VUNO_logo_vertical_color.png",
+          "VUNO_logo_white.png",
+          "VUNO_logo_blue.png"
+        ],
+        "logo_placement": "Top-left or bottom-left of each slide",
+        "logo_size": "0.75 to 1 inch width",
+        "minimum_clear_space": "0.25 inch from edges",
+        "do_not_modify": [
+          "Do not change proportions",
+          "Do not add effects or shadows",
+          "Do not change colors unless using white version"
+        ]
+      },
+      "slide_layout": {
+        "slide_dimensions": "16:9 widescreen",
+        "margin_all_sides": "0.5 inch",
+        "content_safe_area": "1 inch margins",
+        "grid_system": "12-column flexible grid"
+      },
+      "footer_template": {
+        "content": [
+          {
+            "element": "Slide number",
+            "position": "Bottom-right",
+            "font_size": 10
+          },
+          {
+            "element": "Company name",
+            "position": "Bottom-left",
+            "font_size": 10
+          },
+          {
+            "element": "Presentation date",
+            "position": "Bottom-center",
+            "font_size": 10
+          }
+        ],
+        "border_top": "1px solid #DDDDDD",
+        "padding_top": "0.25 inch"
+      }
+    },
+    "accessibility_requirements": {
+      "color_contrast": {
+        "text_to_background": "4.5:1 minimum (WCAG AA standard)",
+        "graphics_and_icons": "3:1 minimum"
+      },
+      "font_sizes": {
+        "minimum_body_text": 18,
+        "minimum_small_text": 14
+      },
+      "image_alt_text": "Required for all product screenshots and data visualizations",
+      "video_captions": "Required for any embedded video content"
+    }
+  },
+  "print_specs": {
+    "business_card": {
+      "dimensions": {
+        "width_in": 3.5,
+        "height_in": 2,
+        "bleed": 0.125,
+        "safe_margin": 0.125,
+        "units": "inches"
+      },
+      "print_specifications": {
+        "paper_stock": "300gsm matte cardstock or premium coated stock",
+        "finish": "Matte or satin finish (avoid glossy for professional appearance)",
+        "color_mode": "CMYK",
+        "dpi": 300,
+        "color_profile": "ISO Coated v2 (FOGRA39)"
+      },
+      "bilingual_layout_english": {
+        "front_side": [
+          {
+            "element": "Logo",
+            "position": "Top-left",
+            "size": "0.75 inch width"
+          },
+          {
+            "element": "Name",
+            "font_size": 12,
+            "font_weight": "bold",
+            "position": "Left side, upper-middle"
+          },
+          {
+            "element": "Title",
+            "font_size": 10,
+            "position": "Below name"
+          },
+          {
+            "element": "Contact info",
+            "font_size": 9,
+            "color": "#555555",
+            "position": "Left side, lower section",
+            "elements": ["Email", "Phone", "Address", "Website"]
+          },
+          {
+            "element": "Social/LinkedIn",
+            "icons_only": true,
+            "position": "Bottom-right"
+          }
+        ],
+        "back_side": "Optional: Company tagline, QR code linking to LinkedIn or website, or website URL"
+      },
+      "bilingual_layout_korean": {
+        "front_side": [
+          {
+            "element": "Logo",
+            "position": "Top-right"
+          },
+          {
+            "element": "Company name Korean",
+            "font_size": 10,
+            "position": "Top-center"
+          },
+          {
+            "element": "Name (Korean + English)",
+            "position": "Center"
+          },
+          {
+            "element": "Title (Korean + English)",
+            "font_size": 9,
+            "position": "Below name"
+          },
+          {
+            "element": "Contact info",
+            "font_size": 8,
+            "position": "Bottom section"
+          }
+        ],
+        "back_side": "Contact details duplicated in Korean on back"
+      },
+      "design_guidelines": {
+        "background": "White or very light gray, avoid busy patterns",
+        "color_accents": "Use VUNO brand blue for name or title accent",
+        "typography": "Clean sans-serif, consistent with brand",
+        "whitespace": "Minimum 0.125 inch from edges (bleed area)",
+        "no_small_text": "Minimum 8pt for contact info"
+      },
+      "production_notes": {
+        "minimum_order": "500 cards",
+        "turnaround": "5-7 business days",
+        "file_format_required": "PDF with bleeds",
+        "proof_review": "Color proof required before printing"
+      }
+    },
+    "conference_materials": {
+      "booth_signage": {
+        "main_banner": {
+          "dimensions": {
+            "width_ft": 10,
+            "height_ft": 8,
+            "width_in": 120,
+            "height_in": 96
+          },
+          "print_specs": {
+            "material": "13oz vinyl banner stock or fabric",
+            "finish": "Matte vinyl (matte finish, anti-glare)",
+            "color_mode": "CMYK",
+            "dpi": 100,
+            "file_format": "PDF or high-resolution TIFF"
+          },
+          "design_layout": [
+            {
+              "element": "VUNO logo",
+              "size_in": "24 inch width",
+              "position": "Center-top"
+            },
+            {
+              "element": "Main headline",
+              "font_size_pt": 96,
+              "font_weight": "bold",
+              "color": "VUNO blue",
+              "position": "Center"
+            },
+            {
+              "element": "Subheading",
+              "font_size_pt": 48,
+              "position": "Below headline"
+            },
+            {
+              "element": "Visual element",
+              "description": "Product demo screenshot or medical imaging example",
+              "position": "Lower half of banner",
+              "width_percent": 70
+            },
+            {
+              "element": "Contact/QR",
+              "position": "Bottom-right",
+              "qr_code_size_in": 4
+            }
+          ],
+          "production": {
+            "material_weight": "13oz vinyl",
+            "print_method": "Latex or solvent printing",
+            "finishing": "Hemmed edges with grommets",
+            "delivery": "Rolled, not folded"
+          }
+        },
+        "table_top_display": {
+          "dimensions": {
+            "width_in": 36,
+            "height_in": 24
+          },
+          "material": "Foam board or corrugated plastic (Coroplast)",
+          "print_specs": {
+            "material_weight": "3/16 inch foam board or Coroplast",
+            "finish": "Matte finish",
+            "dpi": 150,
+            "color_mode": "CMYK"
+          },
+          "design": {
+            "layout": "2-3 key product features or clinical data points",
+            "visual_focus": "High-quality product or diagnostic images",
+            "text_hierarchy": "Bold headlines with supporting data"
+          }
+        },
+        "booth_floor_decals": {
+          "dimensions": [
+            {
+              "width_ft": 2,
+              "height_ft": 2,
+              "use": "Product feature callouts"
+            },
+            {
+              "width_ft": 3,
+              "height_ft": 3,
+              "use": "Booth entrance marker"
+            }
+          ],
+          "material": "High-grade vinyl with anti-slip backing",
+          "adhesive": "Permanent or removable depending on venue rules"
+        }
+      },
+      "brochure": {
+        "folded_dimensions": {
+          "width_in": 8.5,
+          "height_in": 11,
+          "fold_style": "Letter tri-fold (3-panel, 8.5x3.67 inch each panel when opened)"
+        },
+        "print_specifications": {
+          "paper_stock": "80lb cover stock or 100lb gloss",
+          "finish": "Gloss or matte finish (matte for professional, gloss for visual impact)",
+          "color_mode": "CMYK",
+          "dpi": 300,
+          "bleed": 0.125,
+          "binding": "Center-folded"
+        },
+        "content_layout": {
+          "front_panel": [
+            {
+              "element": "Logo and headline",
+              "height_percent": 30,
+              "content": "VUNO branding + attention-grabbing headline"
+            },
+            {
+              "element": "Main visual",
+              "height_percent": 70,
+              "content": "High-quality product or medical imaging photo"
+            }
+          ],
+          "inside_left_panel": [
+            {
+              "element": "Section header",
+              "content": "Product Overview"
+            },
+            {
+              "element": "Bullet points",
+              "count": 4,
+              "content": "Key features or benefits"
+            },
+            {
+              "element": "Section header 2",
+              "content": "Clinical Validation"
+            },
+            {
+              "element": "Key metrics",
+              "content": "Accuracy, efficiency gains, regulatory approvals"
+            }
+          ],
+          "inside_center_panel": [
+            {
+              "element": "Data visualization or infographic",
+              "height_percent": 60
+            },
+            {
+              "element": "Case study snippet",
+              "height_percent": 40
+            }
+          ],
+          "inside_right_panel": [
+            {
+              "element": "Section header",
+              "content": "Solutions"
+            },
+            {
+              "element": "Use cases list",
+              "items": ["Cardiology", "Oncology", "Orthopedics"]
+            },
+            {
+              "element": "Company info section",
+              "content": "About VUNO, founded year, mission"
+            }
+          ],
+          "back_panel": [
+            {
+              "element": "QR code",
+              "size_in": 1.5,
+              "links_to": "Company website or demo booking"
+            },
+            {
+              "element": "Contact information",
+              "elements": [
+                "Address",
+                "Phone",
+                "Email",
+                "Website",
+                "Social links"
+              ]
+            },
+            {
+              "element": "Social media handles",
+              "platforms": ["LinkedIn", "Twitter", "YouTube"]
+            }
+          ]
+        },
+        "design_guidelines": {
+          "text_layout": "Left-aligned or justified, minimum 10pt body font",
+          "color_usage": "VUNO brand blue as accent on 30% of surface, white space on 40%",
+          "images": "High-quality, professional medical imaging or product screenshots",
+          "white_space": "25-30% blank space for visual breathing room"
+        }
+      },
+      "business_Leave_Behind": {
+        "format": "Pocket-sized folder or booklet",
+        "dimensions": {
+          "width_in": 4.25,
+          "height_in": 5.5
+        },
+        "content": [
+          "VUNO company overview (1 page)",
+          "Product comparison chart (1 page)",
+          "Case study (1 page)",
+          "Contact details with QR code",
+          "Business card slot or attached business card"
+        ]
+      }
+    }
+  },
+  "medical_marketing": {
+    "clinical_data_guidelines": {
+      "study_presentation": {
+        "required_elements": [
+          "Study name and institution",
+          "Publication status (peer-reviewed vs. internal)",
+          "Study period and sample size",
+          "Clear statement of diagnostic accuracy metrics",
+          "Comparison baseline (if comparing to existing methods)"
+        ],
+        "accuracy_metrics_standard": [
+          {
+            "metric": "Sensitivity",
+            "definition": "Ability to identify true positive cases",
+            "format": "Percentage with confidence interval"
+          },
+          {
+            "metric": "Specificity",
+            "definition": "Ability to identify true negative cases",
+            "format": "Percentage with confidence interval"
+          },
+          {
+            "metric": "Area Under Curve (AUC)",
+            "definition": "Overall diagnostic performance measure",
+            "format": "Decimal 0-1 or percentage 0-100"
+          },
+          {
+            "metric": "Positive Predictive Value (PPV)",
+            "definition": "Probability diagnosis is correct if positive",
+            "format": "Percentage"
+          },
+          {
+            "metric": "Negative Predictive Value (NPV)",
+            "definition": "Probability diagnosis is correct if negative",
+            "format": "Percentage"
+          }
+        ],
+        "visualization_rules": {
+          "chart_types": "Bar, line, or ROC curves preferred",
+          "y_axis_treatment": "Must start at 0% unless clearly labeled otherwise",
+          "comparison_bars": "Same color family for related metrics",
+          "data_labeling": "All values must be clearly labeled on chart"
+        },
+        "language_guidelines": {
+          "avoid_overstated_claims": [
+            "Do not use 'cure'",
+            "Avoid 'guarantees'",
+            "Avoid 'best' or 'only'",
+            "Do not claim 100% accuracy without qualification"
+          ],
+          "preferred_language": [
+            "Helps clinicians...",
+            "May improve...",
+            "Shows potential to...",
+            "Demonstrated in clinical studies...",
+            "Assists in..."
+          ]
+        }
+      }
+    },
+    "regulatory_compliance": {
+      "fda_considerations": {
+        "claims_to_avoid": [
+          "Treat/cure/prevent disease without FDA clearance",
+          "Diagnostic claims without 510(k) approval",
+          "Superiority claims not substantiated by studies"
+        ],
+        "required_disclosures": [
+          "FDA clearance status (510(k), De Novo, PMA, etc.)",
+          "Country of regulatory approval",
+          "Intended use statement",
+          "Limitations and contraindications"
+        ],
+        "ce_mark_requirements": {
+          "applicable_markets": "European Union and EEA countries",
+          "disclosure": "Include CE mark and conformity statement",
+          "classification": "Medical device classification (Class I, II, III)"
+        }
+      },
+      "hipaa_compliance": {
+        "patient_data_handling": {
+          "no_identifiable_information": "Never include patient names, MRNs, or identifying details in marketing",
+          "de_identification_standard": "HIPAA Safe Harbor method or Expert Determination required"
+        },
+        "case_studies": {
+          "patient_consent": "Written HIPAA authorization required before using any case studies",
+          "anonymization": "Use generic demographics only (age range, gender, no identifiers)"
+        }
+      },
+      "marketing_claims_framework": {
+        "permitted_claims": [
+          "FDA cleared/approved for [specific indication]",
+          "Clinical studies show [metric] in [population]",
+          "Used by [number] hospitals and clinics worldwide",
+          "Helps identify/detect [condition] as an aid to clinicians"
+        ],
+        "prohibited_claims": [
+          "Replaces radiologist expertise",
+          "100% accurate",
+          "Best-in-class (without substantiation)",
+          "Approves diagnosis without human review"
+        ],
+        "claim_substantiation": {
+          "required_documentation": "Clinical studies, internal validation data, external testing results",
+          "peer_review_preferred": "Published in medical journals for credibility",
+          "sample_size_disclosure": "Report actual n and statistical significance"
+        }
+      }
+    },
+    "medical_imaging_guidelines": {
+      "image_selection": {
+        "authenticity": "Use real clinical images (de-identified) rather than illustrations when possible",
+        "quality_standards": {
+          "resolution": "High-definition, no pixelation or compression artifacts",
+          "file_format": "JPEG or PNG optimized for web (max 2MB)",
+          "color_accuracy": "True color representation of diagnostic findings"
+        },
+        "ethical_considerations": {
+          "patient_privacy": "All images must be anonymized (no visible patient names, medical record numbers, dates)",
+          "informed_consent": "Document patient consent for image use in marketing materials",
+          "cultural_sensitivity": "Avoid stigmatizing conditions or populations"
+        }
+      },
+      "annotation_standards": {
+        "labeling_conventions": {
+          "anatomical_structures": "Use standard medical terminology",
+          "pathology_markers": "Clearly indicate area of interest with arrows or circles",
+          "measurement_tools": "Include scale bar if dimensions are critical"
+        },
+        "legend_requirements": {
+          "color_coding": "If using color overlays, include color legend",
+          "symbols": "Define any symbols or markers used (arrows, circles, etc.)"
+        }
+      }
+    },
+    "audience_segmentation": {
+      "radiologists_cardiologists": {
+        "messaging_focus": [
+          "Diagnostic accuracy metrics (sensitivity, specificity)",
+          "Workflow integration with existing PACS systems",
+          "Time savings per study",
+          "Clinical validation data"
+        ],
+        "content_types": [
+          "Peer-reviewed studies",
+          "Technical whitepapers",
+          "Comparison data"
+        ],
+        "channels": [
+          "Medical journals",
+          "Conference presentations",
+          "Professional societies"
+        ]
+      },
+      "hospital_administrators": {
+        "messaging_focus": [
+          "ROI and cost savings",
+          "Implementation timeline",
+          "Staff training requirements",
+          "Integration with existing infrastructure",
+          "Patient volume throughput"
+        ],
+        "content_types": [
+          "Case studies",
+          "Implementation guides",
+          "Budget calculators"
+        ],
+        "channels": [
+          "Healthcare IT publications",
+          "Hospital management conferences"
+        ]
+      },
+      "health_informatics": {
+        "messaging_focus": [
+          "API and integration capabilities",
+          "Data security and HIPAA compliance",
+          "EHR integration",
+          "Scalability and performance"
+        ],
+        "content_types": [
+          "Technical documentation",
+          "Integration guides",
+          "API references"
+        ]
+      },
+      "investors": {
+        "messaging_focus": [
+          "Market size and growth opportunity",
+          "Competitive differentiation",
+          "Regulatory pathway",
+          "Revenue model and unit economics",
+          "Team and advisors"
+        ],
+        "content_types": [
+          "Executive summaries",
+          "Market research",
+          "Pitch decks"
+        ],
+        "channels": ["Investor conferences", "Healthcare VC publications"]
+      }
+    },
+    "compliance_checklist_for_all_marketing": {
+      "before_publication": [
+        {
+          "item": "Verify all clinical claims have supporting data",
+          "responsibility": "Medical/Regulatory Affairs"
+        },
+        {
+          "item": "Ensure FDA status clearly disclosed",
+          "responsibility": "Regulatory Affairs"
+        },
+        {
+          "item": "Check HIPAA compliance (no identifiable patient data)",
+          "responsibility": "Privacy/Compliance Officer"
+        },
+        {
+          "item": "Confirm all images are de-identified with proper consent",
+          "responsibility": "Legal/Privacy"
+        },
+        {
+          "item": "Avoid comparative claims without substantiation",
+          "responsibility": "Marketing + Legal"
+        },
+        {
+          "item": "Include appropriate disclaimers or limitations",
+          "responsibility": "Regulatory Affairs"
+        },
+        {
+          "item": "Peer-review language used in clinical context",
+          "responsibility": "Chief Medical Officer or advisor"
+        },
+        {
+          "item": "Test all links and external references for accuracy",
+          "responsibility": "Marketing/Web Team"
+        }
+      ]
+    }
+  }
+}

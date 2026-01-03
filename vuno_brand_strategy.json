@@ -1,0 +1,120 @@
+{
+  "brand_name": "VUNO",
+  "korean_name": "뷰노",
+  "industry": "AI Healthcare / Medical Imaging",
+  "founded": 2014,
+  "country": "Korea",
+
+  "purpose": "To democratize precision healthcare by making the invisible visible and the unknown knowable through AI-powered medical intelligence, enabling doctors to save more lives and patients to receive earlier, more accurate diagnoses.",
+
+  "mission": "Realize infinite possibilities of AI in medicine by developing clinically validated, physician-augmenting diagnostic solutions that transform medical imaging into actionable insights, advancing global healthcare outcomes one diagnosis at a time.",
+
+  "vision": "To become the global standard for AI-assisted medical diagnostics, where every radiological examination is enhanced by VUNO's intelligence, enabling universal access to expert-level diagnostic accuracy regardless of geographic or economic barriers.",
+
+  "values": [
+    {
+      "value": "Clinical Excellence",
+      "description": "We hold ourselves to the highest standards of medical accuracy and scientific rigor, ensuring every algorithm is clinically validated and evidence-based before deployment."
+    },
+    {
+      "value": "Physician Partnership",
+      "description": "We design AI as an augmentation tool, not a replacement, empowering doctors with enhanced capabilities while preserving the irreplaceable human element of medical care."
+    },
+    {
+      "value": "Relentless Innovation",
+      "description": "We push the boundaries of what's possible in medical AI, continuously advancing from today's challenges to tomorrow's breakthroughs with courage and creativity."
+    },
+    {
+      "value": "Patient-Centric Impact",
+      "description": "Every line of code we write, every model we train, exists to improve patient outcomes—faster diagnoses, earlier interventions, and better health for all."
+    },
+    {
+      "value": "Transparent Trust",
+      "description": "We build trust through transparency in our AI methodologies, regulatory compliance, and open collaboration with the global medical community."
+    }
+  ],
+
+  "personality": [
+    "Visionary",
+    "Precise",
+    "Trustworthy",
+    "Progressive",
+    "Empowering"
+  ],
+
+  "positioning": "VUNO is the pioneering AI medical device company that bridges the gap between advanced artificial intelligence and practical clinical application, offering physicians the world's first commercially validated AI diagnostic suite that enhances diagnostic confidence, reduces interpretation time, and democratizes access to expert-level radiology across age-related, retinal, pulmonary, and cardiovascular conditions.",
+
+  "differentiation_pillars": [
+    "First-mover advantage: Korea's first FDA-cleared AI medical device company",
+    "Comprehensive portfolio: Full-spectrum VUNO Med® suite across multiple medical imaging domains",
+    "Clinical validation: Evidence-based algorithms with published peer-reviewed research",
+    "Physician-designed: Built by medical professionals for medical professionals",
+    "Regulatory excellence: Multi-market approvals (Korea MFDS, CE Mark, FDA pathway)"
+  ],
+
+  "tagline_current": "View the Invisible, Know the Unknown",
+
+  "tagline_options": [
+    "AI that sees what medicine needs",
+    "Intelligence that reveals, care that heals",
+    "Beyond imaging, into insight"
+  ],
+
+  "brand_archetype": {
+    "primary": "The Sage",
+    "description": "VUNO embodies The Sage archetype through its pursuit of truth and knowledge in medical diagnostics. Like the wise counselor, VUNO provides expert-level intelligence and clarity, helping physicians see beyond surface-level observations to uncover hidden medical insights. The brand's commitment to evidence-based AI and clinical validation reflects The Sage's dedication to wisdom, expertise, and the democratization of knowledge.",
+    "secondary": "The Magician",
+    "secondary_description": "VUNO also channels The Magician by transforming the impossible into possible—making invisible pathologies visible through AI, turning complex medical imaging into instant insights, and creating transformative moments where early detection becomes routine rather than exceptional."
+  },
+
+  "brand_voice": {
+    "tone": "Authoritative yet accessible, scientific yet human-centered, confident yet humble",
+    "language_principles": [
+      "Use precise medical terminology when addressing healthcare professionals",
+      "Translate complex AI concepts into clear clinical benefits",
+      "Balance innovation storytelling with evidence-based credibility",
+      "Emphasize augmentation and partnership, never replacement",
+      "Inspire hope without overpromising outcomes"
+    ]
+  },
+
+  "target_audiences": [
+    {
+      "audience": "Radiologists & Imaging Specialists",
+      "needs": "Improved diagnostic accuracy, reduced interpretation time, second-reader confidence",
+      "message": "Augment your expertise with AI that enhances what you already do best"
+    },
+    {
+      "audience": "Hospital Administrators & Healthcare Systems",
+      "needs": "Operational efficiency, standardized quality, regulatory compliance, ROI",
+      "message": "Scale expert-level diagnostics across your entire health system with clinically validated AI"
+    },
+    {
+      "audience": "Primary Care Physicians",
+      "needs": "Early detection tools, specialist-level screening, point-of-care diagnostics",
+      "message": "Bring specialist-grade diagnostic intelligence to the frontlines of patient care"
+    },
+    {
+      "audience": "Medical AI Researchers & Academia",
+      "needs": "Collaboration, transparency, scientific advancement",
+      "message": "Partner with pioneers who advance medical AI through rigorous research and open science"
+    },
+    {
+      "audience": "Patients & Healthcare Advocates",
+      "needs": "Earlier diagnoses, better outcomes, accessible care",
+      "message": "Benefit from AI that helps doctors see more, know more, and care better"
+    }
+  ],
+
+  "competitive_advantages": [
+    "Portfolio breadth: Multi-specialty AI suite (bone age, fundus, chest X-ray, cardiac)",
+    "Market maturity: 10+ years of AI healthcare specialization since 2014",
+    "Regulatory leadership: First-mover in Korean AI medical device approvals",
+    "Clinical integration: Seamless PACS/EMR integration for real-world deployment",
+    "Proven outcomes: Published clinical evidence and real-world performance data"
+  ],
+
+  "brand_promise": "VUNO promises to empower every physician with AI-enhanced diagnostic confidence, transforming medical imaging from subjective interpretation into objective intelligence—so that no pathology goes unseen, no patient goes undiagnosed, and every healthcare decision is informed by the best possible insights.",
+
+  "elevator_pitch": "VUNO is Korea's pioneering AI medical device company that develops the VUNO Med® suite—clinically validated, FDA-pathway artificial intelligence that analyzes medical images across bone age, retinal disease, chest X-rays, and cardiac conditions. We augment physician expertise with instant, expert-level diagnostic insights, enabling earlier detection, faster workflows, and better patient outcomes. From Seoul to the world, we're making invisible pathologies visible and unknown diagnoses knowable."
+}

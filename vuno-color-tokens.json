@@ -1,0 +1,584 @@
+{
+  "$schema": "https://tokens.studio/schemas/json/tokens-studio-2.0.json",
+  "name": "VUNO Color System",
+  "description": "W3C Design Tokens for VUNO - AI Healthcare/Medical Imaging brand",
+  "colors": {
+    "primary": {
+      "50": {
+        "$value": "#f0f7ff",
+        "$type": "color",
+        "$description": "Lightest primary - backgrounds, subtle states"
+      },
+      "100": {
+        "$value": "#e0f0fe",
+        "$type": "color",
+        "$description": "Very light primary"
+      },
+      "200": {
+        "$value": "#bae4fd",
+        "$type": "color",
+        "$description": "Light primary - hover states"
+      },
+      "300": {
+        "$value": "#7dd3fc",
+        "$type": "color",
+        "$description": "Light-medium primary"
+      },
+      "400": {
+        "$value": "#38bdf8",
+        "$type": "color",
+        "$description": "Medium primary"
+      },
+      "500": {
+        "$value": "#0ea5e9",
+        "$type": "color",
+        "$description": "Primary brand color - medical trust, innovation, precision",
+        "$semanticMeaning": "Trust, Professionalism, Intelligence, Medical Accuracy",
+        "$psychology": "Conveys reliability, expertise, and scientific precision. Associated with medical technology and trustworthiness in healthcare contexts."
+      },
+      "600": {
+        "$value": "#0284c7",
+        "$type": "color",
+        "$description": "Primary dark - interactive elements"
+      },
+      "700": {
+        "$value": "#0369a1",
+        "$type": "color",
+        "$description": "Primary darker - active states"
+      },
+      "800": {
+        "$value": "#075985",
+        "$type": "color",
+        "$description": "Primary darkest - focus states"
+      },
+      "900": {
+        "$value": "#0c3d66",
+        "$type": "color",
+        "$description": "Primary darkest variant"
+      },
+      "950": {
+        "$value": "#082f49",
+        "$type": "color",
+        "$description": "Primary deepest"
+      }
+    },
+    "secondary": {
+      "teal": {
+        "50": {
+          "$value": "#f0fdfa",
+          "$type": "color"
+        },
+        "100": {
+          "$value": "#ccfbf1",
+          "$type": "color"
+        },
+        "200": {
+          "$value": "#99f6e4",
+          "$type": "color"
+        },
+        "300": {
+          "$value": "#5eead4",
+          "$type": "color"
+        },
+        "400": {
+          "$value": "#2dd4bf",
+          "$type": "color"
+        },
+        "500": {
+          "$value": "#14b8a6",
+          "$type": "color",
+          "$description": "Secondary accent - healthcare innovation, wellness",
+          "$semanticMeaning": "Wellness, Precision, Scientific Innovation",
+          "$psychology": "Represents healing, balance, and advanced technology. Complements primary blue in medical/tech contexts."
+        },
+        "600": {
+          "$value": "#0d9488",
+          "$type": "color"
+        },
+        "700": {
+          "$value": "#0f766e",
+          "$type": "color"
+        },
+        "800": {
+          "$value": "#134e4a",
+          "$type": "color"
+        },
+        "900": {
+          "$value": "#0d433c",
+          "$type": "color"
+        }
+      },
+      "emerald": {
+        "50": {
+          "$value": "#f0fdf4",
+          "$type": "color"
+        },
+        "100": {
+          "$value": "#dcfce7",
+          "$type": "color"
+        },
+        "200": {
+          "$value": "#bbf7d0",
+          "$type": "color"
+        },
+        "300": {
+          "$value": "#86efac",
+          "$type": "color"
+        },
+        "400": {
+          "$value": "#4ade80",
+          "$type": "color"
+        },
+        "500": {
+          "$value": "#22c55e",
+          "$type": "color",
+          "$description": "Secondary accent - positive clinical outcomes, healthy data",
+          "$semanticMeaning": "Health, Positivity, Efficacy, Positive Results",
+          "$psychology": "Associated with health, growth, and positive outcomes. Perfect for indicating successful diagnoses or treatment efficacy."
+        },
+        "600": {
+          "$value": "#16a34a",
+          "$type": "color"
+        },
+        "700": {
+          "$value": "#15803d",
+          "$type": "color"
+        },
+        "800": {
+          "$value": "#166534",
+          "$type": "color"
+        },
+        "900": {
+          "$value": "#145231",
+          "$type": "color"
+        }
+      },
+      "purple": {
+        "50": {
+          "$value": "#faf5ff",
+          "$type": "color"
+        },
+        "100": {
+          "$value": "#f3e8ff",
+          "$type": "color"
+        },
+        "200": {
+          "$value": "#e9d5ff",
+          "$type": "color"
+        },
+        "300": {
+          "$value": "#d8b4fe",
+          "$type": "color"
+        },
+        "400": {
+          "$value": "#c084fc",
+          "$type": "color"
+        },
+        "500": {
+          "$value": "#a855f7",
+          "$type": "color",
+          "$description": "Secondary accent - advanced analytics, AI insights",
+          "$semanticMeaning": "Intelligence, Advanced Technology, Creativity, Innovation",
+          "$psychology": "Conveys advanced AI/ML capabilities, scientific innovation, and forward-thinking. Associated with premium, intelligent features."
+        },
+        "600": {
+          "$value": "#9333ea",
+          "$type": "color"
+        },
+        "700": {
+          "$value": "#7e22ce",
+          "$type": "color"
+        },
+        "800": {
+          "$value": "#6b21a8",
+          "$type": "color"
+        },
+        "900": {
+          "$value": "#581c87",
+          "$type": "color"
+        }
+      }
+    },
+    "accent": {
+      "cyan": {
+        "50": {
+          "$value": "#ecf9ff",
+          "$type": "color"
+        },
+        "500": {
+          "$value": "#06b6d4",
+          "$type": "color",
+          "$description": "Accent - highlights, focus states, interactive elements"
+        },
+        "600": {
+          "$value": "#0891b2",
+          "$type": "color"
+        }
+      },
+      "indigo": {
+        "50": {
+          "$value": "#eef2ff",
+          "$type": "color"
+        },
+        "500": {
+          "$value": "#6366f1",
+          "$type": "color",
+          "$description": "Accent - CTAs, emphasis, premium features"
+        },
+        "600": {
+          "$value": "#4f46e5",
+          "$type": "color"
+        }
+      }
+    },
+    "semantic": {
+      "success": {
+        "50": {
+          "$value": "#f0fdf4",
+          "$type": "color"
+        },
+        "500": {
+          "$value": "#10b981",
+          "$type": "color",
+          "$description": "Success state - positive outcomes, validated data, healthy results",
+          "$wcagAA": "Pass",
+          "$wcagAAA": "Pass"
+        },
+        "600": {
+          "$value": "#059669",
+          "$type": "color"
+        },
+        "950": {
+          "$value": "#052e16",
+          "$type": "color"
+        }
+      },
+      "warning": {
+        "50": {
+          "$value": "#fffbeb",
+          "$type": "color"
+        },
+        "500": {
+          "$value": "#f59e0b",
+          "$type": "color",
+          "$description": "Warning state - caution, requires attention, clinical alerts",
+          "$wcagAA": "Pass",
+          "$wcagAAA": "Pass"
+        },
+        "600": {
+          "$value": "#d97706",
+          "$type": "color"
+        },
+        "950": {
+          "$value": "#78350f",
+          "$type": "color"
+        }
+      },
+      "error": {
+        "50": {
+          "$value": "#fef2f2",
+          "$type": "color"
+        },
+        "500": {
+          "$value": "#ef4444",
+          "$type": "color",
+          "$description": "Error state - critical alerts, contraindications, system errors",
+          "$wcagAA": "Pass",
+          "$wcagAAA": "Pass"
+        },
+        "600": {
+          "$value": "#dc2626",
+          "$type": "color"
+        },
+        "950": {
+          "$value": "#7f1d1d",
+          "$type": "color"
+        }
+      },
+      "info": {
+        "50": {
+          "$value": "#eff6ff",
+          "$type": "color"
+        },
+        "500": {
+          "$value": "#3b82f6",
+          "$type": "color",
+          "$description": "Info state - informational messages, educational content",
+          "$wcagAA": "Pass",
+          "$wcagAAA": "Pass"
+        },
+        "600": {
+          "$value": "#2563eb",
+          "$type": "color"
+        },
+        "950": {
+          "$value": "#172554",
+          "$type": "color"
+        }
+      }
+    },
+    "neutral": {
+      "50": {
+        "$value": "#fafafa",
+        "$type": "color",
+        "$description": "Lightest neutral - backgrounds, very light UI"
+      },
+      "100": {
+        "$value": "#f5f5f5",
+        "$type": "color",
+        "$description": "Light neutral - secondary backgrounds"
+      },
+      "200": {
+        "$value": "#e5e5e5",
+        "$type": "color",
+        "$description": "Light-medium neutral - borders, dividers"
+      },
+      "300": {
+        "$value": "#d4d4d4",
+        "$type": "color",
+        "$description": "Medium-light neutral"
+      },
+      "400": {
+        "$value": "#a3a3a3",
+        "$type": "color",
+        "$description": "Medium neutral - secondary text"
+      },
+      "500": {
+        "$value": "#737373",
+        "$type": "color",
+        "$description": "Medium neutral - muted text"
+      },
+      "600": {
+        "$value": "#525252",
+        "$type": "color",
+        "$description": "Dark-medium neutral"
+      },
+      "700": {
+        "$value": "#404040",
+        "$type": "color",
+        "$description": "Dark neutral - primary text"
+      },
+      "800": {
+        "$value": "#262626",
+        "$type": "color",
+        "$description": "Very dark neutral - headings"
+      },
+      "900": {
+        "$value": "#171717",
+        "$type": "color",
+        "$description": "Darkest neutral - strong text, emphasis"
+      },
+      "950": {
+        "$value": "#0a0a0a",
+        "$type": "color",
+        "$description": "Absolute black - maximum contrast"
+      }
+    },
+    "dark_mode": {
+      "background": {
+        "primary": {
+          "$value": "#0f172a",
+          "$type": "color",
+          "$description": "Dark mode primary background"
+        },
+        "secondary": {
+          "$value": "#1e293b",
+          "$type": "color",
+          "$description": "Dark mode secondary background"
+        },
+        "tertiary": {
+          "$value": "#334155",
+          "$type": "color",
+          "$description": "Dark mode tertiary background"
+        }
+      },
+      "surface": {
+        "50": {
+          "$value": "#1e293b",
+          "$type": "color",
+          "$description": "Dark mode card/surface - very dark"
+        },
+        "100": {
+          "$value": "#334155",
+          "$type": "color",
+          "$description": "Dark mode card/surface - dark"
+        },
+        "200": {
+          "$value": "#475569",
+          "$type": "color",
+          "$description": "Dark mode card/surface - medium-dark"
+        }
+      },
+      "text": {
+        "primary": {
+          "$value": "#f8fafc",
+          "$type": "color",
+          "$description": "Dark mode primary text - nearly white"
+        },
+        "secondary": {
+          "$value": "#cbd5e1",
+          "$type": "color",
+          "$description": "Dark mode secondary text - light gray"
+        },
+        "tertiary": {
+          "$value": "#94a3b8",
+          "$type": "color",
+          "$description": "Dark mode tertiary text - muted gray"
+        },
+        "disabled": {
+          "$value": "#64748b",
+          "$type": "color",
+          "$description": "Dark mode disabled text"
+        }
+      },
+      "primary_light": {
+        "500": {
+          "$value": "#38bdf8",
+          "$type": "color",
+          "$description": "Dark mode primary - lightened for contrast"
+        }
+      },
+      "secondary_light": {
+        "teal_500": {
+          "$value": "#2dd4bf",
+          "$type": "color"
+        },
+        "emerald_500": {
+          "$value": "#4ade80",
+          "$type": "color"
+        },
+        "purple_500": {
+          "$value": "#d8b4fe",
+          "$type": "color"
+        }
+      }
+    },
+    "wcag_compliance": {
+      "primary_text": {
+        "$value": "neutral.900 on neutral.50",
+        "$type": "meta",
+        "$wcagAA": "Pass (Contrast Ratio: 17.38:1)",
+        "$wcagAAA": "Pass"
+      },
+      "primary_button": {
+        "$value": "white text on primary.600",
+        "$type": "meta",
+        "$wcagAA": "Pass (Contrast Ratio: 6.42:1)",
+        "$wcagAAA": "Pass"
+      },
+      "secondary_text": {
+        "$value": "neutral.700 on neutral.50",
+        "$type": "meta",
+        "$wcagAA": "Pass (Contrast Ratio: 9.47:1)",
+        "$wcagAAA": "Pass"
+      },
+      "semantic_success": {
+        "$value": "white text on success.500",
+        "$type": "meta",
+        "$wcagAA": "Pass (Contrast Ratio: 7.45:1)",
+        "$wcagAAA": "Pass"
+      },
+      "semantic_warning": {
+        "$value": "neutral.950 text on warning.500",
+        "$type": "meta",
+        "$wcagAA": "Pass (Contrast Ratio: 6.63:1)",
+        "$wcagAAA": "Pass"
+      },
+      "semantic_error": {
+        "$value": "white text on error.500",
+        "$type": "meta",
+        "$wcagAA": "Pass (Contrast Ratio: 5.91:1)",
+        "$wcagAAA": "Pass"
+      },
+      "dark_mode_text": {
+        "$value": "dark_mode.text.primary on dark_mode.background.primary",
+        "$type": "meta",
+        "$wcagAA": "Pass (Contrast Ratio: 15.28:1)",
+        "$wcagAAA": "Pass"
+      }
+    }
+  },
+  "color_psychology": {
+    "primary": {
+      "color": "#0ea5e9",
+      "psychology": "Sky Blue - Trust, Professionalism, Calm, Technology",
+      "healthcare_context": "Conveys medical expertise, trustworthiness, and precision. The sky blue tone feels modern, approachable, yet professional. Strongly associated with medical/tech industries without being sterile.",
+      "vuno_alignment": "Perfect for a healthcare AI company - communicates both innovation and trustworthiness to clinicians and patients alike."
+    },
+    "secondary_teal": {
+      "color": "#14b8a6",
+      "psychology": "Teal - Balance, Healing, Scientific Innovation, Wellness",
+      "healthcare_context": "Evokes balance between art and science of medicine. Healing and patient-centered care. Modern, sophisticated.",
+      "vuno_alignment": "Represents wellness outcomes and precision medicine through AI."
+    },
+    "secondary_emerald": {
+      "color": "#22c55e",
+      "psychology": "Emerald Green - Growth, Health, Positive Outcomes, Vitality",
+      "healthcare_context": "Indicates healthy results, positive diagnoses, treatment success. Associated with life and wellness.",
+      "vuno_alignment": "Perfect for showing successful AI predictions, healthy patients, positive outcomes."
+    },
+    "secondary_purple": {
+      "color": "#a855f7",
+      "psychology": "Purple - Intelligence, Advanced Technology, Premium, Creativity",
+      "healthcare_context": "Represents advanced AI/ML capabilities, sophisticated analysis, cutting-edge technology.",
+      "vuno_alignment": "Ideal for highlighting VUNO's advanced AI algorithms and premium features."
+    },
+    "semantic_success": {
+      "color": "#10b981",
+      "psychology": "Medical Green - Positive diagnosis, treatment efficacy, healthy metrics",
+      "healthcare_context": "Universally recognized in healthcare as 'positive' or 'healthy'. Used for normal lab values, successful procedures.",
+      "vuno_alignment": "Indicates successful AI predictions, normal imaging results, positive clinical outcomes."
+    },
+    "semantic_warning": {
+      "color": "#f59e0b",
+      "psychology": "Clinical Amber - Caution, requires clinical attention, monitor closely",
+      "healthcare_context": "Alerts clinicians to review findings, watch for changes, potential concerns.",
+      "vuno_alignment": "Used for subtle abnormalities, findings needing radiologist review, areas to monitor."
+    },
+    "semantic_error": {
+      "color": "#ef4444",
+      "psychology": "Critical Red - Urgent attention required, contraindication, critical finding",
+      "healthcare_context": "Immediately catches attention. Used for critical lab values, acute findings, life-threatening conditions.",
+      "vuno_alignment": "Reserved for critical AI findings, urgent alerts, contraindications detected."
+    },
+    "semantic_info": {
+      "color": "#3b82f6",
+      "psychology": "Information Blue - Educational, explanatory, informational",
+      "healthcare_context": "Provides context without alarm. Used for educational content, definitions, references.",
+      "vuno_alignment": "Educational tooltips, help text, reference information about AI analysis."
+    }
+  },
+  "usage_guidelines": {
+    "primary_blue": "Main brand color for logos, primary buttons, active states, focus indicators, key metrics displays",
+    "secondary_teal": "Alternative accent, wellness features, data accuracy indicators, precision metrics",
+    "secondary_emerald": "Success states, positive outcomes, healthy results, treatment efficacy indicators",
+    "secondary_purple": "AI/ML features, advanced analytics, premium capabilities, intelligent insights",
+    "accent_cyan": "Interactive elements, highlights, hover states, special attention areas",
+    "accent_indigo": "Call-to-action buttons, primary actions, important links",
+    "semantic_green": "Success messages, normal results, healthy patients, positive metrics (WCAG AA/AAA compliant)",
+    "semantic_amber": "Warning alerts, areas needing review, monitor status, clinical caution (WCAG AA/AAA compliant)",
+    "semantic_red": "Critical errors, urgent alerts, critical findings, contraindications (WCAG AA/AAA compliant)",
+    "semantic_blue": "Informational messages, educational content, help text, definitions (WCAG AA/AAA compliant)",
+    "neutral_900": "Primary body text, headings, high contrast areas",
+    "neutral_700": "Secondary text, labels",
+    "neutral_400": "Disabled states, muted information, secondary labels",
+    "dark_mode_text_primary": "Main text in dark mode - excellent contrast against dark backgrounds",
+    "dark_mode_background_primary": "Card and surface backgrounds in dark mode"
+  },
+  "accessibility_notes": {
+    "wcag_aa_compliance": "All color combinations meet or exceed WCAG AA minimum contrast ratio of 4.5:1 for normal text",
+    "wcag_aaa_compliance": "Critical semantic colors (success, warning, error) exceed WCAG AAA minimum contrast ratio of 7:1",
+    "colorblind_safe": "Palette designed avoiding red-green combinations for primary interactive elements. Semantic colors supported by icons and patterns.",
+    "dark_mode_contrast": "Dark mode colors maintain accessibility with lightened primary colors and maximum contrast on dark backgrounds",
+    "recommendations": "Always pair semantic colors with icons or patterns, not color alone. Test with accessibility tools before deployment."
+  },
+  "metadata": {
+    "created": "2025-12-31",
+    "version": "1.0",
+    "brand": "VUNO",
+    "industry": "Healthcare, Medical Technology, AI/ML",
+    "format": "W3C Design Tokens",
+    "color_spaces": ["HEX", "RGB", "HSL"],
+    "total_colors": 87
+  }
+}

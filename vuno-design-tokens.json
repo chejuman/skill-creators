@@ -1,0 +1,1100 @@
+{
+  "$schema": "https://tokens.studio/schemas/v2/schema.json",
+  "metadata": {
+    "name": "VUNO Design System",
+    "version": "1.0.0",
+    "description": "W3C Design Token specification for VUNO AI Healthcare platform",
+    "company": "VUNO",
+    "use_case": "Medical dashboards, diagnostic interfaces, web applications",
+    "frameworks": ["React", "Vue"],
+    "accessibility_level": "WCAG AAA",
+    "medical_domain": true
+  },
+  "spacing": {
+    "base": {
+      "value": "4px",
+      "type": "dimension"
+    },
+    "0": {
+      "value": "0px",
+      "type": "dimension"
+    },
+    "1": {
+      "value": "4px",
+      "type": "dimension"
+    },
+    "2": {
+      "value": "8px",
+      "type": "dimension"
+    },
+    "3": {
+      "value": "12px",
+      "type": "dimension"
+    },
+    "4": {
+      "value": "16px",
+      "type": "dimension"
+    },
+    "5": {
+      "value": "20px",
+      "type": "dimension"
+    },
+    "6": {
+      "value": "24px",
+      "type": "dimension"
+    },
+    "7": {
+      "value": "28px",
+      "type": "dimension"
+    },
+    "8": {
+      "value": "32px",
+      "type": "dimension"
+    },
+    "9": {
+      "value": "36px",
+      "type": "dimension"
+    },
+    "10": {
+      "value": "40px",
+      "type": "dimension"
+    },
+    "12": {
+      "value": "48px",
+      "type": "dimension"
+    },
+    "14": {
+      "value": "56px",
+      "type": "dimension"
+    },
+    "16": {
+      "value": "64px",
+      "type": "dimension"
+    },
+    "20": {
+      "value": "80px",
+      "type": "dimension"
+    },
+    "24": {
+      "value": "96px",
+      "type": "dimension"
+    }
+  },
+  "border-radius": {
+    "none": {
+      "value": "0px",
+      "type": "border-radius"
+    },
+    "sm": {
+      "value": "4px",
+      "type": "border-radius",
+      "description": "Small radius for subtle corners, medical UI elements"
+    },
+    "md": {
+      "value": "8px",
+      "type": "border-radius",
+      "description": "Medium radius for cards, input fields, standard components"
+    },
+    "lg": {
+      "value": "12px",
+      "type": "border-radius",
+      "description": "Large radius for dialog overlays, prominent cards"
+    },
+    "xl": {
+      "value": "16px",
+      "type": "border-radius"
+    },
+    "full": {
+      "value": "9999px",
+      "type": "border-radius",
+      "description": "Fully rounded for pills, badges, circular indicators"
+    }
+  },
+  "shadow": {
+    "sm": {
+      "value": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+      "type": "shadow",
+      "description": "Minimal elevation for subtle depth"
+    },
+    "md": {
+      "value": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+      "type": "shadow",
+      "description": "Standard elevation for cards, panels"
+    },
+    "lg": {
+      "value": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+      "type": "shadow",
+      "description": "Elevated shadow for modals, popovers"
+    },
+    "xl": {
+      "value": "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+      "type": "shadow",
+      "description": "High elevation for top-level overlays"
+    },
+    "inner": {
+      "value": "inset 0 2px 4px 0 rgba(0, 0, 0, 0.05)",
+      "type": "shadow",
+      "description": "Inset shadow for depth effect"
+    }
+  },
+  "color": {
+    "primary": {
+      "50": {
+        "value": "#eff6ff",
+        "type": "color"
+      },
+      "100": {
+        "value": "#dbeafe",
+        "type": "color"
+      },
+      "200": {
+        "value": "#bfdbfe",
+        "type": "color"
+      },
+      "300": {
+        "value": "#93c5fd",
+        "type": "color"
+      },
+      "400": {
+        "value": "#60a5fa",
+        "type": "color"
+      },
+      "500": {
+        "value": "#3b82f6",
+        "type": "color",
+        "description": "Primary action color for medical interface"
+      },
+      "600": {
+        "value": "#2563eb",
+        "type": "color"
+      },
+      "700": {
+        "value": "#1d4ed8",
+        "type": "color"
+      },
+      "800": {
+        "value": "#1e40af",
+        "type": "color"
+      },
+      "900": {
+        "value": "#1e3a8a",
+        "type": "color"
+      }
+    },
+    "success": {
+      "50": {
+        "value": "#f0fdf4",
+        "type": "color"
+      },
+      "100": {
+        "value": "#dcfce7",
+        "type": "color"
+      },
+      "500": {
+        "value": "#22c55e",
+        "type": "color",
+        "description": "Positive status, normal diagnostic results"
+      },
+      "600": {
+        "value": "#16a34a",
+        "type": "color"
+      },
+      "700": {
+        "value": "#15803d",
+        "type": "color"
+      }
+    },
+    "warning": {
+      "50": {
+        "value": "#fffbeb",
+        "type": "color"
+      },
+      "100": {
+        "value": "#fef3c7",
+        "type": "color"
+      },
+      "500": {
+        "value": "#eab308",
+        "type": "color",
+        "description": "Caution level, requires attention"
+      },
+      "600": {
+        "value": "#ca8a04",
+        "type": "color"
+      },
+      "700": {
+        "value": "#a16207",
+        "type": "color"
+      }
+    },
+    "error": {
+      "50": {
+        "value": "#fef2f2",
+        "type": "color"
+      },
+      "100": {
+        "value": "#fee2e2",
+        "type": "color"
+      },
+      "500": {
+        "value": "#ef4444",
+        "type": "color",
+        "description": "Critical alert, abnormal findings"
+      },
+      "600": {
+        "value": "#dc2626",
+        "type": "color"
+      },
+      "700": {
+        "value": "#b91c1c",
+        "type": "color"
+      }
+    },
+    "critical": {
+      "50": {
+        "value": "#fff5f5",
+        "type": "color"
+      },
+      "500": {
+        "value": "#d31313",
+        "type": "color",
+        "description": "Highest severity medical alert"
+      },
+      "700": {
+        "value": "#8b0000",
+        "type": "color"
+      }
+    },
+    "info": {
+      "50": {
+        "value": "#f0f9ff",
+        "type": "color"
+      },
+      "500": {
+        "value": "#0ea5e9",
+        "type": "color",
+        "description": "Informational content, additional context"
+      },
+      "600": {
+        "value": "#0284c7",
+        "type": "color"
+      }
+    },
+    "neutral": {
+      "0": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "50": {
+        "value": "#f9fafb",
+        "type": "color"
+      },
+      "100": {
+        "value": "#f3f4f6",
+        "type": "color"
+      },
+      "200": {
+        "value": "#e5e7eb",
+        "type": "color"
+      },
+      "300": {
+        "value": "#d1d5db",
+        "type": "color"
+      },
+      "400": {
+        "value": "#9ca3af",
+        "type": "color"
+      },
+      "500": {
+        "value": "#6b7280",
+        "type": "color"
+      },
+      "600": {
+        "value": "#4b5563",
+        "type": "color"
+      },
+      "700": {
+        "value": "#374151",
+        "type": "color"
+      },
+      "800": {
+        "value": "#1f2937",
+        "type": "color"
+      },
+      "900": {
+        "value": "#111827",
+        "type": "color"
+      },
+      "950": {
+        "value": "#030712",
+        "type": "color"
+      }
+    }
+  },
+  "focus-ring": {
+    "width": {
+      "value": "2px",
+      "type": "dimension",
+      "description": "Focus ring stroke width for high visibility"
+    },
+    "offset": {
+      "value": "2px",
+      "type": "dimension",
+      "description": "Space between element and focus ring"
+    },
+    "color": {
+      "default": {
+        "value": "#3b82f6",
+        "type": "color",
+        "description": "Primary focus ring color"
+      },
+      "error": {
+        "value": "#ef4444",
+        "type": "color",
+        "description": "Error state focus ring"
+      }
+    },
+    "style": {
+      "default": {
+        "value": "solid",
+        "type": "string"
+      }
+    },
+    "box-shadow": {
+      "value": "0 0 0 2px #ffffff, 0 0 0 4px #3b82f6",
+      "type": "shadow",
+      "description": "High contrast focus ring with white border (WCAG AAA)"
+    }
+  },
+  "button": {
+    "primary": {
+      "background": {
+        "default": {
+          "value": "#3b82f6",
+          "type": "color"
+        },
+        "hover": {
+          "value": "#2563eb",
+          "type": "color"
+        },
+        "active": {
+          "value": "#1d4ed8",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "#d1d5db",
+          "type": "color"
+        }
+      },
+      "foreground": {
+        "default": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "#9ca3af",
+          "type": "color"
+        }
+      },
+      "border": {
+        "value": "none",
+        "type": "string"
+      }
+    },
+    "secondary": {
+      "background": {
+        "default": {
+          "value": "#f3f4f6",
+          "type": "color"
+        },
+        "hover": {
+          "value": "#e5e7eb",
+          "type": "color"
+        },
+        "active": {
+          "value": "#d1d5db",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "#f9fafb",
+          "type": "color"
+        }
+      },
+      "foreground": {
+        "default": {
+          "value": "#374151",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "#9ca3af",
+          "type": "color"
+        }
+      },
+      "border": {
+        "value": "1px solid #d1d5db",
+        "type": "string"
+      }
+    },
+    "ghost": {
+      "background": {
+        "default": {
+          "value": "transparent",
+          "type": "color"
+        },
+        "hover": {
+          "value": "#f3f4f6",
+          "type": "color"
+        },
+        "active": {
+          "value": "#e5e7eb",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "transparent",
+          "type": "color"
+        }
+      },
+      "foreground": {
+        "default": {
+          "value": "#374151",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "#9ca3af",
+          "type": "color"
+        }
+      },
+      "border": {
+        "value": "none",
+        "type": "string"
+      }
+    },
+    "destructive": {
+      "background": {
+        "default": {
+          "value": "#ef4444",
+          "type": "color"
+        },
+        "hover": {
+          "value": "#dc2626",
+          "type": "color"
+        },
+        "active": {
+          "value": "#b91c1c",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "#fecaca",
+          "type": "color"
+        }
+      },
+      "foreground": {
+        "default": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "#fed7d7",
+          "type": "color"
+        }
+      },
+      "border": {
+        "value": "none",
+        "type": "string"
+      }
+    },
+    "medical-action": {
+      "background": {
+        "default": {
+          "value": "#059669",
+          "type": "color",
+          "description": "Medical action green for diagnostic operations"
+        },
+        "hover": {
+          "value": "#047857",
+          "type": "color"
+        },
+        "active": {
+          "value": "#065f46",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "#d1fae5",
+          "type": "color"
+        }
+      },
+      "foreground": {
+        "default": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "#6ee7b7",
+          "type": "color"
+        }
+      },
+      "border": {
+        "value": "none",
+        "type": "string"
+      }
+    },
+    "size": {
+      "sm": {
+        "height": {
+          "value": "32px",
+          "type": "dimension"
+        },
+        "padding": {
+          "value": "8px 12px",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "14px",
+          "type": "dimension"
+        }
+      },
+      "md": {
+        "height": {
+          "value": "40px",
+          "type": "dimension"
+        },
+        "padding": {
+          "value": "10px 16px",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "16px",
+          "type": "dimension"
+        }
+      },
+      "lg": {
+        "height": {
+          "value": "48px",
+          "type": "dimension",
+          "description": "Minimum touch target 44px for accessibility"
+        },
+        "padding": {
+          "value": "12px 20px",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "18px",
+          "type": "dimension"
+        }
+      }
+    }
+  },
+  "input": {
+    "default": {
+      "background": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "border": {
+        "value": "1px solid #d1d5db",
+        "type": "string"
+      },
+      "foreground": {
+        "value": "#111827",
+        "type": "color"
+      }
+    },
+    "hover": {
+      "background": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "border": {
+        "value": "1px solid #9ca3af",
+        "type": "string"
+      }
+    },
+    "focus": {
+      "background": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "border": {
+        "value": "1px solid #3b82f6",
+        "type": "string"
+      },
+      "box-shadow": {
+        "value": "0 0 0 3px rgba(59, 130, 246, 0.1)",
+        "type": "shadow"
+      }
+    },
+    "error": {
+      "background": {
+        "value": "#fef2f2",
+        "type": "color"
+      },
+      "border": {
+        "value": "1px solid #ef4444",
+        "type": "string"
+      },
+      "foreground": {
+        "value": "#991b1b",
+        "type": "color"
+      }
+    },
+    "disabled": {
+      "background": {
+        "value": "#f9fafb",
+        "type": "color"
+      },
+      "border": {
+        "value": "1px solid #e5e7eb",
+        "type": "string"
+      },
+      "foreground": {
+        "value": "#9ca3af",
+        "type": "color"
+      }
+    },
+    "loading": {
+      "background": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "border": {
+        "value": "1px solid #93c5fd",
+        "type": "string"
+      },
+      "foreground": {
+        "value": "#3b82f6",
+        "type": "color"
+      }
+    },
+    "size": {
+      "sm": {
+        "height": {
+          "value": "32px",
+          "type": "dimension"
+        },
+        "padding": {
+          "value": "8px 12px",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "14px",
+          "type": "dimension"
+        }
+      },
+      "md": {
+        "height": {
+          "value": "40px",
+          "type": "dimension"
+        },
+        "padding": {
+          "value": "10px 16px",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "16px",
+          "type": "dimension"
+        }
+      },
+      "lg": {
+        "height": {
+          "value": "48px",
+          "type": "dimension",
+          "description": "Minimum touch target 44px"
+        },
+        "padding": {
+          "value": "12px 20px",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "18px",
+          "type": "dimension"
+        }
+      }
+    }
+  },
+  "card": {
+    "medical-data": {
+      "background": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "border": {
+        "value": "1px solid #e5e7eb",
+        "type": "string"
+      },
+      "border-radius": {
+        "value": "8px",
+        "type": "border-radius"
+      },
+      "padding": {
+        "value": "20px",
+        "type": "dimension"
+      },
+      "shadow": {
+        "value": "0 1px 3px 0 rgba(0, 0, 0, 0.1)",
+        "type": "shadow"
+      },
+      "description": "Primary card for displaying patient data, measurements"
+    },
+    "ai-result": {
+      "background": {
+        "value": "#f0f9ff",
+        "type": "color"
+      },
+      "border": {
+        "value": "2px solid #0284c7",
+        "type": "string"
+      },
+      "border-radius": {
+        "value": "8px",
+        "type": "border-radius"
+      },
+      "padding": {
+        "value": "20px",
+        "type": "dimension"
+      },
+      "shadow": {
+        "value": "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+        "type": "shadow"
+      },
+      "description": "Highlighted card for AI diagnostic results"
+    },
+    "alert": {
+      "background": {
+        "value": "#fef2f2",
+        "type": "color"
+      },
+      "border": {
+        "value": "2px solid #ef4444",
+        "type": "string"
+      },
+      "border-radius": {
+        "value": "8px",
+        "type": "border-radius"
+      },
+      "padding": {
+        "value": "20px",
+        "type": "dimension"
+      },
+      "shadow": {
+        "value": "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+        "type": "shadow"
+      },
+      "description": "Alert card for abnormal findings"
+    },
+    "status": {
+      "background": {
+        "value": "#f0fdf4",
+        "type": "color"
+      },
+      "border": {
+        "value": "1px solid #86efac",
+        "type": "string"
+      },
+      "border-radius": {
+        "value": "8px",
+        "type": "border-radius"
+      },
+      "padding": {
+        "value": "16px",
+        "type": "dimension"
+      },
+      "shadow": {
+        "value": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+        "type": "shadow"
+      },
+      "description": "Status indicator card"
+    }
+  },
+  "medical": {
+    "severity": {
+      "critical": {
+        "value": "#d31313",
+        "type": "color",
+        "description": "Highest severity - immediate action required"
+      },
+      "high": {
+        "value": "#ef4444",
+        "type": "color",
+        "description": "High severity - abnormal findings"
+      },
+      "moderate": {
+        "value": "#eab308",
+        "type": "color",
+        "description": "Moderate severity - caution"
+      },
+      "low": {
+        "value": "#0ea5e9",
+        "type": "color",
+        "description": "Low severity - informational"
+      },
+      "normal": {
+        "value": "#22c55e",
+        "type": "color",
+        "description": "Normal - no concerns"
+      }
+    },
+    "confidence-score": {
+      "very-high": {
+        "value": "#059669",
+        "type": "color",
+        "description": "90-100% confidence - high reliability"
+      },
+      "high": {
+        "value": "#16a34a",
+        "type": "color",
+        "description": "75-89% confidence"
+      },
+      "moderate": {
+        "value": "#eab308",
+        "type": "color",
+        "description": "60-74% confidence"
+      },
+      "low": {
+        "value": "#f59e0b",
+        "type": "color",
+        "description": "40-59% confidence"
+      },
+      "very-low": {
+        "value": "#ef4444",
+        "type": "color",
+        "description": "Below 40% confidence - review recommended"
+      }
+    },
+    "alert-states": {
+      "info": {
+        "background": {
+          "value": "#f0f9ff",
+          "type": "color"
+        },
+        "border": {
+          "value": "#0284c7",
+          "type": "color"
+        },
+        "icon": {
+          "value": "#0284c7",
+          "type": "color"
+        }
+      },
+      "warning": {
+        "background": {
+          "value": "#fffbeb",
+          "type": "color"
+        },
+        "border": {
+          "value": "#ca8a04",
+          "type": "color"
+        },
+        "icon": {
+          "value": "#ca8a04",
+          "type": "color"
+        }
+      },
+      "error": {
+        "background": {
+          "value": "#fef2f2",
+          "type": "color"
+        },
+        "border": {
+          "value": "#ef4444",
+          "type": "color"
+        },
+        "icon": {
+          "value": "#ef4444",
+          "type": "color"
+        }
+      },
+      "success": {
+        "background": {
+          "value": "#f0fdf4",
+          "type": "color"
+        },
+        "border": {
+          "value": "#22c55e",
+          "type": "color"
+        },
+        "icon": {
+          "value": "#22c55e",
+          "type": "color"
+        }
+      }
+    },
+    "status-indicator": {
+      "active": {
+        "value": "#22c55e",
+        "type": "color"
+      },
+      "inactive": {
+        "value": "#9ca3af",
+        "type": "color"
+      },
+      "processing": {
+        "value": "#3b82f6",
+        "type": "color"
+      },
+      "error": {
+        "value": "#ef4444",
+        "type": "color"
+      }
+    }
+  },
+  "accessibility": {
+    "touch-target": {
+      "minimum": {
+        "value": "44px",
+        "type": "dimension",
+        "description": "WCAG 2.1 Level AAA minimum touch target size"
+      },
+      "recommended": {
+        "value": "48px",
+        "type": "dimension",
+        "description": "Recommended for medical interfaces"
+      }
+    },
+    "focus-visible": {
+      "outline": {
+        "width": {
+          "value": "2px",
+          "type": "dimension"
+        },
+        "color": {
+          "value": "#3b82f6",
+          "type": "color"
+        },
+        "offset": {
+          "value": "2px",
+          "type": "dimension"
+        },
+        "style": {
+          "value": "solid",
+          "type": "string"
+        }
+      },
+      "box-shadow": {
+        "value": "0 0 0 2px #ffffff, 0 0 0 4px #3b82f6",
+        "type": "shadow",
+        "description": "High contrast focus ring (WCAG AAA)"
+      }
+    },
+    "color-contrast": {
+      "normal-text": {
+        "value": "4.5:1",
+        "type": "string",
+        "description": "WCAG AAA for normal text (14px+)"
+      },
+      "large-text": {
+        "value": "3:1",
+        "type": "string",
+        "description": "WCAG AAA for large text (18px+)"
+      },
+      "critical-info": {
+        "value": "7:1",
+        "type": "string",
+        "description": "Enhanced contrast for critical medical information"
+      }
+    },
+    "text": {
+      "minimum-size": {
+        "value": "14px",
+        "type": "dimension",
+        "description": "Minimum readable text size"
+      },
+      "maximum-line-length": {
+        "value": "80ch",
+        "type": "string",
+        "description": "Optimal reading length to prevent eye strain"
+      }
+    }
+  },
+  "typography": {
+    "font-family": {
+      "base": {
+        "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+        "type": "font-family"
+      }
+    },
+    "font-size": {
+      "xs": {
+        "value": "12px",
+        "type": "font-size"
+      },
+      "sm": {
+        "value": "14px",
+        "type": "font-size"
+      },
+      "base": {
+        "value": "16px",
+        "type": "font-size"
+      },
+      "lg": {
+        "value": "18px",
+        "type": "font-size"
+      },
+      "xl": {
+        "value": "20px",
+        "type": "font-size"
+      },
+      "2xl": {
+        "value": "24px",
+        "type": "font-size"
+      },
+      "3xl": {
+        "value": "30px",
+        "type": "font-size"
+      }
+    },
+    "font-weight": {
+      "regular": {
+        "value": "400",
+        "type": "font-weight"
+      },
+      "medium": {
+        "value": "500",
+        "type": "font-weight"
+      },
+      "semibold": {
+        "value": "600",
+        "type": "font-weight"
+      },
+      "bold": {
+        "value": "700",
+        "type": "font-weight"
+      }
+    },
+    "line-height": {
+      "tight": {
+        "value": "1.2",
+        "type": "line-height"
+      },
+      "normal": {
+        "value": "1.5",
+        "type": "line-height"
+      },
+      "relaxed": {
+        "value": "1.75",
+        "type": "line-height"
+      }
+    }
+  },
+  "motion": {
+    "transition": {
+      "fast": {
+        "value": "100ms",
+        "type": "time"
+      },
+      "normal": {
+        "value": "200ms",
+        "type": "time"
+      },
+      "slow": {
+        "value": "300ms",
+        "type": "time"
+      }
+    },
+    "timing-function": {
+      "ease-in-out": {
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "type": "string"
+      }
+    }
+  }
+}
